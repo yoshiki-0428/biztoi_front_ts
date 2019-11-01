@@ -128,10 +128,16 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { DefaultApi } from "@/axios/";
 
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
+  public created() {
+    const api = new DefaultApi();
+    // eslint-disable-next-line no-console
+    console.log(api.books());
+  }
 }
 </script>
 
