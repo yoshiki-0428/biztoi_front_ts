@@ -16,7 +16,7 @@ const routes = [
     component: BaseLayout,
     children: [
       {
-        path: "/",
+        path: "",
         name: "book",
         component: BookList
       }

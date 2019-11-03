@@ -53,7 +53,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import LoginButton from "@/views/LoginButton.vue";
+import LoginButton from "@/components/organisms/LoginButton.vue";
 
 @Component({
   components: {
