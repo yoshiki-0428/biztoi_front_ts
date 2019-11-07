@@ -48,16 +48,19 @@
         </v-card>
       </v-flex>
     </v-layout>
+    <site-footer></site-footer>
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import LoginButton from "@/components/organisms/LoginButton.vue";
+import SiteFooter from "@/components/organisms/SiteFooter.vue";
 
 @Component({
   components: {
-    LoginButton
+    LoginButton,
+    SiteFooter
   }
 })
 export default class IntroduceApp extends Vue {}
