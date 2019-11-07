@@ -32,7 +32,7 @@ export default class FooterMenu extends Vue {
       link: "/top/favorite"
     },
     {
-      icon: "mdi-search",
+      icon: "mdi-magnify",
       title: "Search",
       link: "/top/search"
     },
