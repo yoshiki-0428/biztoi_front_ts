@@ -23,6 +23,7 @@
     "vuex-module-decorators": "latest"
   },
   "devDependencies": {
+    "@mdi/font": "^4.5.95",
     "@openapitools/openapi-generator-cli": "^1.0.1-4.1.3",
     "@types/chai": "^4.1.0",
     "@types/mocha": "^5.2.4",

@@ -1,27 +1,14 @@
 import Vue from "vue";
-import Vuetify, {
-  VCard,
-  VCardText,
-  VCardTitle,
-  VContainer,
-  VLayout,
-  VFlex,
-  VImg,
-  VBtn
-} from "vuetify/lib";
+import Vuetify from "vuetify";
+import "vuetify/dist/vuetify.min.css";
+import { VuetifyPreset } from "vuetify/types/presets";
 
-Vue.use(Vuetify, {
-  components: {
-    VCard,
-    VContainer,
-    VLayout,
-    VFlex,
-    VImg,
-    VCardText,
-    VCardTitle,
-    VBtn
-  },
-  iconfont: "md"
-});
+Vue.use(Vuetify);
 
-const opts = {};
+const opts: VuetifyPreset = {
+  icons: {
+    iconfont: "mdi"
+  }
+};
+
+export const vuetify = new Vuetify(opts);

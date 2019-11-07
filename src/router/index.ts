@@ -19,6 +19,21 @@ const routes = [
         path: "",
         name: "book",
         component: BookList
+      },
+      {
+        path: "favorite",
+        name: "favorite",
+        component: BookList
+      },
+      {
+        path: "account",
+        name: "account",
+        component: BookList
+      },
+      {
+        path: "search",
+        name: "search",
+        component: BookList
       }
     ]
   }
