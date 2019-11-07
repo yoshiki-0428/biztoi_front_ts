@@ -11,11 +11,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Model, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class LoginButton extends Vue {
-  @Model()
-  private url: string = `${process.env.VUE_APP_API_BASE_URL}auth/login?redirect_uri=${window.location.origin}/top`;
+  url: string = `${process.env.VUE_APP_API_BASE_URL}auth/login?redirect_uri=${window.location.origin}/top`;
 }
 </script>
