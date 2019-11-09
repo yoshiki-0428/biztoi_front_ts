@@ -1,9 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import IntroduceApp from "@/views/IntroduceApp.vue";
-import BaseLayout from "@/views/BaseLayout.vue";
-import Top from "@/views/Top.vue";
-import BookList from "@/container/BookList";
 
 Vue.use(VueRouter);
 
