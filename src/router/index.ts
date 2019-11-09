@@ -10,31 +10,31 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    component: IntroduceApp
+    component: () => import("@/views/IntroduceApp.vue")
   },
   {
     path: "/top",
-    component: BaseLayout,
+    component: () => import("@/views/BaseLayout.vue"),
     children: [
       {
         path: "",
         name: "top",
-        component: Top
+        component: () => import("@/views/Top.vue")
       },
       {
         path: "favorite",
         name: "favorite",
-        component: BookList
+        component: () => import("@/container/BookList")
       },
       {
         path: "account",
         name: "account",
-        component: BookList
+        component: () => import("@/container/BookList")
       },
       {
         path: "search",
         name: "search",
-        component: BookList
+        component: () => import("@/container/BookList")
       }
     ]
   }
