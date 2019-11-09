@@ -1,12 +1,22 @@
 <template>
-  <div>
-    <!-- TODO header footer -->
-    <router-view />
-  </div>
+  <v-content>
+    <v-container>
+      <v-flex xs12>
+        <router-view />
+        <footer-menu />
+      </v-flex>
+    </v-container>
+  </v-content>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import FooterMenu from "@/components/organisms/FooterMenu.vue";
 
+@Component({
+  components: {
+    FooterMenu
+  }
+})
 export default class BaseLayout extends Vue {}
 </script>
