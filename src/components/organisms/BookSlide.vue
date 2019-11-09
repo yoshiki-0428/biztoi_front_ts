@@ -3,7 +3,9 @@
     <v-card-title>{{ title }}</v-card-title>
     <v-slide-group v-model="books" show-arrows>
       <v-slide-item v-for="book in books" :key="book.id">
-        <v-img :src="book.pictureUrl" class="ma-3" />
+        <v-card elevation="0" :to="'/top/' + book.id">
+          <v-img :src="book.pictureUrl" class="ma-3" />
+        </v-card>
       </v-slide-item>
     </v-slide-group>
   </v-card>
