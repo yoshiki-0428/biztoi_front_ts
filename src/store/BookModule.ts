@@ -11,7 +11,7 @@ import store from "@/store";
 
 @Module({ dynamic: true, store: store, name: "bookModule", namespaced: true })
 class BookModule extends VuexModule {
-  public books: Array<Book> = [];
+  public books: Book[] = [];
 
   @Action
   public async getBooks() {

@@ -1,14 +1,12 @@
 <template>
-  <v-app>
-    <v-content>
-      <v-container>
-        <v-layout>
-          <router-view />
-          <footer-menu />
-        </v-layout>
-      </v-container>
-    </v-content>
-  </v-app>
+  <v-content>
+    <v-container>
+      <v-flex xs12>
+        <router-view />
+        <footer-menu />
+      </v-flex>
+    </v-container>
+  </v-content>
 </template>
 
 <script lang="ts">
