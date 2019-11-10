@@ -1,17 +1,18 @@
 <template>
   <v-card class="mb-4">
     <div class="d-flex flex-no-wrap justify-space-between">
+      <v-avatar class="ma-3" size="120" tile>
+        <v-img :src="book.pictureUrl"></v-img>
+      </v-avatar>
+
       <div>
         <v-card-title v-text="book.title"></v-card-title>
         <v-card-subtitle v-text="book.detail"></v-card-subtitle>
       </div>
-
-      <v-avatar class="ma-3" size="120" tile>
-        <v-img :src="book.pictureUrl"></v-img>
-      </v-avatar>
     </div>
 
     <v-card-actions>
+      <v-spacer></v-spacer>
       <v-btn text color="indigo" :to="'/top/' + book.id">
         詳細へ
       </v-btn>
