@@ -7,10 +7,8 @@
             ビジトイ
           </v-card-title>
           <v-card-text>
-            <span>
-              <span>それはあなたにとって極上の体験</span><br />
-              <span>今しかできない体験を今すぐ手に入れよう</span>
-            </span>
+            <p>それはあなたにとって極上の体験</p>
+            <p>今しかできない体験を今すぐ手に入れよう</p>
             <v-flex>
               <login-button />
             </v-flex>
