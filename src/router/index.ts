@@ -30,7 +30,7 @@ const routes = [
       {
         path: "search",
         name: "search",
-        component: () => import("@/container/BookList")
+        component: () => import("@/container/BookSearch")
       }
     ]
   }

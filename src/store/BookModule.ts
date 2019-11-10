@@ -12,6 +12,7 @@ import store from "@/store";
 @Module({ dynamic: true, store: store, name: "bookModule", namespaced: true })
 class BookModule extends VuexModule {
   public books: Book[] = [];
+  public searchBooks: Book[] = [];
 
   @Action
   public async getBooks() {
@@ -19,9 +20,19 @@ class BookModule extends VuexModule {
     this.SET_BOOKS(res.data);
   }
 
+  @Action
+  public async getBooksForGoogleBooks(word: string) {
+    const res = await baseApi.books();
+    this.SET_SEARCH_BOOKS(res.data);
+  }
+
   @Mutation
   private SET_BOOKS(payload: Book[]) {
     this.books = payload;
+  }
+  @Mutation
+  private SET_SEARCH_BOOKS(payload: Book[]) {
+    this.searchBooks = payload;
   }
 }
 
