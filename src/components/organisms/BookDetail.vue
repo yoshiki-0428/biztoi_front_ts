@@ -1,9 +1,12 @@
 <template>
   <v-card class="mb-4">
-    <div class="d-flex flex-no-wrap justify-space-between">
-      <v-avatar class="ma-3" size="120" tile>
-        <v-img :src="book.pictureUrl"></v-img>
-      </v-avatar>
+    <div class="d-flex flex-no-wrap">
+      <v-img
+        class="ma-2"
+        height="120"
+        width="80"
+        :src="book.pictureUrl"
+      ></v-img>
 
       <div>
         <v-card-title v-text="book.title"></v-card-title>
