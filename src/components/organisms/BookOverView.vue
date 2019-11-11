@@ -16,7 +16,7 @@
 
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn text color="indigo" :to="'/top/' + book.id">
+      <v-btn text color="indigo" :to="'/top/book/' + book.id">
         詳細へ
       </v-btn>
       <v-btn icon>
@@ -35,7 +35,7 @@ import { Book } from "@/axios";
 import { isUndefined } from "lodash";
 
 @Component
-export default class BookDetail extends Vue {
+export default class BookOverView extends Vue {
   @Prop({ required: true })
   private book!: Book;
 

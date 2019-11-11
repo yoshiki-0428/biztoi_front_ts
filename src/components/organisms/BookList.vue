@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="item in books" :key="item.id">
-      <book-detail :book="item" />
+      <book-over-view :book="item" />
     </div>
   </div>
 </template>
@@ -9,11 +9,11 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Book } from "@/axios";
-import BookDetail from "@/components/organisms/BookDetail.vue";
+import BookOverView from "@/components/organisms/BookOverView.vue";
 
 @Component({
   components: {
-    BookDetail
+    BookOverView
   }
 })
 export default class BookList extends Vue {

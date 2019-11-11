@@ -11,8 +11,16 @@ import store from "@/store";
 
 @Module({ dynamic: true, store: store, name: "bookModule", namespaced: true })
 class BookModule extends VuexModule {
+  // state
+  public book?: Book = undefined;
   public books: Book[] = [];
   public searchBooks: Book[] = [];
+
+  @Action
+  public async getBook(id: number) {
+    const book: Book | undefined = this.books.find(book => book.id === id);
+    this.SET_BOOK(book);
+  }
 
   @Action
   public async getBooks() {
@@ -26,6 +34,10 @@ class BookModule extends VuexModule {
     this.SET_SEARCH_BOOKS(res.data);
   }
 
+  @Mutation
+  private SET_BOOK(payload?: Book) {
+    this.book = payload;
+  }
   @Mutation
   private SET_BOOKS(payload: Book[]) {
     this.books = payload;

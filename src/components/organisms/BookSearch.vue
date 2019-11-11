@@ -33,11 +33,11 @@
         ></v-select>
       </v-flex>
     </v-row>
-    <book-detail
+    <book-over-view
       v-for="book in books"
       :key="book.id"
       :book="book"
-    ></book-detail>
+    ></book-over-view>
   </div>
 </template>
 
@@ -45,11 +45,11 @@
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import { Book } from "@/axios";
 import { debounce, isNil } from "lodash";
-import BookDetail from "@/components/organisms/BookDetail.vue";
+import BookOverView from "@/components/organisms/BookOverView.vue";
 
 @Component({
   components: {
-    BookDetail
+    BookOverView
   }
 })
 export default class BookSearch extends Vue {

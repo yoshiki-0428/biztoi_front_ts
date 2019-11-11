@@ -18,6 +18,11 @@ const routes = [
         component: () => import("@/views/Top.vue")
       },
       {
+        path: "book/:book_id",
+        name: "bookDetail",
+        component: () => import("@/views/BookDetailPage.vue")
+      },
+      {
         path: "favorite",
         name: "favorite",
         component: () => import("@/container/BookList")
