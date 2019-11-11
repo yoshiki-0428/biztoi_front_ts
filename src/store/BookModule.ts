@@ -12,14 +12,26 @@ import store from "@/store";
 @Module({ dynamic: true, store: store, name: "bookModule", namespaced: true })
 class BookModule extends VuexModule {
   // state
-  public book?: Book = undefined;
+  public book: Book = {
+    id: 0,
+    isbn: "",
+    detail: "",
+    pictureUrl: "",
+    linkUrl: "",
+    title: ""
+  };
   public books: Book[] = [];
   public searchBooks: Book[] = [];
 
   @Action
   public async getBook(id: number) {
+    // 以前検索したStoreから検索、なければAPIを投げる TODO
     const book: Book | undefined = this.books.find(book => book.id === id);
-    this.SET_BOOK(book);
+    // eslint-disable-next-line no-console
+    console.log(book);
+    if (book) {
+      this.SET_BOOK(book);
+    }
   }
 
   @Action
@@ -35,7 +47,7 @@ class BookModule extends VuexModule {
   }
 
   @Mutation
-  private SET_BOOK(payload?: Book) {
+  private SET_BOOK(payload: Book) {
     this.book = payload;
   }
   @Mutation
