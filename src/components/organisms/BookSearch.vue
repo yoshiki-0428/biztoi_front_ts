@@ -43,7 +43,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { Book } from "@/axios";
+import { Book } from "@/axios/biztoi";
 import { debounce, isNil } from "lodash";
 import BookOverView from "@/components/organisms/BookOverView.vue";
 

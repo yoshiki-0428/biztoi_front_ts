@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { Book } from "@/axios";
+import { Book } from "@/axios/biztoi";
 
 @Component
 export default class BookSlide extends Vue {
