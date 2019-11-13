@@ -41,6 +41,8 @@ class BookModule extends VuexModule {
     if (book2) {
       this.SET_BOOK(book2);
     }
+    // eslint-disable-next-line no-console
+    console.log("BookDetail# Book:", book1 || book2);
   }
 
   @Action

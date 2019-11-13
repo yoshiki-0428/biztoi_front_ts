@@ -30,7 +30,7 @@ export default class BookUtil {
   }
   static getDetail(volumeInfo: IVolumeInfo): string {
     if (!isNil(volumeInfo)) {
-      return volumeInfo.desctiption || "";
+      return volumeInfo.description || "";
     }
     return "";
   }
@@ -93,7 +93,7 @@ interface ISaleInfo {
 interface IVolumeInfo {
   authors: [] | undefined;
   categories: [] | undefined;
-  desctiption: string | undefined;
+  description: string | undefined;
   imageLinks:
     | { smallThumbnail: string | undefined; thumbnail: string | undefined }
     | undefined;
