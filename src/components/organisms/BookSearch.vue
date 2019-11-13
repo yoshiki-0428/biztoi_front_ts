@@ -33,11 +33,14 @@
         ></v-select>
       </v-flex>
     </v-row>
-    <book-over-view
-      v-for="book in books"
-      :key="book.id"
-      :book="book"
-    ></book-over-view>
+    <v-row no-gutters justify="center">
+      <book-over-view
+        v-for="book in books"
+        :key="book.id"
+        :book="book"
+        class="ma-1 light-green lighten-4"
+      ></book-over-view>
+    </v-row>
   </div>
 </template>
 
