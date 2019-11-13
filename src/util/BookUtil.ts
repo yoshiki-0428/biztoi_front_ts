@@ -9,7 +9,9 @@ export default class BookUtil {
       detail: this.getDetail(volume.volumeInfo!),
       pictureUrl: this.getPictureurl(volume.volumeInfo!),
       linkUrl: volume.volumeInfo!.infoLink || "No link",
-      title: volume.volumeInfo!.title || "No title"
+      title: volume.volumeInfo!.title || "No title",
+      author: volume.volumeInfo!.authors || [],
+      category: volume.volumeInfo!.categories || []
     };
   }
 
@@ -90,6 +92,7 @@ interface ISaleInfo {
 
 interface IVolumeInfo {
   authors: [] | undefined;
+  categories: [] | undefined;
   desctiption: string | undefined;
   imageLinks:
     | { smallThumbnail: string | undefined; thumbnail: string | undefined }

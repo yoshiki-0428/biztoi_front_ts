@@ -21,7 +21,9 @@ class BookModule extends VuexModule {
     detail: "",
     pictureUrl: "",
     linkUrl: "",
-    title: ""
+    title: "",
+    author: [],
+    category: []
   };
   public books: Book[] = [];
   public searchBooks: Book[] = [];
