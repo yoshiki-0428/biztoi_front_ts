@@ -34,8 +34,8 @@
       </v-flex>
     </v-row>
     <book-over-view
-      v-for="book in books"
-      :key="book.id"
+      v-for="(book, index) in books"
+      :key="index"
       :book="book"
     ></book-over-view>
   </div>
@@ -66,28 +66,31 @@ export default class BookSearch extends Vue {
     if (!isNil(this.word)) {
       this.isLoading = true;
       this.debounceSearchBooks();
-      this.debounceLoading();
     }
   }
   @Watch("selected")
   public targetsChanged() {
-    if (!isNil(this.targets)) {
+    if (!isNil(this.word) && !isNil(this.targets)) {
       this.isLoading = true;
       this.debounceSearchBooks();
-      this.debounceLoading();
     }
   }
   private debounceSearchBooks: Function = debounce(
     () => this.searchWord(),
     400
   );
-  private debounceLoading: Function = debounce(
-    () => (this.isLoading = false),
-    400
-  );
   private searchWord() {
-    this.$emit("search-word", this.word);
+    this.$emit("search-word", BookSearch.getResource(this.selected, this.word));
     this.isLoading = false;
+  }
+  private static getResource(searchType: string, word: string): string {
+    if (searchType === "author") {
+      return `inauthor:${word}`;
+    } else if (searchType === "title") {
+      return `intitle:${word}`;
+    } else {
+      return word;
+    }
   }
 }
 </script>

@@ -1,13 +1,13 @@
 import { connect } from "vuex-connect";
 import { bookModule } from "@/store/BookModule";
 import BookDetail from "@/components/organisms/BookDetail.vue";
+import router from "@/router";
 
 export default connect({
   stateToProps: {
     book: () => bookModule.book
   },
   lifecycle: {
-    // TODO $route.paramの取得の仕方
-    created: () => bookModule.getBook(1)
+    created: () => bookModule.getBook(router.currentRoute.params.bookId)
   }
 })("book-detail", BookDetail);
