@@ -28,30 +28,10 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Book } from "@/axios/biztoi";
-import { isUndefined } from "lodash";
 
 @Component
 export default class BookOverView extends Vue {
   @Prop()
   private book!: Book;
-
-  public getAuthor(): string {
-    // TODO openapiにauthors、categoryを追加
-    // if (!isArray(this.book.authors)) {
-    //   console.log("著者が不明です！")
-    //   return "unknown"
-    // } else if (size(this.book.authors) === 1) {
-    //   return this.book.authors[0]
-    // } else {
-    //   return this.book.authors.join()
-    // }
-    return "unknown";
-  }
-  public getPicture(): string {
-    if (isUndefined(this.book.pictureUrl)) {
-      return require("@/assets/noimage.png");
-    }
-    return this.book.pictureUrl;
-  }
 }
 </script>
