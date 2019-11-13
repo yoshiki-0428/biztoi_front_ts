@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { Book } from "@/axios";
+import { Book } from "@/axios/biztoi";
 import { isUndefined } from "lodash";
 
 @Component

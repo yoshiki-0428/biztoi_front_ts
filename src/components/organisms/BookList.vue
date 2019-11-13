@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { Book } from "@/axios";
+import { Book } from "@/axios/biztoi";
 import BookOverView from "@/components/organisms/BookOverView.vue";
 
 @Component({

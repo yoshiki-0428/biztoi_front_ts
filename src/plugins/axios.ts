@@ -1,5 +1,7 @@
 import axios, { AxiosInstance } from "axios";
-import { Configuration, DefaultApi } from "@/axios";
+import { DefaultApi } from "@/axios/biztoi";
+import { VolumesApi } from "@/axios/books";
+import { BASE_PATH } from "@/axios/books/base";
 
 const apiAxios: AxiosInstance = axios.create({
   headers: {
@@ -25,4 +27,11 @@ export const baseApi: DefaultApi = new DefaultApi(
   undefined,
   process.env.VUE_APP_API_BASE_URL,
   apiAxios
+);
+
+const booksAxios: AxiosInstance = axios.create();
+export const booksApi = new VolumesApi(
+  undefined,
+  "https://www.googleapis.com/books/v1".replace(/\/+$/, ""),
+  booksAxios
 );
