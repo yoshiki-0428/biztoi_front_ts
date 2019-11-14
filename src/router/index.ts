@@ -23,6 +23,12 @@ const routes = [
         component: () => import("@/views/BookDetailPage.vue")
       },
       {
+        // TODO コンポーネント作成
+        path: "book/:bookId/toi/:toiId",
+        name: "toi",
+        component: () => import("@/container/BookList")
+      },
+      {
         path: "favorite",
         name: "favorite",
         component: () => import("@/container/BookList")
