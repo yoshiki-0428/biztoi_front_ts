@@ -9,4 +9,4 @@ export default connect({
   actionsToEvents: {
     "search-word": (dispatch, word) => bookModule.getBooksForGoogleBooks(word)
   }
-})("book-list", BookSearch);
+})("book-search", BookSearch);

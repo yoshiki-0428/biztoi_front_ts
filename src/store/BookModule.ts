@@ -9,7 +9,7 @@ import { Book } from "@/axios/biztoi";
 import { baseApi, booksApi } from "@/plugins/axios";
 import { isNil } from "lodash";
 import store from "@/store";
-import { AxiosPromise, AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import BookUtil, { IVolume, IVolumes } from "@/util/BookUtil";
 
 @Module({ dynamic: true, store: store, name: "bookModule", namespaced: true })
