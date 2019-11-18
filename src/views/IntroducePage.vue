@@ -58,7 +58,7 @@ import SiteFooter from "@/components/organisms/SiteFooter.vue";
     SiteFooter
   }
 })
-export default class IntroduceApp extends Vue {}
+export default class IntroducePage extends Vue {}
 </script>
 
 <style lang="scss" scoped>
