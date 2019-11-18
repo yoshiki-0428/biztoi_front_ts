@@ -21,23 +21,32 @@ class BookModule extends VuexModule {
     detail: "",
     pictureUrl: "",
     linkUrl: "",
-    title: ""
+    title: "",
+    author: [],
+    category: []
   };
   public books: Book[] = [];
   public searchBooks: Book[] = [];
 
   @Action
   public async getBook(id: string) {
-    // 以前検索したStoreから検索、なければAPIを投げる TODO
+    // 以前検索したStoreから検索, API検索
     const book1: Book | undefined = this.books.find(book => book.id === id);
     if (book1) {
       this.SET_BOOK(book1);
+      return;
     }
     const book2: Book | undefined = this.searchBooks.find(
       searchBook => searchBook.id === id
     );
     if (book2) {
       this.SET_BOOK(book2);
+      return;
+    }
+    const res: AxiosResponse<Book> = await baseApi.getBookId(id);
+    if (res.data) {
+      this.SET_BOOK(res.data);
+      return;
     }
   }
 
@@ -78,6 +87,8 @@ class BookModule extends VuexModule {
 
   @Mutation
   private SET_BOOK(payload: Book) {
+    // eslint-disable-next-line no-console
+    console.log("SET_BOOK# Book:", payload);
     this.book = payload;
   }
   @Mutation

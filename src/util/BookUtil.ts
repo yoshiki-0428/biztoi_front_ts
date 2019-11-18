@@ -9,7 +9,9 @@ export default class BookUtil {
       detail: this.getDetail(volume.volumeInfo!),
       pictureUrl: this.getPictureurl(volume.volumeInfo!),
       linkUrl: volume.volumeInfo!.infoLink || "No link",
-      title: volume.volumeInfo!.title || "No title"
+      title: volume.volumeInfo!.title || "No title",
+      author: volume.volumeInfo!.authors || [],
+      category: volume.volumeInfo!.categories || []
     };
   }
 
@@ -28,7 +30,7 @@ export default class BookUtil {
   }
   static getDetail(volumeInfo: IVolumeInfo): string {
     if (!isNil(volumeInfo)) {
-      return volumeInfo.desctiption || "";
+      return volumeInfo.description || "";
     }
     return "";
   }
@@ -90,7 +92,8 @@ interface ISaleInfo {
 
 interface IVolumeInfo {
   authors: [] | undefined;
-  desctiption: string | undefined;
+  categories: [] | undefined;
+  description: string | undefined;
   imageLinks:
     | { smallThumbnail: string | undefined; thumbnail: string | undefined }
     | undefined;
