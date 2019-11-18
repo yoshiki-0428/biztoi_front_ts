@@ -1,7 +1,6 @@
 <template>
   <v-bottom-navigation :value="buttomNav" shift dark app>
     <v-btn v-for="item in menu" :key="item.icon" :to="item.link" exact>
-      <!-- TODO mdi icon -->
       <v-icon>{{ item.icon }}</v-icon>
       <v-list-item-title>{{ item.title }}</v-list-item-title>
     </v-btn>
