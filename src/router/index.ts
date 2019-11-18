@@ -6,16 +6,16 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    component: () => import("@/views/IntroduceApp.vue")
+    component: () => import("@/views/IntroducePage.vue")
   },
   {
     path: "/top",
-    component: () => import("@/views/BaseLayout.vue"),
+    component: () => import("@/views/layout/BaseLayout.vue"),
     children: [
       {
         path: "",
         name: "top",
-        component: () => import("@/views/Top.vue")
+        component: () => import("@/views/TopPage.vue")
       },
       {
         path: "book/:bookId",

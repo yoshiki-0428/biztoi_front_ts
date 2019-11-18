@@ -16,5 +16,5 @@ import BookSlide from "@/container/BookSlide";
     BookSlide
   }
 })
-export default class Top extends Vue {}
+export default class TopPage extends Vue {}
 </script>
