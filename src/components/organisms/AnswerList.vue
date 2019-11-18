@@ -9,7 +9,7 @@
         </v-avatar>
         <span class="title">{{ answer.answers[0].answer }}</span>
       </v-card-title>
-      <v-card-text>
+      <v-card-text class="text-truncate">
         {{ answer.answers[0].answer }}
         {{ answer.answers[1].answer }}
         {{ answer.answers[2].answer }}
@@ -20,7 +20,7 @@
           詳細を見る
         </v-btn>
         <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
+          <v-icon>mdi-thumb-up</v-icon>
         </v-btn>
         <span class="subheading mr-2">256</span>
         <v-btn icon>
