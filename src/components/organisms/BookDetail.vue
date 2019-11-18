@@ -2,15 +2,17 @@
   <v-card class="mb-4">
     <div>
       <v-img
-        class="ma-2"
-        height="120"
-        width="80"
+        contain
+        max-height="250"
         :src="book.pictureUrl"
+        class="text-center"
       ></v-img>
-
       <div>
-        <v-card-title v-text="book.title"></v-card-title>
-        <v-card-subtitle v-text="book.detail"></v-card-subtitle>
+        <v-card-title v-text="book.title" class="justify-center"></v-card-title>
+        <v-card-subtitle
+          v-text="book.detail"
+          class="justify-center"
+        ></v-card-subtitle>
       </div>
     </div>
 

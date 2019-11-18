@@ -9,16 +9,16 @@
         </v-avatar>
         <span class="title">{{ answer.answers[0].answer }}</span>
       </v-card-title>
-      <v-card-text>
+      <v-card-text class="text-truncate">
         {{ answer.answers[0].answer }}
         {{ answer.answers[1].answer }}
         {{ answer.answers[2].answer }}
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn text color="primary" :to="'/top/answer/' + answer.id">
-          詳細を見る
-        </v-btn>
+        <v-btn text color="primary" :to="'/top/answer/' + answer.id"
+          >詳細を見る</v-btn
+        >
         <v-btn icon>
           <v-icon>mdi-heart</v-icon>
         </v-btn>

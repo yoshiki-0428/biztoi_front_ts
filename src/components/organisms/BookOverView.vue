@@ -1,18 +1,19 @@
 <template>
   <v-card class="mb-4 d-flex flex-no-wrap">
     <v-col cols="4">
-      <v-img class="ma-2" :src="book.pictureUrl" contain></v-img>
+      <v-img :src="book.pictureUrl" width="200" contain class="mt-3"></v-img>
     </v-col>
     <v-col cols="8">
       <div>
-        <v-card-title v-text="book.title"></v-card-title>
-        <v-card-subtitle v-text="book.detail"></v-card-subtitle>
+        <v-card-title v-text="book.title" class="subtitle-1"></v-card-title>
+        <v-card-subtitle
+          v-text="book.detail"
+          style="overflow:hidden; height:70px;"
+        ></v-card-subtitle>
       </div>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn text color="indigo" :to="'/top/book/' + book.id">
-          詳細へ
-        </v-btn>
+        <v-btn text color="indigo" :to="'/top/book/' + book.id">詳細へ</v-btn>
         <v-btn icon>
           <v-icon>mdi-heart</v-icon>
         </v-btn>
