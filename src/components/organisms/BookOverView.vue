@@ -10,7 +10,7 @@
       </div>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn text color="primary" :to="'/top/book/' + book.index"
+        <v-btn text color="primary" :to="'/top/book/' + book.id"
           >詳細へ</v-btn
         >
         <v-btn icon>
