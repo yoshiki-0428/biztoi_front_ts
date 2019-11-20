@@ -1,6 +1,12 @@
 <template>
-  <v-bottom-navigation shift dark app>
-    <v-btn v-for="item in menu" :key="item.icon" :to="item.link" exact>
+  <v-bottom-navigation v-model="bottomNum" shift dark app>
+    <v-btn
+      v-for="(item, index) in menu"
+      :key="item.icon"
+      :value="index"
+      :to="item.link"
+      exact
+    >
       <v-icon>{{ item.icon }}</v-icon>
       <v-list-item-title>{{ item.title }}</v-list-item-title>
     </v-btn>
@@ -18,6 +24,7 @@ interface IMenuBtn {
 
 @Component
 export default class FooterMenu extends Vue {
+  bottomNum: number = 0;
   menu: Array<IMenuBtn> = [
     {
       icon: "mdi-home",

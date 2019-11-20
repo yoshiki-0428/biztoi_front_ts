@@ -31,7 +31,7 @@ const routes = [
       {
         path: "favorite",
         name: "favorite",
-        component: () => import("@/container/BookList")
+        component: () => import("@/views/FavoritePage.vue")
       },
       {
         path: "account",
