@@ -18,7 +18,6 @@ interface IMenuBtn {
 
 @Component
 export default class FooterMenu extends Vue {
-  IMenuBtn: number = 0;
   menu: Array<IMenuBtn> = [
     {
       icon: "mdi-home",

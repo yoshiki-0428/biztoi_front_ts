@@ -34,8 +34,8 @@
       </v-flex>
     </v-row>
     <book-over-view
-      v-for="book in books"
-      :key="book.index"
+      v-for="(book, index) in books"
+      :key="index"
       :book="book"
     ></book-over-view>
   </div>
