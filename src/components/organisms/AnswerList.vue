@@ -16,9 +16,9 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn text color="primary" :to="'/top/answer/' + answer.id">
-          詳細を見る
-        </v-btn>
+        <v-btn text color="primary" :to="'/top/answer/' + answer.id"
+          >詳細を見る</v-btn
+        >
         <v-btn icon>
           <v-icon>mdi-thumb-up</v-icon>
         </v-btn>

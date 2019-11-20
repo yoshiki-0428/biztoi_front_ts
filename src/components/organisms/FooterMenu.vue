@@ -1,6 +1,6 @@
 <template>
-  <v-bottom-navigation :value="bottomNav" shift dark app>
-    <v-btn v-for="item in menu" :key="item.icon" @click="goto(item.link)">
+  <v-bottom-navigation shift dark app>
+    <v-btn v-for="item in menu" :key="item.icon" :to="item.link" exact>
       <v-icon>{{ item.icon }}</v-icon>
       <v-list-item-title>{{ item.title }}</v-list-item-title>
     </v-btn>
@@ -18,7 +18,6 @@ interface IMenuBtn {
 
 @Component
 export default class FooterMenu extends Vue {
-  bottomNav: number = 0;
   menu: Array<IMenuBtn> = [
     {
       icon: "mdi-home",
@@ -41,11 +40,6 @@ export default class FooterMenu extends Vue {
       link: "/top/account"
     }
   ];
-  private goto(link: string): void {
-    if (window.location.pathname !== link) {
-      this.$router.push(link);
-    }
-  }
 }
 </script>
 
