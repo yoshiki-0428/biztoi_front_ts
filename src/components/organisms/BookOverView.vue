@@ -6,14 +6,13 @@
     <v-col cols="8">
       <div>
         <v-card-title v-text="book.title" class="subtitle-1"></v-card-title>
-        <v-card-subtitle
-          v-text="book.detail"
-          style="overflow:hidden; height:70px;"
-        ></v-card-subtitle>
+        <v-card-subtitle v-text="getCutText(book.detail)"></v-card-subtitle>
       </div>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn text color="indigo" :to="'/top/book/' + book.id">詳細へ</v-btn>
+        <v-btn text color="primary" :to="'/top/book/' + book.index"
+          >詳細へ</v-btn
+        >
         <v-btn icon>
           <v-icon>mdi-heart</v-icon>
         </v-btn>
@@ -33,5 +32,10 @@ import { Book } from "@/axios/biztoi";
 export default class BookOverView extends Vue {
   @Prop({ required: true })
   private book!: Book;
+
+  getCutText(clamp: string): string {
+    const cutNum = 60;
+    return clamp.length > cutNum ? clamp.substring(0, cutNum) + "..." : clamp;
+  }
 }
 </script>

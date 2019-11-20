@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <v-container fluid>
+    <v-container>
       <v-flex xs12>
         <router-view />
         <footer-menu />

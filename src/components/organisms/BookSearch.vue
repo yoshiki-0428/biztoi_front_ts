@@ -35,7 +35,7 @@
     </v-row>
     <book-over-view
       v-for="book in books"
-      :key="book.id"
+      :key="book.index"
       :book="book"
     ></book-over-view>
   </div>

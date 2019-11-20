@@ -1,5 +1,5 @@
 <template>
-  <v-bottom-navigation :value="buttomNav" shift dark app>
+  <v-bottom-navigation shift dark app>
     <v-btn v-for="item in menu" :key="item.icon" :to="item.link" exact>
       <!-- TODO mdi icon -->
       <v-icon>{{ item.icon }}</v-icon>
@@ -19,7 +19,7 @@ interface IMenuBtn {
 
 @Component
 export default class FooterMenu extends Vue {
-  bottomNav: number = 0;
+  IMenuBtn: number = 0;
   menu: Array<IMenuBtn> = [
     {
       icon: "mdi-home",
