@@ -36,7 +36,7 @@ const routes = [
       {
         path: "account",
         name: "account",
-        component: () => import("@/container/BookList")
+        component: () => import("@/components/organisms/Account.vue")
       },
       {
         path: "search",
