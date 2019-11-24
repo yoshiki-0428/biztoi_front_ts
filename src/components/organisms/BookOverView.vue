@@ -47,9 +47,11 @@ export default class BookOverView extends Vue {
   private book!: Book;
   private active: Boolean = false;
 
-  getCutText(clamp: string): string {
+  getCutText(cutText: string): string {
     const cutNum = 50;
-    return clamp.length > cutNum ? `${clamp.substring(0, cutNum)} ... ` : clamp;
+    return cutText.length > cutNum
+      ? `${cutText.substring(0, cutNum)} ... `
+      : cutText;
   }
   bookmark() {
     this.active = !this.active;
