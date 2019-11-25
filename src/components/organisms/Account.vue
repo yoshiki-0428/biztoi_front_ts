@@ -1,91 +1,70 @@
 <template>
   <div class="account_page">
     <v-card>
-      <v-img
-        :src="require('@/assets/noimage.png')"
-        max-height="200px"
-        max-width="100%"
-      />
-      <v-avatar size="100px" color="indigo" class="avater">
+      <div class="secondary bg-color"></div>
+      <v-avatar size="100px" color="primary" class="avater">
         <v-icon dark>mdi-account-circle</v-icon>
       </v-avatar>
-      <v-card-title class="justify-center">
-        User Name
-      </v-card-title>
-      <v-card-subtitle class="justify-center">
-        @User id
-      </v-card-subtitle>
-      <v-card-title class="justify-center">
-        User Info
-      </v-card-title>
+      <v-card-title class="justify-center">User Name</v-card-title>
+      <v-card-subtitle class="justify-center">@User id</v-card-subtitle>
+      <v-card-title class="justify-center">User Info</v-card-title>
       <v-card-text>
         Userの説明が入ります。Userの説明が入ります。Userの説明が入ります。Userの説明が入ります。Userの説明が入ります。
         Userの説明が入ります。Userの説明が入ります。Userの説明が入ります。Userの説明が入ります。Userの説明が入ります。
         Userの説明が入ります。Userの説明が入ります。Userの説明が入ります。Userの説明が入ります。
       </v-card-text>
       <hr />
-      <v-card-actions>
+      <v-card-actions class="mb-4">
         <v-row class="mx-5 mt-10 justify-space-around">
-          <div>
-            <v-btn icon class="mb-3">
-              <v-icon dark size="75px">mdi-pencil</v-icon>
-            </v-btn>
-            <p>Answer</p>
-          </div>
-          <div>
-            <v-btn icon class="mb-3">
-              <v-icon dark size="75px">mdi-heart</v-icon>
-            </v-btn>
-            <p>Favorite</p>
-          </div>
+          <v-col md-4>
+            <v-list-item class="flex-column">
+              <div class="circle ansNumber mb-3">
+                <p class="mt-4 display-1">5</p>
+              </div>
+              <v-list-item-title class="title">
+                <v-icon size="25px" class="mr-2 pb-1">mdi-pencil</v-icon>Your
+                Answers
+              </v-list-item-title>
+            </v-list-item>
+          </v-col>
+          <v-col md-4>
+            <v-list-item class="flex-column">
+              <div class="circle likeNumber mb-3">
+                <p class="mt-4 display-1">12</p>
+              </div>
+              <v-list-item-title class="title">
+                <v-icon size="25px" class="mr-2 pb-1">mdi-thumb-up</v-icon>Like
+                Answers
+              </v-list-item-title>
+            </v-list-item>
+          </v-col>
+          <v-col md-4>
+            <v-list-item class="flex-column">
+              <div class="circle favNumber mb-3">
+                <p class="mt-4 display-1">10</p>
+              </div>
+              <v-list-item-title class="title">
+                <v-icon size="25px" class="mr-2 pb-1">mdi-heart</v-icon>Favorite
+                Books
+              </v-list-item-title>
+            </v-list-item>
+          </v-col>
         </v-row>
       </v-card-actions>
-    </v-card>
-    <v-card>
-      <v-card-title>Edit Profile</v-card-title>
-      <v-form ref="form" v-model="valid" lazy-validation class="pa-3">
-        <v-text-field
-          v-model="name"
-          :counter="10"
-          :rules="nameRules"
-          label="Name"
-          required
-        ></v-text-field>
-        <v-text-field
-          v-model="email"
-          :rules="emailRules"
-          label="E-mail"
-          required
-        ></v-text-field>
-        <v-text-field
-          v-model="country"
-          :rules="countryRules"
-          label="Country"
-        ></v-text-field>
-        <v-text-field
-          v-model="website"
-          :rules="websiteRules"
-          label="Web Site"
-        ></v-text-field>
-        <v-text-field
-          v-model="aboutMe"
-          :rules="aboutMeRules"
-          label="About Me"
-        ></v-text-field>
-        <v-checkbox
-          v-model="checkbox"
-          :rules="[v => !!v || 'You must agree to continue!']"
-          label="Do you agree?"
-          required
-        ></v-checkbox>
-        <v-btn color="error" class="mr-4" @click="reset">
-          Reset
-        </v-btn>
-
-        <v-btn color="primary" @click="update">
-          Update Profile
-        </v-btn>
-      </v-form>
+      <hr />
+      <v-card-title>Your Profile</v-card-title>
+      <div class="userName">
+        <v-card-subtitle>User Name</v-card-subtitle>
+        <v-card-text>User Nameが入ります。</v-card-text>
+      </div>
+      <div class="userEmail">
+        <v-card-subtitle>Email</v-card-subtitle>
+        <v-card-text>Emailアドレスが入ります。</v-card-text>
+      </div>
+      <div class="userWebSite">
+        <v-card-subtitle>Web Site</v-card-subtitle>
+        <v-card-text>Web Siteアドレスがはいります。</v-card-text>
+      </div>
     </v-card>
   </div>
 </template>
@@ -96,8 +75,21 @@ export default class Account extends Vue {}
 </script>
 
 <style scoped>
+v-card {
+  border-radius: 0;
+}
+.bg-color {
+  height: 200px;
+  width: 100%;
+}
 .avater {
   margin-top: -50px;
+}
+.circle {
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  border: 1px solid rgb(0, 0, 0);
 }
 hr {
   color: grey;
