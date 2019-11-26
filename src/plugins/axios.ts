@@ -1,7 +1,6 @@
 import axios, { AxiosInstance } from "axios";
-import { DefaultApi } from "@/axios/biztoi";
+import { BiztoiApi } from "@/axios/biztoi";
 import { VolumesApi } from "@/axios/books";
-import { BASE_PATH } from "@/axios/books/base";
 
 const apiAxios: AxiosInstance = axios.create({
   headers: {
@@ -23,7 +22,7 @@ apiAxios.interceptors.response.use(
   }
 );
 
-export const baseApi: DefaultApi = new DefaultApi(
+export const baseApi: BiztoiApi = new BiztoiApi(
   undefined,
   process.env.VUE_APP_API_BASE_URL,
   apiAxios

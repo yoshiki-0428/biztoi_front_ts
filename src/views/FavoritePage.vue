@@ -13,11 +13,5 @@ import BookList from "@/container/BookList";
     BookList
   }
 })
-export default class FavoritePage extends Vue {
-  created() {
-    // eslint-disable-next-line no-console
-    console.log("favorite test");
-    this.$emit("change-bottom-num", 1);
-  }
-}
+export default class FavoritePage extends Vue {}
 </script>
