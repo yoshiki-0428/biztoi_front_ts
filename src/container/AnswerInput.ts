@@ -1,5 +1,5 @@
 import { connect } from "vuex-connect";
-import AnswerOutPut from "@/components/organisms/AnswerOutput.vue";
+import AnswerInput from "@/components/organisms/AnswerInput.vue";
 import { answerModule } from "@/store/AnswerModule";
 import { questionModule } from "@/store/QuestionModule";
 import UpdateRouteCheckMixin from "@/container/UpdateRouteCheckMixin";
@@ -20,4 +20,4 @@ export default connect({
       questionModule.getQuestion({ bookId: bookId, questionId: questionId });
     }
   }
-})("answer-out-put", AnswerOutPut.mixin(UpdateRouteCheckMixin));
+})("answer-input", AnswerInput.mixin(UpdateRouteCheckMixin));

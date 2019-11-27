@@ -1,16 +1,16 @@
 <template>
   <div>
-    <answer-out-put></answer-out-put>
+    <answer-input />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import AnswerOutPut from "@/container/AnswerOutPut";
+import AnswerInput from "@/container/AnswerInput";
 
 @Component({
   components: {
-    AnswerOutPut
+    AnswerInput
   }
 })
 export default class QuestionPage extends Vue {}

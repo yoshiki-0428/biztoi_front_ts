@@ -10,9 +10,7 @@
       </div>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn text color="primary" :to="'/top/book/' + book.id"
-          >詳細へ</v-btn
-        >
+        <v-btn text color="primary" :to="'/top/book/' + book.id">詳細へ</v-btn>
         <v-btn icon>
           <v-icon>mdi-heart</v-icon>
         </v-btn>

@@ -36,7 +36,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { Answer, Question } from "@/axios/biztoi";
 
 @Component
-export default class AnswerOutput extends Vue {
+export default class AnswerInput extends Vue {
   @Prop()
   private question!: Question;
   @Prop()
