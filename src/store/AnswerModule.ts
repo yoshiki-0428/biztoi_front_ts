@@ -17,7 +17,7 @@ class AnswerModule extends VuexModule {
   @Action({ rawError: true })
   public async getAnswers(bookId: string) {
     // TODO ここbookId だけで良い
-    const res = await baseApi.getAnswers(bookId, "1");
+    const res = await baseApi.getAnswers(bookId);
     // eslint-disable-next-line no-console
     console.log(res.data);
     this.SET_ANSWERS(res.data);
