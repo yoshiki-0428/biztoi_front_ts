@@ -18,27 +18,52 @@ class QuestionModule extends VuexModule {
     toiId: "",
     title: "",
     required: true,
-    answerType: ""
+    nextQuestionId: "",
+    answerType: "",
+    orderId: 1
   };
-
+  public questionList: Question[] = [];
+  public questionNo: number = 1;
   @Action
+  public async getQuestionList(params: { bookId: string }) {
+    const res: AxiosResponse<Question[]> = await baseApi.getBookQuestions(
+      params.bookId
+    );
+
+    if (res.data) {
+      this.SET_QUESTION_LIST(res.data);
+      this.SET_QUESTION(res.data[0]);
+    }
+  }
+
+  @Action({ rawError: true })
   public async getQuestion(params: { bookId: string; questionId: string }) {
+    const resStore: Question | undefined = this.questionList.find(
+      q => q.id === params.questionId
+    );
+    if (resStore) {
+      this.SET_QUESTION(resStore);
+      return;
+    }
+
     const res: AxiosResponse<Question> = await baseApi.getBookQuestion(
       params.bookId,
       params.questionId
     );
 
-    // eslint-disable-next-line no-console
-    console.log(res);
-
     if (res.data) {
       this.SET_QUESTION(res.data);
+      return;
     }
   }
 
   @Mutation
   private SET_QUESTION(payload: Question) {
     this.question = payload;
+  }
+  @Mutation
+  private SET_QUESTION_LIST(payload: Question[]) {
+    this.questionList = payload;
   }
 }
 

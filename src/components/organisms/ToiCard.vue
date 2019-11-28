@@ -24,7 +24,7 @@ import router from "@/router";
 @Component
 export default class ToiCard extends Vue {
   @Prop()
-  private toi!: Toi;
+  private toi?: Toi;
   private url: string = `/top/book/${router.currentRoute.params.bookId}/toi/questions/first`;
 }
 </script>

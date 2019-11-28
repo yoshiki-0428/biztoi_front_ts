@@ -1,23 +1,31 @@
 import { connect } from "vuex-connect";
 import AnswerInput from "@/components/organisms/AnswerInput.vue";
-import { answerModule } from "@/store/AnswerModule";
+import { answerMeModule } from "@/store/AnswerStore";
 import { questionModule } from "@/store/QuestionModule";
 import UpdateRouteCheckMixin from "@/container/UpdateRouteCheckMixin";
 import router from "@/router";
+import { Answer, Question } from "@/axios/biztoi";
 
 export default connect({
   stateToProps: {
-    question: () => questionModule.question,
-    answer: () => answerModule.answer
+    question: (): Question => questionModule.question,
+    answers: (): Answer[] => answerMeModule.answers,
+    questionNo: (): number => questionModule.question.orderId,
+    questionMax: (): number => questionModule.questionList.length
   },
   actionsToEvents: {
-    "update-before-route": () => {
-      // TODO 質問リストを取得
-      // TODO ユーザの該当するTOIのAnswerHeadを取得( API側も工夫の必要あり)
-      // TODO 質問IDに紐づく回答があれば取得
+    "update-before-route": async () => {
       const bookId = router.currentRoute.params.bookId;
       const questionId = router.currentRoute.params.questionId;
-      questionModule.getQuestion({ bookId: bookId, questionId: questionId });
+      const params = { bookId: bookId, questionId: questionId };
+      // 初期表示時はデータを全取得
+      if (questionId === "first") {
+        await questionModule.getQuestionList(params);
+        params.questionId = questionModule.question.id;
+        await answerMeModule.getAnswerHead(params);
+      }
+      await questionModule.getQuestion(params);
+      await answerMeModule.getAnswers(params);
     }
   }
 })("answer-input", AnswerInput.mixin(UpdateRouteCheckMixin));
