@@ -8,6 +8,7 @@ export default connect({
     toi: () => toiModule.toi
   },
   lifecycle: {
-    created: () => toiModule.getToi(router.currentRoute.params.bookId)
+    created: async () =>
+      await toiModule.getToi(router.currentRoute.params.bookId)
   }
 })("toi-card", ToiCard);

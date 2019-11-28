@@ -14,6 +14,8 @@ export default connect({
       await bookModule.getBook(router.currentRoute.params.bookId);
       if (bookModule.book) {
         await baseApi.booksPost(bookModule.book);
+        // await baseApi.postToi(router.currentRoute.params.bookId, toiModule.toi);
+        // await baseApi.postQuestion(router.currentRoute.params.bookId, questionModule.question);
       }
     }
   }
