@@ -1,53 +1,57 @@
 <template>
   <v-card class="mb-4">
-    <v-row align="center" justify="center">
-      <v-card-title> 問{{ questionNo }}:{{ question.title }}</v-card-title>
-    </v-row>
-    <v-row align="center" justify="end" class="mr-4">
-      <v-chip>{{ question.answerType }}</v-chip>
-      <!--      <v-col cols="8">-->
-      <!--        <v-card-title> 問{{ questionNo }}:{{ question.title }}</v-card-title>-->
-      <!--      </v-col>-->
-      <!--      <v-col cols="4" class="mx-0">-->
-      <!--        <v-chip>{{ question.answerType }}</v-chip>-->
-      <!--      </v-col>-->
-    </v-row>
+    <v-container>
+      <v-row align="center" justify="center">
+        <v-card-title> 問{{ questionNo }}:{{ question.title }}</v-card-title>
+      </v-row>
+      <v-row align="center" justify="end" class="mb-4 mr-4">
+        <v-chip>{{ question.answerType }}</v-chip>
+      </v-row>
 
-    <v-row align="center" justify="center"> </v-row>
+      <v-row align="center" justify="center" class="px-4">
+        <v-container>
+          <v-textarea
+            v-for="(item, index) in answers"
+            :key="index"
+            :label="question.answerType"
+            :value="item.answer"
+            outlined
+            autofocus
+          ></v-textarea>
+          <v-textarea
+            v-if="answers.length === 0"
+            :label="question.answerType"
+            outlined
+            autofocus
+          ></v-textarea>
+        </v-container>
+      </v-row>
+      <!--      <v-row justify="start">-->
+      <!--        <v-col cols="6">-->
+      <!--          <v-btn small-->
+      <!--                 text>-->
+      <!--            回答を増やす＋-->
+      <!--          </v-btn>-->
+      <!--        </v-col>-->
+      <!--      </v-row>-->
 
-    <v-textarea
-      v-if="answers.length === 0"
-      :label="question.answerType"
-      outlined
-    ></v-textarea>
-
-    <v-textarea
-      v-for="(item, index) in answers"
-      :key="index"
-      :label="question.answerType"
-      :value="item.answer"
-      outlined
-    ></v-textarea>
-
-    <v-card-actions>
-      <v-btn
-        v-if="question.nextQuestionId != null"
-        :to="
-          '/top/book/' +
-            question.toiId +
-            '/toi/questions/' +
-            question.nextQuestionId
-        "
-        outlined
-        block
-        color="primary"
-      >
-        次を回答する
-      </v-btn>
-      <v-btn v-else to="/top" outlined block color="primary">
-        回答を終了する
-      </v-btn>
-    </v-card-actions>
+      <v-card-actions>
+        <v-btn
+          v-if="question.nextQuestionId != null"
+          :to="
+            `/top/book/${question.toiId}/toi/questions/${question.nextQuestionId}`
+          "
+          outlined
+          block
+          color="primary"
+        >
+          次を回答する
+        </v-btn>
+        <v-btn v-else :to="'/top'" outlined block color="primary">
+          回答を終了する
+        </v-btn>
+      </v-card-actions>
+    </v-container>
     <v-progress-linear :value="getProgressValue()"></v-progress-linear>
   </v-card>
 </template>
