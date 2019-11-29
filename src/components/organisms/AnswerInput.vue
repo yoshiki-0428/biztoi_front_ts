@@ -1,6 +1,19 @@
 <template>
   <v-card class="mb-4">
-    <v-card-title> 問{{ questionNo }}:{{ question.title }}</v-card-title>
+    <v-row align="center" justify="center">
+      <v-card-title> 問{{ questionNo }}:{{ question.title }}</v-card-title>
+    </v-row>
+    <v-row align="center" justify="end" class="mr-4">
+      <v-chip>{{ question.answerType }}</v-chip>
+      <!--      <v-col cols="8">-->
+      <!--        <v-card-title> 問{{ questionNo }}:{{ question.title }}</v-card-title>-->
+      <!--      </v-col>-->
+      <!--      <v-col cols="4" class="mx-0">-->
+      <!--        <v-chip>{{ question.answerType }}</v-chip>-->
+      <!--      </v-col>-->
+    </v-row>
+
+    <v-row align="center" justify="center"> </v-row>
 
     <v-textarea
       v-if="answers.length === 0"
