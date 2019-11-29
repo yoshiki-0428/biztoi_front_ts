@@ -9,7 +9,12 @@
     </div>
 
     <v-card-actions>
-      <v-btn outlined block color="primary" :to="url">
+      <v-btn
+        outlined
+        block
+        color="primary"
+        :to="'/top/book/' + bookId + '/toi/questions/first'"
+      >
         回答してみる
       </v-btn>
     </v-card-actions>
@@ -25,6 +30,6 @@ import router from "@/router";
 export default class ToiCard extends Vue {
   @Prop()
   private toi?: Toi;
-  private url: string = `/top/book/${router.currentRoute.params.bookId}/toi/questions/first`;
+  private bookId = router.currentRoute.params.bookId;
 }
 </script>

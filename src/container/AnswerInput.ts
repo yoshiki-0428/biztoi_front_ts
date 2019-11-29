@@ -5,12 +5,16 @@ import { questionModule } from "@/store/QuestionModule";
 import UpdateRouteCheckMixin from "@/container/UpdateRouteCheckMixin";
 import router from "@/router";
 import { Answer, Question } from "@/axios/biztoi";
+import { isUndefined } from "lodash";
 
 export default connect({
   stateToProps: {
     question: (): Question => questionModule.question,
     answers: (): Answer[] => answerMeModule.answers,
-    questionNo: (): number => questionModule.question.orderId,
+    questionNo: (): number | undefined =>
+      isUndefined(questionModule.question.orderId)
+        ? 0
+        : questionModule.question.orderId,
     questionMax: (): number => questionModule.questionList.length
   },
   actionsToEvents: {
