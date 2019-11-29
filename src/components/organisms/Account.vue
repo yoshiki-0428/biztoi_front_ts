@@ -1,11 +1,15 @@
 <template>
   <div class="account_page">
     <v-card>
-      <div class="userProfile">
-        <v-avatar size="80px" color="primary" class="avater mt-5">
-          <v-icon dark>mdi-account-circle</v-icon>
-        </v-avatar>
-        <v-card-title class="justify-center">User Name</v-card-title>
+      <div class="grey pb-5" style="height:100px;width:100%;"></div>
+      <v-avatar
+        size="100px"
+        style="position:absolute;left:0;right:0;margin:auto;margin-top:-50px;overflow:hidden;"
+      >
+        <v-img src="https://picsum.photos/100/100" contain> </v-img>
+      </v-avatar>
+      <div class="userProfile pt-10">
+        <v-card-title class="justify-center pt-5">User Name</v-card-title>
         <v-card-subtitle class="justify-center">@User id</v-card-subtitle>
         <v-card-title class="justify-center">User Info</v-card-title>
         <v-card-text class="caption">
