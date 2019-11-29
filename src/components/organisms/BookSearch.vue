@@ -1,17 +1,13 @@
 <template>
   <div>
     <!-- TODO https://qiita.com/teramo3033/items/aa93c3de35a7c66a2cd2 切り替え -->
-    <v-autocomplete
+    <cool-select
       :items="books"
       :loading="isLoading"
-      :search-input.sync="word"
+      :search-text.sync="word"
       label="書籍検索"
       item-text="title"
       placeholder="Search"
-      prepend-inner-icon="mdi-database-search"
-      no-filter
-      clearable
-      outlined
     >
       <template v-slot:item="data">
         <template>
@@ -20,7 +16,7 @@
           </v-list-item-content>
         </template>
       </template>
-    </v-autocomplete>
+    </cool-select>
     <v-row>
       <v-spacer></v-spacer>
       <v-flex xs6>
@@ -43,13 +39,16 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import { CoolSelect } from "vue-cool-select";
+
 import { Book } from "@/axios/biztoi";
 import { debounce, isNil } from "lodash";
 import BookOverView from "@/components/organisms/BookOverView.vue";
 
 @Component({
   components: {
-    BookOverView
+    BookOverView,
+    CoolSelect
   }
 })
 export default class BookSearch extends Vue {
