@@ -1,11 +1,9 @@
 <template>
   <v-content>
-    <v-container>
-      <v-flex xs12>
-        <router-view />
-        <footer-menu />
-      </v-flex>
-    </v-container>
+    <v-flex xs12>
+      <router-view />
+      <footer-menu />
+    </v-flex>
   </v-content>
 </template>
 
