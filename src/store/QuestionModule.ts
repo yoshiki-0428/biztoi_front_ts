@@ -20,7 +20,8 @@ class QuestionModule extends VuexModule {
     required: true,
     nextQuestionId: "",
     answerType: "",
-    orderId: 1
+    orderId: 1,
+    step: 0
   };
   public questionList: Question[] = [];
   public questionNo: number = 1;

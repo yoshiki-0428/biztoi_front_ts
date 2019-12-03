@@ -1,9 +1,14 @@
 <template>
   <v-card class="mb-4">
     <v-container>
+      <v-row align="center" justify="center" class="mb-0">
+        <v-card-title>Step: {{ question.step }}</v-card-title>
+      </v-row>
+      <v-divider></v-divider>
       <v-row align="center" justify="center">
         <v-card-title> 問{{ questionNo }}:{{ question.title }}</v-card-title>
       </v-row>
+      <!-- TODO タグを↑につける     -->
       <v-row align="center" justify="end" class="mb-4 mr-4">
         <v-chip>{{ question.answerType }}</v-chip>
       </v-row>
@@ -19,21 +24,20 @@
             autofocus
           ></v-textarea>
           <v-textarea
+            class="mb-0"
             v-if="answers.length === 0"
             :label="question.answerType"
             outlined
             autofocus
           ></v-textarea>
+          <!-- TODO ○ボタンにする     -->
+          <v-card-actions>
+            <v-btn small text color="accent">
+              回答を増やす＋
+            </v-btn>
+          </v-card-actions>
         </v-container>
       </v-row>
-      <!--      <v-row justify="start">-->
-      <!--        <v-col cols="6">-->
-      <!--          <v-btn small-->
-      <!--                 text>-->
-      <!--            回答を増やす＋-->
-      <!--          </v-btn>-->
-      <!--        </v-col>-->
-      <!--      </v-row>-->
 
       <v-card-actions>
         <v-btn
