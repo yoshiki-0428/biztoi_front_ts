@@ -1,19 +1,20 @@
 <template>
   <v-card class="mb-4">
     <v-container>
-      <v-row align="center" justify="center" class="mb-0">
-        <v-card-title>Step: {{ question.step }}</v-card-title>
+      <v-row align="center" justify="center">
+        <v-card-title class="pa-0 pb-1">Step: {{ question.step }}</v-card-title>
       </v-row>
       <v-divider></v-divider>
-      <v-row align="center" justify="center">
-        <v-card-title> 問{{ questionNo }}:{{ question.title }}</v-card-title>
+      <v-row align="center" justify="end" class="ma-2">
+        <v-chip small>{{ question.answerType }}</v-chip>
       </v-row>
-      <!-- TODO タグを↑につける     -->
-      <v-row align="center" justify="end" class="mb-4 mr-4">
-        <v-chip>{{ question.answerType }}</v-chip>
+      <v-row align="center" justify="center">
+        <v-card-title class="pa-2">
+          問{{ questionNo }}:{{ question.title }}</v-card-title
+        >
       </v-row>
 
-      <v-row align="center" justify="center" class="px-4">
+      <v-row align="center" justify="center" class="pa-2">
         <v-container>
           <v-textarea
             v-for="(item, index) in answers"
@@ -30,12 +31,11 @@
             outlined
             autofocus
           ></v-textarea>
-          <!-- TODO ○ボタンにする     -->
-          <v-card-actions>
-            <v-btn small text color="accent">
-              回答を増やす＋
+          <v-row align="center" justify="center">
+            <v-btn icon color="accent">
+              <v-icon @click="clickPlus">mdi-plus</v-icon>
             </v-btn>
-          </v-card-actions>
+          </v-row>
         </v-container>
       </v-row>
 
@@ -80,5 +80,15 @@ export default class AnswerInput extends Vue {
     }
     return 0;
   };
+  private clickPlus() {
+    this.answers!.push({
+      answer: "",
+      answerHeadId: "",
+      answerType: "",
+      inserted: "",
+      orderId: "",
+      questionId: ""
+    });
+  }
 }
 </script>
