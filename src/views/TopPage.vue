@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <v-container>
     <book-slide title="人気ランキング" />
     <book-slide title="いいねランキング" />
     <book-slide title="あなたへのおすすめ" />
     <book-slide title="回答途中の本" />
-  </div>
+  </v-container>
 </template>
 
 <script lang="ts">

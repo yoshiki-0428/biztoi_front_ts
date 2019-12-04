@@ -4,7 +4,7 @@
     <v-card v-for="(answer, index) in answers" :key="index" class="mb-4">
       <!-- TODO 表示内容を精査 -->
       <v-card-title>
-        <v-avatar color="accent" size="25" class="mr-1">
+        <v-avatar color="accent" size="30" class="mr-1">
           <v-img src="https://placehold.jp/300x300.png"></v-img>
         </v-avatar>
         <span class="title">{{ answer.answers[0].answer }}</span>
@@ -34,7 +34,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Answer, AnswerHead } from "@/axios/biztoi";
-
 @Component
 export default class AnswerList extends Vue {
   @Prop(Array) private answers: AnswerHead[] | undefined;

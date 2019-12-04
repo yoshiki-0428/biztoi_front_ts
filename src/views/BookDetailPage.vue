@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <v-container>
     <book-detail></book-detail>
     <toi-card></toi-card>
     <answer-list></answer-list>
-  </div>
+  </v-container>
 </template>
 
 <script lang="ts">
