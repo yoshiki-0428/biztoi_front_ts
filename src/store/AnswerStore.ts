@@ -7,8 +7,10 @@ import {
 } from "vuex-module-decorators";
 import { baseApi } from "@/plugins/axios";
 import store from "@/store";
-import { Answer, AnswerHead, Question } from "@/axios/biztoi";
+import { Answer, AnswerHead } from "@/axios/biztoi";
 import { AxiosResponse } from "axios";
+import UUID from "uuid";
+import size from "lodash/size";
 
 @Module({
   dynamic: true,
@@ -63,7 +65,21 @@ class AnswerStore extends VuexModule {
 
   @Mutation
   private SET_ANSWERS(payload: Answer[]) {
-    this.answers = payload;
+    if (size(payload) === 0) {
+      this.answers = [
+        {
+          id: UUID.v4(),
+          answer: "",
+          answerHeadId: "",
+          answerType: "",
+          inserted: "",
+          orderId: "",
+          questionId: ""
+        }
+      ];
+    } else {
+      this.answers = payload;
+    }
   }
 
   @Mutation
