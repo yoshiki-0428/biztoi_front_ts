@@ -45,6 +45,7 @@
             `/top/book/${question.toiId}/toi/questions/${question.nextQuestionId}`
           "
           :disabled="answersValidate"
+          @click="postAnswer(question.id)"
           outlined
           block
           color="primary"
@@ -54,10 +55,11 @@
         <v-btn
           v-else
           :to="'/top'"
+          :disabled="answersValidate"
+          @click="postAnswer(question.id)"
           outlined
           block
           color="primary"
-          :disabled="answersValidate"
         >
           回答を終了する
         </v-btn>
@@ -68,39 +70,40 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { Answer, Question } from "@/axios/biztoi";
 import UUID from "uuid";
 import size from "lodash/size";
 
 @Component
 export default class AnswerInput extends Vue {
-  @Prop()
-  private question!: Question;
-  @Prop()
-  private answers!: Answer[];
-  @Prop()
-  private questionNo?: number;
-  @Prop()
-  private questionMax?: number;
+  @Prop({ default: null }) private question!: Question;
+  @Prop({ default: [] }) private answers!: Answer[];
+  @Prop({ default: 0 }) private questionNo?: number;
+  @Prop({ default: 0 }) private questionMax?: number;
+  @Emit() private postAnswer(questionId: string) {}
+
   private getProgressValue = (): number => {
     if (this.questionNo && this.questionMax) {
       return this.questionNo * (100 / this.questionMax);
     }
     return 0;
   };
+
   private clickPlus() {
     this.createEmptyAnswer();
   }
+
   private createEmptyAnswer() {
+    // TODO orderId answersのorderIdのMax値を取得して+1する
     this.answers!.push({
       id: UUID.v4(),
       answer: "",
-      answerHeadId: "",
+      answerHeadId: this.answers[0].answerHeadId,
       answerType: "",
       inserted: "",
       orderId: "",
-      questionId: ""
+      questionId: this.answers[0].questionId
     });
   }
   private deleteAnswer(item: Answer) {
@@ -109,6 +112,7 @@ export default class AnswerInput extends Vue {
       this.answers.splice(index, 1);
     }
   }
+  // FIXME v-textareaのrulesがすぐに反応してしまい、バグのように見える
   private rules: Function[] = [(value: string) => !!value || "必須項目です。"];
   get answersValidate(): boolean {
     if (this.question.required) {

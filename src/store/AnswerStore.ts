@@ -20,7 +20,9 @@ import size from "lodash/size";
 })
 class AnswerStore extends VuexModule {
   // state
+  // ユーザが回答中の内容、質問の内容に応じて書き換わる
   public answers: Answer[] = [];
+  // ユーザが回答済み回答ヘッダ、既に回答済みの場合は回答も含まれる
   public answerHead: AnswerHead = {
     id: "",
     userId: "",
@@ -32,13 +34,29 @@ class AnswerStore extends VuexModule {
     category: ""
   };
 
+  /**
+   * ユーザが回答したAnswersをサーバに登録する
+   * @param params { bookId: string; questionId: string }
+   */
+  @Action
+  public postAnswers(params: { bookId: string; questionId: string }) {
+    const resStore: Answer[] = this.answers!.filter(
+      (answer: Answer) => answer.questionId === params.questionId
+    );
+    baseApi.postAnswer(params.bookId, params.questionId, { answers: resStore });
+  }
+
+  /**
+   * ユーザが回答したAnswerを取得する
+   * 処理: Store検索 => API検索 => 新規作成
+   */
   @Action({ rawError: true })
   public async getAnswers(params: { bookId: string; questionId: string }) {
     // Store検索
     const resStore: Answer[] = this.answerHead.answers!.filter(
       (answer: Answer) => answer.questionId === params.questionId
     );
-    if (resStore) {
+    if (size(resStore) !== 0) {
       this.SET_ANSWERS(resStore);
       return;
     }
@@ -47,12 +65,51 @@ class AnswerStore extends VuexModule {
       params.bookId,
       params.questionId
     );
-    if (res.data) {
+    if (size(res.data) !== 0) {
       this.SET_ANSWERS(res.data);
       return;
     }
+
+    // TODO orderId を数字に変更する
+    // not found Answer
+    this.SET_ANSWERS([
+      {
+        id: UUID.v4(),
+        answer: "",
+        answerHeadId: this.answerHead.id,
+        answerType: "",
+        inserted: "",
+        orderId: "0",
+        questionId: params.questionId
+      }
+    ]);
   }
 
+  /**
+   * 回答ヘッダを送信する
+   * @param params { bookId: string }
+   */
+  @Action
+  public async postAnswerHead(params: { bookId: string }) {
+    const answerHead: AnswerHead = {
+      answers: undefined,
+      category: undefined,
+      inserted: new Date().toDateString(),
+      publishFlg: true,
+      id: "",
+      userId: ""
+    };
+    const res: AxiosResponse<AnswerHead> = await baseApi.postAnswerHead(
+      params.bookId,
+      answerHead
+    );
+    this.SET_ANSWER_HEAD(res.data);
+  }
+
+  /**
+   * 回答ヘッダを取得する
+   * @param params { bookId: string }
+   */
   @Action
   public async getAnswerHead(params: { bookId: string }) {
     const res: AxiosResponse<AnswerHead> = await baseApi.getAnswersMe(
@@ -65,21 +122,7 @@ class AnswerStore extends VuexModule {
 
   @Mutation
   private SET_ANSWERS(payload: Answer[]) {
-    if (size(payload) === 0) {
-      this.answers = [
-        {
-          id: UUID.v4(),
-          answer: "",
-          answerHeadId: "",
-          answerType: "",
-          inserted: "",
-          orderId: "",
-          questionId: ""
-        }
-      ];
-    } else {
-      this.answers = payload;
-    }
+    this.answers = payload;
   }
 
   @Mutation
