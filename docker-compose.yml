@@ -1,0 +1,23 @@
+version: "3"
+services:
+  api:
+    image: registry.gitlab.com/rrrtcdish2/biztoi_api/develop:latest
+    environment:
+      SPRING_ENVIRONMENT: "dev"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://db:3306/BizToi"
+    ports:
+      - 8000:8000
+    #    volumes:
+    #      - ./backend/:/usr/src/app/
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: BizToi
+      MYSQL_USER: biztoi
+      MYSQL_PASSWORD: biztoi
+      MYSQL_ROOT_PASSWORD: biztoi
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - 3306:3306

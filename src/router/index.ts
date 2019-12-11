@@ -35,12 +35,12 @@ const routes = [
       {
         path: "account",
         name: "account",
-        component: () => import("@/container/BookList")
+        component: () => import("@/views/AccountPage.vue")
       },
       {
         path: "search",
         name: "search",
-        component: () => import("@/container/BookSearch")
+        component: () => import("@/views/BookSearchPage.vue")
       }
     ]
   }
