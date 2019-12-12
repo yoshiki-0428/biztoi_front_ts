@@ -1,13 +1,17 @@
 import { connect } from "vuex-connect";
-import { answerModule } from "@/store/AnswerModule";
+import { answerShareModule } from "@/store/AnswerStore";
 import AnswerList from "@/components/organisms/AnswerList.vue";
 import router from "@/router";
 
 export default connect({
+  // TODO 初期化
   stateToProps: {
-    answers: () => answerModule.answers
+    answers: () => answerShareModule.answerHeads
   },
   lifecycle: {
-    created: () => answerModule.getAnswers(router.currentRoute.params.bookId)
+    created: () =>
+      answerShareModule.getAnswerHeads({
+        bookId: router.currentRoute.params.bookId
+      })
   }
 })("answer-list", AnswerList);

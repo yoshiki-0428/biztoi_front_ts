@@ -2,7 +2,7 @@
   <v-card class="mb-4">
     <div class="d-flex flex-no-wrap">
       <v-card-title>TOI</v-card-title>
-      <div>
+      <div v-if="toi">
         <v-card-title v-text="toi.title"></v-card-title>
         <v-card-subtitle v-text="toi.detail"></v-card-subtitle>
       </div>
@@ -13,7 +13,7 @@
         outlined
         block
         color="primary"
-        :to="'/top/book/' + toi.bookId + '/toi/' + toi.id"
+        :to="'/top/book/' + bookId + '/toi/questions/first'"
       >
         回答してみる
       </v-btn>
@@ -24,10 +24,12 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Toi } from "@/axios/biztoi";
+import router from "@/router";
 
 @Component
 export default class ToiCard extends Vue {
   @Prop()
-  private toi!: Toi;
+  private toi?: Toi;
+  private bookId = router.currentRoute.params.bookId;
 }
 </script>

@@ -17,10 +17,8 @@ class ToiModule extends VuexModule {
     id: "",
     userId: "",
     bookId: "",
-    pictureUrl: "",
     title: "",
     detail: "",
-    content: "",
     publishFlg: true,
     inserted: "",
     modified: ""

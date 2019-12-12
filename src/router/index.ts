@@ -23,15 +23,14 @@ const routes = [
         component: () => import("@/views/BookDetailPage.vue")
       },
       {
-        // TODO コンポーネント作成
-        path: "book/:bookId/toi/:toiId",
+        path: "book/:bookId/toi/questions/:questionId",
         name: "toi",
-        component: () => import("@/container/BookList")
+        component: () => import("@/views/QuestionPage.vue")
       },
       {
         path: "favorite",
         name: "favorite",
-        component: () => import("@/container/BookList")
+        component: () => import("@/views/FavoritePage.vue")
       },
       {
         path: "account",
