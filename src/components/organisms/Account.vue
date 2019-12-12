@@ -1,16 +1,16 @@
 <template>
   <v-container class="pa-0">
     <div>
-      <div class="grey" style="height:100px;"></div>
+      <div class="grey" style="height:100px;" />
       <v-avatar
         size="100px"
-        style="position:absolute; left:0; right:0; margin:auto; margin-top:-50px; overflow:hidden;"
+        style="position:absolute; left:0; right:0; top:30px; margin:auto; overflow:hidden;"
       >
         <v-img src="https://picsum.photos/100/100" contain></v-img>
       </v-avatar>
-      <div style="height:50px;"></div>
+      <v-spacer></v-spacer>
     </div>
-    <v-container class="px-0">
+    <v-container>
       <v-card-title class="justify-center">User Name</v-card-title>
       <v-card-subtitle class="justify-center">@User ID</v-card-subtitle>
       <v-divider />

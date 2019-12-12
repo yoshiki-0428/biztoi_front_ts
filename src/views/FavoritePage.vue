@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <v-container>
     <book-list></book-list>
-  </div>
+  </v-container>
 </template>
 
 <script lang="ts">
