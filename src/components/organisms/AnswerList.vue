@@ -16,7 +16,10 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn text color="primary" :to="'/top/answer/' + answer.id"
+        <v-btn
+          text
+          color="primary"
+          :to="'/top/book/' + bookId + '/answer/' + answer.id"
           >詳細を見る</v-btn
         >
         <v-btn icon>
@@ -33,9 +36,11 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { Answer, AnswerHead } from "@/axios/biztoi";
+import { AnswerHead } from "@/axios/biztoi";
+import router from "@/router";
 @Component
 export default class AnswerList extends Vue {
   @Prop(Array) private answers: AnswerHead[] | undefined;
+  private bookId: string = router.currentRoute.params.bookId;
 }
 </script>
