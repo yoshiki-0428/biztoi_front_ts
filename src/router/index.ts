@@ -18,6 +18,11 @@ const routes = [
         component: () => import("@/views/TopPage.vue")
       },
       {
+        path: "complete/:bookId",
+        name: "complete",
+        component: () => import("@/views/TopPage.vue")
+      },
+      {
         path: "book/:bookId",
         name: "bookDetail",
         component: () => import("@/views/BookDetailPage.vue")

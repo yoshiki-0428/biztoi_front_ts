@@ -54,7 +54,7 @@
         </v-btn>
         <v-btn
           v-else
-          :to="'/top'"
+          :to="`/top/complete/${bookId}`"
           :disabled="answersValidate"
           @click="postAnswer(question.id)"
           outlined
@@ -74,6 +74,7 @@ import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { Answer, Question } from "@/axios/biztoi";
 import UUID from "uuid";
 import size from "lodash/size";
+import router from "@/router";
 
 @Component
 export default class AnswerInput extends Vue {
@@ -82,6 +83,8 @@ export default class AnswerInput extends Vue {
   @Prop({ default: 0 }) private questionNo?: number;
   @Prop({ default: 0 }) private questionMax?: number;
   @Emit() private postAnswer(questionId: string) {}
+
+  private bookId: string = router.currentRoute.params.bookId;
 
   private getProgressValue = (): number => {
     if (this.questionNo && this.questionMax) {
