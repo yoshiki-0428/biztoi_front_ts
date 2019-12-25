@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- TODO https://qiita.com/teramo3033/items/aa93c3de35a7c66a2cd2 切り替え -->
     <v-autocomplete
       :items="books"
       :loading="isLoading"

@@ -7,7 +7,7 @@
     "build": "yarn openapi && vue-cli-service build --mode production",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "openapi": "yarn openapi:sync && yarn openapi:biztoi && yarn openapi:books-api",
+    "openapi": "yarn openapi:biztoi && yarn openapi:books-api",
     "openapi:sync": "git submodule update --init",
     "openapi:biztoi": "openapi-generator generate -i openapi/reference/biztoi/openapi.yaml -g typescript-axios -o src/axios/biztoi",
     "openapi:books-api": "openapi-generator generate -i https://apiharmony-open.mybluemix.net/public/oas/books -g typescript-axios -o src/axios/books --skip-validate-spec "
