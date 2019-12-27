@@ -12,12 +12,12 @@ export default connect({
   },
   lifecycle: {
     created: async () => {
-      answerShareModule.getAnswerHead({
+      await questionModule.getQuestionList({
+        bookId: router.currentRoute.params.bookId
+      });
+      await answerShareModule.getAnswerHead({
         bookId: router.currentRoute.params.bookId,
         answerId: router.currentRoute.params.answerHeadId
-      });
-      questionModule.getQuestionList({
-        bookId: router.currentRoute.params.bookId
       });
     }
   }
