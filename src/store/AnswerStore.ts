@@ -71,7 +71,7 @@ class AnswerStore extends VuexModule {
     }
 
     // TODO orderId を数字に変更する
-    // not found Answer
+    // Not found Answer
     this.SET_ANSWERS([
       {
         id: UUID.v4(),
@@ -140,6 +140,23 @@ class AnswerStore extends VuexModule {
 class AnswerShareStore extends VuexModule {
   // state
   public answerHeads: AnswerHead[] = [];
+  public answerHead: AnswerHead = {
+    id: "",
+    userId: "",
+    publishFlg: true,
+    inserted: "",
+    answers: [],
+    modified: "",
+    toiId: "",
+    category: ""
+  };
+
+  @Action
+  public async getAnswerHead(params: { bookId: string; answerId: string }) {
+    const res = await baseApi.getAnswer(params.bookId, params.answerId);
+    this.SET_ANSWER_HEAD(res.data);
+  }
+
   @Action
   public async getAnswerHeads(params: { bookId: string }) {
     const res: AxiosResponse<AnswerHead[]> = await baseApi.getAnswers(
@@ -147,6 +164,12 @@ class AnswerShareStore extends VuexModule {
     );
     this.SET_ANSWER_HEADS(res.data);
   }
+
+  @Mutation
+  private SET_ANSWER_HEAD(payload: AnswerHead) {
+    this.answerHead = payload;
+  }
+
   @Mutation
   private SET_ANSWER_HEADS(payload: AnswerHead[]) {
     this.answerHeads = payload;
