@@ -11,13 +11,19 @@
         <v-card-actions class="justify-center">
           <v-btn
             color="primary"
-            text
+            outlined
             @click.stop="dialog = false"
-            :to="`/top/book/${linkId}`"
+            :to="`/top/book/${bookId}`"
           >
             他の人の回答
           </v-btn>
-          <v-btn color="primary" text @click.stop="dialog = false" to="/top">
+          <v-btn
+            exact
+            color="primary"
+            outlined
+            @click.stop="dialog = false"
+            to="/top"
+          >
             TOPへ戻る
           </v-btn>
         </v-card-actions>
@@ -31,7 +37,7 @@ import router from "@/router";
 
 @Component
 export default class AnswerComplete extends Vue {
-  private linkId: string = router.currentRoute.params.bookId;
+  private bookId: string = router.currentRoute.params.bookId;
   @Prop()
   dialog: boolean = true;
 }
