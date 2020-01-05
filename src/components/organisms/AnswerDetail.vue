@@ -12,12 +12,22 @@
         >
           <!-- TODO UIの整理、調整  -->
           <v-list-item-content>
-            <v-list-item-subtitle>Q. {{ q.title }}</v-list-item-subtitle>
-            <v-list-item-subtitle
-              v-for="(a, index) in filterdAnswers(q.id)"
-              :key="index"
-              >A. {{ a.answer }}</v-list-item-subtitle
-            >
+            <v-list-item-subtitle class="subtitle-1 font-weight-bold mb-3">
+              <v-row justify="start" class="ma-0 mb-3">
+                <v-icon>Q</v-icon>
+              </v-row>
+              <v-row justify="start" class="ma-0 mb-3">
+                {{ q.title }}
+              </v-row>
+            </v-list-item-subtitle>
+            <v-list-item-subtitle v-if="isExistAnswers(q.id)">
+              <v-row justify="start" class="ma-0 mb-3">
+                <v-icon>A</v-icon>
+              </v-row>
+              <div v-for="(a, index) in filterdAnswers(q.id)" :key="index">
+                {{ a.answer }}
+              </div>
+            </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-expansion-panel-content>
@@ -46,6 +56,13 @@ export default class AnswerDetail extends Vue {
   private filterdAnswers(questionId: string): Answer[] {
     if (isUndefined(this.answerHead.answers)) return [];
     return this.answerHead.answers!.filter(a => a.questionId === questionId);
+  }
+  private isExistAnswers(questionId: string): boolean {
+    if (isUndefined(this.answerHead.answers)) return false;
+    return (
+      this.answerHead.answers!.filter(a => a.questionId === questionId)
+        .length !== 0
+    );
   }
 }
 </script>
