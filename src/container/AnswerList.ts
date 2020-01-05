@@ -4,7 +4,6 @@ import AnswerList from "@/components/organisms/AnswerList.vue";
 import router from "@/router";
 
 export default connect({
-  // TODO 初期化
   stateToProps: {
     answers: () => answerShareModule.answerHeads
   },
