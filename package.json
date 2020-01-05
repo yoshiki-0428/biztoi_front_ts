@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "yarn openapi && vue-cli-service serve --port 3000 --mode dev",
+    "serve:update": "yarn openapi:update && yarn openapi && vue-cli-service serve --port 3000 --mode dev",
+    "serve:sync": "yarn openapi:sync && yarn openapi && vue-cli-service serve --port 3000 --mode dev",
     "build": "yarn openapi && vue-cli-service build --mode production",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "openapi": "yarn openapi:biztoi && yarn openapi:books-api",
     "openapi:sync": "git submodule update --init",
+    "openapi:update": "git submodule update --remote",
     "openapi:biztoi": "openapi-generator generate -i openapi/reference/biztoi/openapi.yaml -g typescript-axios -o src/axios/biztoi",
     "openapi:books-api": "openapi-generator generate -i https://apiharmony-open.mybluemix.net/public/oas/books -g typescript-axios -o src/axios/books --skip-validate-spec "
   },
