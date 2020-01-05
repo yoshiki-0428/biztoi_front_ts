@@ -54,9 +54,14 @@
         </v-btn>
         <v-btn
           v-else
-          :to="`/top/complete/${bookId}`"
+          :to="`/top/`"
           :disabled="answersValidate"
-          @click="postAnswer(question.id)"
+          @click="
+            () => {
+              postAnswer(question.id);
+              hoge();
+            }
+          "
           outlined
           block
           color="primary"
@@ -83,6 +88,11 @@ export default class AnswerInput extends Vue {
   @Prop({ default: 0 }) private questionNo?: number;
   @Prop({ default: 0 }) private questionMax?: number;
   @Emit() private postAnswer(questionId: string) {}
+  private hoge() {
+    // eslint-disable-next-line no-console
+    console.log("hoge");
+    this.$emit("showDialog", "a");
+  }
 
   private bookId: string = router.currentRoute.params.bookId;
 
