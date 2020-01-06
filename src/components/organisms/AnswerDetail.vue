@@ -9,6 +9,7 @@
           three-line
           v-for="(q, index) in filterdQuestions(s.no)"
           :key="index"
+          class="text-left"
         >
           <!-- TODO UIの整理、調整  -->
           <v-list-item-content>
@@ -25,7 +26,9 @@
                 <v-icon>A</v-icon>
               </v-row>
               <div v-for="(a, index) in filterdAnswers(q.id)" :key="index">
-                {{ a.answer }}
+                <v-row justify="start" class="ma-0 mb-3">
+                  {{ a.answer }}
+                </v-row>
               </div>
             </v-list-item-subtitle>
           </v-list-item-content>
