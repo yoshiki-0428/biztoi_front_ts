@@ -12,8 +12,8 @@
           <v-btn
             color="primary"
             outlined
-            @click.stop="isShow = false"
-            :to="`/top/book/${bookId}`"
+            @click.stop="closeDialog"
+            :to="`/top/book/${property.bookId}`"
           >
             他の人の回答
           </v-btn>
@@ -21,7 +21,7 @@
             exact
             color="primary"
             outlined
-            @click.stop="isShow = false"
+            @click.stop="closeDialog"
             to="/top"
           >
             TOPへ戻る
@@ -32,49 +32,12 @@
   </v-row>
 </template>
 <script lang="ts">
-import { Component, Emit, Vue, Watch } from "vue-property-decorator";
+import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class AnswerCompleteDialog extends Vue {
-  private bookId: string = "";
-  private isShow: boolean = false;
-  private created() {
-    // eslint-disable-next-line no-console
-    console.log("create");
-    this.$on("showDialog", this.showDialogCallback);
-    setTimeout(() => (this.isShow = true), 5000);
-  }
-  private destroyed() {
-    // this.$off("showDialog", this.clearCallback);
-  }
-  // @On("showDialog")
-  showDialogCallback(bookId: string) {
-    // eslint-disable-next-line no-console
-    console.log("create showdialog callback");
-    this.bookId = bookId;
-    this.isShow = true;
-  }
-  // @Off("showDialog", "showDialogCallback")
-  clearCallback(): void {
-    // eslint-disable-next-line no-console
-    console.log("off showdialog callback");
-  }
-  // @Emit("showDialog")
-  // showDialogCallbackA(bookId: string) {
-  //   this.bookId = bookId;
-  //   this.isShow = true;
-  // }
-  @Emit("showDialog")
-  showDialogCallbackA(bookId: string) {
-    // eslint-disable-next-line no-console
-    console.log("create showDialog callback");
-    this.bookId = bookId;
-    this.isShow = true;
-  }
-  @Watch("isShow")
-  watchShow() {
-    // eslint-disable-next-line no-console
-    console.log("create", this.isShow);
-  }
+  @Prop({ default: { bookId: "" } }) private property!: { bookId: string };
+  @Prop({ default: false }) private isShow!: boolean;
+  @Emit() private closeDialog() {}
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <v-content>
     <v-flex xs12>
-      <answer-complete-dialog @showDialog="showDialog" />
+      <answer-complete-dialog />
       <router-view />
       <footer-menu />
     </v-flex>
@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Vue } from "vue-property-decorator";
-import AnswerCompleteDialog from "@/components/organisms/AnswerCompleteDialog.vue";
+import { Component, Vue } from "vue-property-decorator";
+import AnswerCompleteDialog from "@/container/AnswerComoleteDialog";
 import FooterMenu from "@/components/organisms/FooterMenu.vue";
 
 @Component({
@@ -19,7 +19,5 @@ import FooterMenu from "@/components/organisms/FooterMenu.vue";
     FooterMenu
   }
 })
-export default class BaseLayout extends Vue {
-  @Emit("showDialog") private showDialog() {}
-}
+export default class BaseLayout extends Vue {}
 </script>

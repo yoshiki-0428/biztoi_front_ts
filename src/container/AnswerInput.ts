@@ -6,6 +6,7 @@ import UpdateRouteCheckMixin from "@/container/UpdateRouteCheckMixin";
 import router from "@/router";
 import { Answer, Question } from "@/axios/biztoi";
 import { isUndefined } from "lodash";
+import { dialogModule } from "@/store/DialogModule";
 
 export default connect({
   stateToProps: {
@@ -39,6 +40,9 @@ export default connect({
       const bookId = router.currentRoute.params.bookId;
       const params = { bookId: bookId, questionId: questionId };
       answerMeModule.postAnswers(params);
+    },
+    "show-complete-dialog": (_, bookId) => {
+      dialogModule.setProperty({ bookId: bookId });
     }
   }
 })("answer-input", AnswerInput.mixin(UpdateRouteCheckMixin));

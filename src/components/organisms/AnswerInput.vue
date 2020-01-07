@@ -59,7 +59,7 @@
           @click="
             () => {
               postAnswer(question.id);
-              hoge();
+              showCompleteDialog(question.id);
             }
           "
           outlined
@@ -88,12 +88,7 @@ export default class AnswerInput extends Vue {
   @Prop({ default: 0 }) private questionNo?: number;
   @Prop({ default: 0 }) private questionMax?: number;
   @Emit() private postAnswer(questionId: string) {}
-  private hoge() {
-    // eslint-disable-next-line no-console
-    console.log("hoge");
-    this.$emit("showDialog", "a");
-  }
-
+  @Emit() private showCompleteDialog(bookId: string) {}
   private bookId: string = router.currentRoute.params.bookId;
 
   private getProgressValue = (): number => {
