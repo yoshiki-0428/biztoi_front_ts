@@ -75,7 +75,6 @@ import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { Answer, Question } from "@/axios/biztoi";
 import UUID from "uuid";
 import size from "lodash/size";
-import router from "@/router";
 
 @Component
 export default class AnswerInput extends Vue {
@@ -88,7 +87,6 @@ export default class AnswerInput extends Vue {
     await this.postAnswer(question);
     await this.$router.push(path);
   }
-  private bookId: string = router.currentRoute.params.bookId;
 
   private getProgressValue = (): number => {
     if (this.questionNo && this.questionMax) {
