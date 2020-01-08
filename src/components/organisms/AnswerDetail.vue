@@ -1,5 +1,5 @@
 <template>
-  <v-expansion-panels multiple accordion v-model="panel">
+  <v-expansion-panels multiple v-model="panel">
     <v-expansion-panel v-for="(s, index) in stepMap" :key="index">
       <v-expansion-panel-header class="title">
         Step {{ s.no }} {{ s.name }}
@@ -13,20 +13,26 @@
         >
           <!-- TODO UIの整理、調整  -->
           <v-list-item-content>
-            <v-list-item-subtitle class="subtitle-1 font-weight-bold mb-3">
+            <v-list-item-subtitle>
               <v-row justify="start" class="ma-0 mb-3">
-                <v-icon>Q</v-icon>
+                <v-list-item-title
+                  class="title font-weight-medium pa-2 blue lighten-3"
+                  >Question</v-list-item-title
+                >
               </v-row>
-              <v-row justify="start" class="ma-0 mb-3">
+              <v-row justify="start" class="ma-0 mb-3 subtitle-1 mb-5">
                 {{ q.title }}
               </v-row>
             </v-list-item-subtitle>
             <v-list-item-subtitle v-if="isExistAnswers(q.id)">
               <v-row justify="start" class="ma-0 mb-3">
-                <v-icon>A</v-icon>
+                <v-list-item-title
+                  class="title font-weight-medium pa-2 red lighten-4"
+                  >Answer</v-list-item-title
+                >
               </v-row>
               <div v-for="(a, index) in filterdAnswers(q.id)" :key="index">
-                <v-row justify="start" class="ma-0 mb-3">
+                <v-row justify="start" class="ma-0 mb-3 subtitle-1">
                   {{ a.answer }}
                 </v-row>
               </div>
