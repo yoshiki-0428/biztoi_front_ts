@@ -17,13 +17,7 @@
           >
             他の人の回答
           </v-btn>
-          <v-btn
-            exact
-            color="primary"
-            outlined
-            @click.stop="closeDialog"
-            to="/top"
-          >
+          <v-btn exact color="primary" outlined @click.stop="closeDialog">
             TOPへ戻る
           </v-btn>
         </v-card-actions>
@@ -38,7 +32,7 @@ import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
 export default class CompleteDialog extends Vue {
   @Prop({ default: { bookId: "" } }) private property!: { bookId: string };
   @Prop({ default: false }) private isShow!: boolean;
-  private isShowInner: boolean = false;
+  private isShowInner: boolean = true;
   @Watch("isShow")
   private watchShow() {
     this.isShowInner = this.isShow;
