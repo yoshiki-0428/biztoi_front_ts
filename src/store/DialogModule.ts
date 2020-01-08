@@ -20,6 +20,10 @@ class DialogModule extends VuexModule {
   public async showDialog() {
     this.SHOW_ANSWER_DIALOG();
   }
+  @Action
+  public async closeDialog() {
+    this.CLOSE_ANSWER_DIALOG();
+  }
 
   @Action
   public async setProperty(property: { bookId: string }) {
@@ -30,6 +34,10 @@ class DialogModule extends VuexModule {
   @Mutation
   private SHOW_ANSWER_DIALOG() {
     this.isShowAnswerDialog = true;
+  }
+  @Mutation
+  private CLOSE_ANSWER_DIALOG() {
+    this.isShowAnswerDialog = false;
   }
   @Mutation
   private SET_PROPERTY(property: { bookId: string }) {

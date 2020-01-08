@@ -36,13 +36,13 @@ export default connect({
       await questionModule.getQuestion(params);
       await answerMeModule.getAnswers(params);
     },
-    "post-answer": (_, questionId) => {
+    "post-answer": async (_, question: Question) => {
       const bookId = router.currentRoute.params.bookId;
-      const params = { bookId: bookId, questionId: questionId };
-      answerMeModule.postAnswers(params);
-    },
-    "show-complete-dialog": (_, bookId) => {
-      dialogModule.setProperty({ bookId: bookId });
+      const params = { bookId: bookId, questionId: question.id };
+      await answerMeModule.postAnswers(params);
+      if (question.nextQuestionId === null) {
+        await dialogModule.setProperty({ bookId: bookId });
+      }
     }
   }
 })("answer-input", AnswerInput.mixin(UpdateRouteCheckMixin));

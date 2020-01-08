@@ -41,11 +41,13 @@
       <v-card-actions>
         <v-btn
           v-if="question.nextQuestionId != null"
-          :to="
-            `/top/book/${question.toiId}/toi/questions/${question.nextQuestionId}`
-          "
           :disabled="answersValidate"
-          @click="postAnswer(question.id)"
+          @click="
+            postAndPush(
+              question,
+              `/top/book/${question.toiId}/toi/questions/${question.nextQuestionId}`
+            )
+          "
           outlined
           block
           color="primary"
@@ -54,14 +56,8 @@
         </v-btn>
         <v-btn
           v-else
-          :to="`/top/`"
           :disabled="answersValidate"
-          @click="
-            () => {
-              postAnswer(question.id);
-              showCompleteDialog(question.id);
-            }
-          "
+          @click="postAndPush(question, `/top`)"
           outlined
           block
           color="primary"
@@ -87,8 +83,11 @@ export default class AnswerInput extends Vue {
   @Prop({ default: [] }) private answers!: Answer[];
   @Prop({ default: 0 }) private questionNo?: number;
   @Prop({ default: 0 }) private questionMax?: number;
-  @Emit() private postAnswer(questionId: string) {}
-  @Emit() private showCompleteDialog(bookId: string) {}
+  @Emit() private async postAnswer(question: Question) {}
+  private async postAndPush(question: Question, path: string) {
+    await this.postAnswer(question);
+    await this.$router.push(path);
+  }
   private bookId: string = router.currentRoute.params.bookId;
 
   private getProgressValue = (): number => {

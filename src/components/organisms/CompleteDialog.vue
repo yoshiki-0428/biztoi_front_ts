@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-dialog v-model="isShow" max-width="90%">
+    <v-dialog v-model="isShowInner" max-width="90%">
       <v-card>
         <v-card-title class="headline justify-center">
           回答お疲れさまでした。
@@ -32,12 +32,17 @@
   </v-row>
 </template>
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from "vue-property-decorator";
+import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
 
 @Component
-export default class AnswerCompleteDialog extends Vue {
+export default class CompleteDialog extends Vue {
   @Prop({ default: { bookId: "" } }) private property!: { bookId: string };
   @Prop({ default: false }) private isShow!: boolean;
+  private isShowInner: boolean = false;
+  @Watch("isShow")
+  private watchShow() {
+    this.isShowInner = this.isShow;
+  }
   @Emit() private closeDialog() {}
 }
 </script>
