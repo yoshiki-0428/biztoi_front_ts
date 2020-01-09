@@ -18,8 +18,8 @@
 
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
+      <v-btn icon @click="toggleIsActive">
+        <v-icon :color="getColor">mdi-heart</v-icon>
       </v-btn>
       <v-btn icon>
         <v-icon>mdi-share-variant</v-icon>
@@ -29,12 +29,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { Book } from "@/axios/biztoi";
 
 @Component
 export default class BookOverView extends Vue {
-  @Prop()
-  private book!: Book;
+  @Prop({ required: true }) private book!: Book;
+  private isActive: boolean = false;
+  private get getColor(): string {
+    return this.isActive ? "pink" : "";
+  }
+  private toggleIsActive() {
+    this.isActive = !this.isActive;
+    this.onClick(this.isActive);
+  }
+  @Emit("on-click-favorite")
+  private onClick(isFavorite: boolean) {}
 }
 </script>

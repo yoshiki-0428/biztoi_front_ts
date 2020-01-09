@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <book-detail></book-detail>
-    <toi-card></toi-card>
-    <answer-list></answer-list>
+    <book-detail />
+    <toi-card />
+    <answer-over-view-list />
   </v-container>
 </template>
 
@@ -10,11 +10,11 @@
 import { Component, Vue } from "vue-property-decorator";
 import BookDetail from "@/container/BookDetail";
 import ToiCard from "@/container/ToiCard";
-import AnswerList from "@/container/AnswerList";
+import AnswerOverViewList from "@/container/AnswerOverViewList";
 
 @Component({
   components: {
-    AnswerList,
+    AnswerOverViewList,
     ToiCard,
     BookDetail
   }

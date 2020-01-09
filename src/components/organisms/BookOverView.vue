@@ -19,14 +19,8 @@
       <v-row class="justify-end">
         <v-card-actions class="pr-2">
           <v-spacer></v-spacer>
-          <v-btn text color="primary" :to="'/top/book/' + book.id"
-            >詳細へ</v-btn
-          >
-          <v-btn icon v-if="!active" @click="bookmark">
-            <v-icon>mdi-heart</v-icon>
-          </v-btn>
-          <v-btn icon v-else color="pink" @click="bookmark">
-            <v-icon>mdi-heart</v-icon>
+          <v-btn text color="primary" :to="'/top/book/' + book.id">
+            詳細へ
           </v-btn>
           <v-btn icon>
             <v-icon>mdi-share-variant</v-icon>
@@ -43,18 +37,13 @@ import { Book } from "@/axios/biztoi";
 
 @Component
 export default class BookOverView extends Vue {
-  @Prop({ required: true })
-  private book!: Book;
-  private active: Boolean = false;
+  @Prop({ required: true }) private book!: Book;
 
   getCutText(cutText: string): string {
     const cutNum = 50;
     return cutText.length > cutNum
       ? `${cutText.substring(0, cutNum)} ... `
       : cutText;
-  }
-  bookmark() {
-    this.active = !this.active;
   }
 }
 </script>
