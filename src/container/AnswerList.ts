@@ -5,7 +5,7 @@ import router from "@/router";
 
 export default connect({
   stateToProps: {
-    answers: () => answerShareModule.answerHeads
+    answerHeads: () => answerShareModule.answerHeads
   },
   lifecycle: {
     created: () =>
