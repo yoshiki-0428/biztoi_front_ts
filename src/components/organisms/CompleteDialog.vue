@@ -32,7 +32,7 @@ import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
 export default class CompleteDialog extends Vue {
   @Prop({ default: { bookId: "" } }) private property!: { bookId: string };
   @Prop({ default: false }) private isShow!: boolean;
-  private isShowInner: boolean = true;
+  private isShowInner: boolean = false;
   @Watch("isShow")
   private watchShow() {
     this.isShowInner = this.isShow;
