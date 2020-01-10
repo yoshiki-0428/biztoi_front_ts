@@ -36,7 +36,7 @@
 
 <script lang="ts">
 import { Component, Emit, Prop, Vue } from "vue-property-decorator";
-import { AnswerHead } from "@/axios/biztoi";
+import { AnswerHead, SendLikeInfo } from "@/axios/biztoi";
 
 @Component
 export default class AnswerOverView extends Vue {
@@ -48,11 +48,11 @@ export default class AnswerOverView extends Vue {
   private toggleIsActive() {
     this.answerHead.likeInfo.active = !this.answerHead.likeInfo.active;
     this.onClick({
-      isLike: this.answerHead.likeInfo.active,
-      id: this.answerHead.id
+      id: this.answerHead.id,
+      active: this.answerHead.likeInfo.active
     });
   }
   @Emit("on-click-like")
-  private onClick(like: { isLike: boolean; id: string }) {}
+  private onClick(sendLikeInfo: SendLikeInfo) {}
 }
 </script>

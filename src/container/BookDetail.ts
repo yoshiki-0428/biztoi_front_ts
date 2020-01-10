@@ -3,13 +3,24 @@ import { bookModule } from "@/store/BookModule";
 import BookDetail from "@/components/organisms/BookDetail.vue";
 import router from "@/router";
 import { baseApi } from "@/plugins/axios";
+import { SendLikeInfo } from "@/axios/biztoi";
 
 export default connect({
   stateToProps: {
     book: () => bookModule.book
   },
   actionsToEvents: {
-    "on-click-favorite": (_, favorite: { favorite: boolean; id: string }) => {}
+    "on-click-favorite": (_, sendLikeInfo: SendLikeInfo) => {
+      if (sendLikeInfo.active) {
+        // eslint-disable-next-line no-console
+        console.log("fav Book", sendLikeInfo.id);
+        baseApi.favoriteBooks(sendLikeInfo);
+      } else {
+        // eslint-disable-next-line no-console
+        console.log("unfav Book", sendLikeInfo.id);
+        baseApi.deleteFavoriteBooks(sendLikeInfo);
+      }
+    }
   },
   lifecycle: {
     created: async () => {

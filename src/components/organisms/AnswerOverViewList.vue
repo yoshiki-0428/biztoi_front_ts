@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { Component, Emit, Prop, Vue } from "vue-property-decorator";
-import { AnswerHead } from "@/axios/biztoi";
+import { AnswerHead, SendLikeInfo } from "@/axios/biztoi";
 import AnswerOverView from "@/components/organisms/AnswerOverView.vue";
 
 @Component({ components: { AnswerOverView } })
@@ -25,6 +25,6 @@ export default class AnswerOverViewList extends Vue {
   @Prop({ default: () => [] }) private answerHeads: AnswerHead[] | undefined;
   @Prop() private bookId!: string;
   @Emit("on-click-like")
-  private onClick(like: { isLike: boolean; id: string }) {}
+  private onClick(sendLikeInfo: SendLikeInfo) {}
 }
 </script>

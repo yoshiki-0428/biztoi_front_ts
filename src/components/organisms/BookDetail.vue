@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { Component, Emit, Prop, Vue } from "vue-property-decorator";
-import { Book } from "@/axios/biztoi";
+import { Book, SendLikeInfo } from "@/axios/biztoi";
 
 @Component
 export default class BookOverView extends Vue {
@@ -41,9 +41,9 @@ export default class BookOverView extends Vue {
   }
   private toggleIsActive() {
     this.book.favorite = !this.book.favorite;
-    this.onClick({ favorite: this.book.favorite, id: this.book.id });
+    this.onClick({ id: this.book.id, active: this.book.favorite });
   }
   @Emit("on-click-favorite")
-  private onClick(favorite: { favorite: boolean; id: string }) {}
+  private onClick(sendLikeInfo: SendLikeInfo) {}
 }
 </script>

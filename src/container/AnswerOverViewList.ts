@@ -2,6 +2,8 @@ import { connect } from "vuex-connect";
 import { answerShareModule } from "@/store/AnswerStore";
 import AnswerOverViewList from "@/components/organisms/AnswerOverViewList.vue";
 import router from "@/router";
+import { baseApi } from "@/plugins/axios";
+import { SendLikeInfo } from "@/axios/biztoi";
 
 export default connect({
   stateToProps: {
@@ -9,7 +11,17 @@ export default connect({
     bookId: () => router.currentRoute.params.bookId
   },
   actionsToEvents: {
-    "on-click-like": (_, like: { isLike: boolean; id: string }) => {}
+    "on-click-like": (_, sendLikeInfo: SendLikeInfo) => {
+      if (sendLikeInfo.active) {
+        // eslint-disable-next-line no-console
+        console.log("like Answers", sendLikeInfo.id);
+        baseApi.likesAnswers(sendLikeInfo);
+      } else {
+        // eslint-disable-next-line no-console
+        console.log("unlike Answers", sendLikeInfo.id);
+        baseApi.deleteLikesAnswers(sendLikeInfo);
+      }
+    }
   },
   lifecycle: {
     created: () =>
