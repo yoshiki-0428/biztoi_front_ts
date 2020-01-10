@@ -37,13 +37,13 @@ export default class BookOverView extends Vue {
   @Prop({ required: true }) private book!: Book;
   private isActive: boolean = false;
   private get getColor(): string {
-    return this.isActive ? "pink" : "";
+    return this.book.favorite ? "pink" : "";
   }
   private toggleIsActive() {
-    this.isActive = !this.isActive;
-    this.onClick(this.isActive);
+    this.book.favorite = !this.book.favorite;
+    this.onClick({ favorite: this.book.favorite, id: this.book.id });
   }
   @Emit("on-click-favorite")
-  private onClick(isFavorite: boolean) {}
+  private onClick(favorite: { favorite: boolean; id: string }) {}
 }
 </script>

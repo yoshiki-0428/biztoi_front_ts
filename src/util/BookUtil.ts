@@ -12,7 +12,7 @@ export default class BookUtil {
       title: volume.volumeInfo!.title || "No title",
       author: volume.volumeInfo!.authors || [],
       category: volume.volumeInfo!.categories || [],
-      isFavorite: false
+      favorite: false
     };
   }
 

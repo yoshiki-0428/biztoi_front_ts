@@ -32,7 +32,7 @@ class AnswerStore extends VuexModule {
     modified: "",
     toiId: "",
     category: "",
-    likeInfo: { isActive: false, sum: 0 }
+    likeInfo: { active: false, sum: 0 }
   };
 
   /**
@@ -99,7 +99,7 @@ class AnswerStore extends VuexModule {
       publishFlg: true,
       id: "",
       userId: "",
-      likeInfo: { isActive: false, sum: 0 }
+      likeInfo: { active: false, sum: 0 }
     };
     const res: AxiosResponse<AnswerHead> = await baseApi.postAnswerHead(
       params.bookId,
@@ -151,7 +151,7 @@ class AnswerShareStore extends VuexModule {
     modified: "",
     toiId: "",
     category: "",
-    likeInfo: { isActive: false, sum: 0 }
+    likeInfo: { active: false, sum: 0 }
   };
 
   @Action

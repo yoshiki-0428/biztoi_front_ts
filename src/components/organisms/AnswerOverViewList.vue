@@ -9,7 +9,6 @@
       <answer-over-view
         :answer-head="answerHead"
         :book-id="bookId"
-        :is-active="answerHead.likeInfo.active"
         @on-click-like="onClick"
       />
     </v-card>

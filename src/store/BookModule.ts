@@ -24,7 +24,7 @@ class BookModule extends VuexModule {
     title: "",
     author: [],
     category: [],
-    isFavorite: false
+    favorite: false
   };
   public books: Book[] = [];
   public searchBooks: Book[] = [];

@@ -42,13 +42,15 @@ import { AnswerHead } from "@/axios/biztoi";
 export default class AnswerOverView extends Vue {
   @Prop({ required: true }) private answerHead!: AnswerHead;
   @Prop() private bookId!: string;
-  private isActive: boolean = false;
   private get getColor(): string {
-    return this.isActive ? "primary" : "";
+    return this.answerHead.likeInfo.active ? "primary" : "";
   }
   private toggleIsActive() {
-    this.isActive = !this.isActive;
-    this.onClick({ isLike: this.isActive, id: this.answerHead.id });
+    this.answerHead.likeInfo.active = !this.answerHead.likeInfo.active;
+    this.onClick({
+      isLike: this.answerHead.likeInfo.active,
+      id: this.answerHead.id
+    });
   }
   @Emit("on-click-like")
   private onClick(like: { isLike: boolean; id: string }) {}

@@ -6,7 +6,7 @@ import router from "@/router";
 export default connect({
   stateToProps: {
     answerHeads: () => answerShareModule.answerHeads,
-    bookId: router.currentRoute.params.bookId
+    bookId: () => router.currentRoute.params.bookId
   },
   actionsToEvents: {
     "on-click-like": (_, like: { isLike: boolean; id: string }) => {}

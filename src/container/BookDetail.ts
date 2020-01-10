@@ -8,6 +8,9 @@ export default connect({
   stateToProps: {
     book: () => bookModule.book
   },
+  actionsToEvents: {
+    "on-click-favorite": (_, favorite: { favorite: boolean; id: string }) => {}
+  },
   lifecycle: {
     created: async () => {
       // 既存Storeから本を検索し、APIサーバに作成依頼を行う
