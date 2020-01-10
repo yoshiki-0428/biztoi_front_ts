@@ -26,7 +26,7 @@
       <v-btn icon @click="toggleIsActive">
         <v-icon :color="getColor">mdi-thumb-up</v-icon>
       </v-btn>
-      <span class="subheading mr-2">{{ answerHead.likeInfo.sum }} </span>
+      <span class="subheading mr-2">{{ answerHead.likeInfo.sum }}</span>
       <v-btn icon>
         <v-icon>mdi-share-variant</v-icon>
       </v-btn>

@@ -11,7 +11,8 @@ export default class BookUtil {
       linkUrl: volume.volumeInfo!.infoLink || "No link",
       title: volume.volumeInfo!.title || "No title",
       author: volume.volumeInfo!.authors || [],
-      category: volume.volumeInfo!.categories || []
+      category: volume.volumeInfo!.categories || [],
+      isFavorite: false
     };
   }
 
