@@ -6,6 +6,7 @@ import UpdateRouteCheckMixin from "@/container/UpdateRouteCheckMixin";
 import router from "@/router";
 import { Answer, Question } from "@/axios/biztoi";
 import { isUndefined } from "lodash";
+import { dialogModule } from "@/store/DialogModule";
 
 export default connect({
   stateToProps: {
@@ -35,10 +36,13 @@ export default connect({
       await questionModule.getQuestion(params);
       await answerMeModule.getAnswers(params);
     },
-    "post-answer": (_, questionId) => {
+    "post-answer": async (_, question: Question) => {
       const bookId = router.currentRoute.params.bookId;
-      const params = { bookId: bookId, questionId: questionId };
-      answerMeModule.postAnswers(params);
+      const params = { bookId: bookId, questionId: question.id };
+      await answerMeModule.postAnswers(params);
+      if (question.nextQuestionId === null) {
+        await dialogModule.setProperty({ bookId: bookId });
+      }
     }
   }
 })("answer-input", AnswerInput.mixin(UpdateRouteCheckMixin));
