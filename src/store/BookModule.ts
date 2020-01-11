@@ -23,7 +23,8 @@ class BookModule extends VuexModule {
     linkUrl: "",
     title: "",
     author: [],
-    category: []
+    category: [],
+    favorite: false
   };
   public books: Book[] = [];
   public searchBooks: Book[] = [];
@@ -87,8 +88,6 @@ class BookModule extends VuexModule {
 
   @Mutation
   private SET_BOOK(payload: Book) {
-    // eslint-disable-next-line no-console
-    console.log("SET_BOOK# Book:", payload);
     this.book = payload;
   }
   @Mutation
