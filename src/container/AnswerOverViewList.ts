@@ -13,12 +13,8 @@ export default connect({
   actionsToEvents: {
     "on-click-like": (_, sendLikeInfo: SendLikeInfo) => {
       if (sendLikeInfo.active) {
-        // eslint-disable-next-line no-console
-        console.log("like Answers", sendLikeInfo.id);
         baseApi.likesAnswers(sendLikeInfo);
       } else {
-        // eslint-disable-next-line no-console
-        console.log("unlike Answers", sendLikeInfo.id);
         baseApi.deleteLikesAnswers(sendLikeInfo);
       }
     }

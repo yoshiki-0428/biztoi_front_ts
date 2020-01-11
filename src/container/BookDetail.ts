@@ -12,12 +12,8 @@ export default connect({
   actionsToEvents: {
     "on-click-favorite": (_, sendLikeInfo: SendLikeInfo) => {
       if (sendLikeInfo.active) {
-        // eslint-disable-next-line no-console
-        console.log("fav Book", sendLikeInfo.id);
         baseApi.favoriteBooks(sendLikeInfo);
       } else {
-        // eslint-disable-next-line no-console
-        console.log("unfav Book", sendLikeInfo.id);
         baseApi.deleteFavoriteBooks(sendLikeInfo);
       }
     }

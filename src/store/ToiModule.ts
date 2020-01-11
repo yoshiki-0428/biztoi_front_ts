@@ -35,8 +35,6 @@ class ToiModule extends VuexModule {
 
   @Mutation
   private SET_TOI(payload: Toi) {
-    // eslint-disable-next-line no-console
-    console.log("SET_TOI# Toi:", payload);
     this.toi = payload;
   }
 }
