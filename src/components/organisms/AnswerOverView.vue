@@ -27,9 +27,12 @@
         <v-icon :color="getColor">mdi-thumb-up</v-icon>
       </v-btn>
       <span class="subheading mr-2">{{ answerHead.likeInfo.sum }}</span>
-      <v-btn icon>
-        <v-icon>mdi-share-variant</v-icon>
-      </v-btn>
+      <share-icon-button
+        :url="shareUrl"
+        :text="
+          `BizToiアプリで${answerHead.userInfo.nickname}さんの回答内容を見る`
+        "
+      />
     </v-card-actions>
   </div>
 </template>
@@ -37,8 +40,10 @@
 <script lang="ts">
 import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { AnswerHead, SendLikeInfo } from "@/axios/biztoi";
-
-@Component
+import ShareIconButton from "@/components/atoms/ShareIconButton.vue";
+@Component({
+  components: { ShareIconButton }
+})
 export default class AnswerOverView extends Vue {
   @Prop({ required: true }) private answerHead!: AnswerHead;
   @Prop() private bookId!: string;
@@ -51,6 +56,9 @@ export default class AnswerOverView extends Vue {
       id: this.answerHead.id,
       active: this.answerHead.likeInfo.active
     });
+  }
+  private get shareUrl(): string {
+    return `${window.location.href}/answer/${this.answerHead.id}`;
   }
   @Emit("on-click-like")
   private onClick(sendLikeInfo: SendLikeInfo) {}
