@@ -5,6 +5,7 @@
   "scripts": {
     "serve:update": "yarn openapi:update && yarn openapi && vue-cli-service serve --port 3000 --mode dev",
     "serve:sync": "yarn openapi:sync && yarn openapi && vue-cli-service serve --port 3000 --mode dev",
+    "serve:https": "yarn openapi && vue-cli-service serve --port 3000 --mode dev --https",
     "build": "yarn openapi && vue-cli-service build --mode production",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
@@ -58,6 +59,7 @@
     "prettier": "^1.18.2",
     "sass": "^1.23.3",
     "sass-loader": "^8.0.0",
+    "ts-clipboard": "^1.0.17",
     "typescript": "~3.5.3",
     "uuid": "^3.3.3",
     "vue-template-compiler": "^2.6.10"
