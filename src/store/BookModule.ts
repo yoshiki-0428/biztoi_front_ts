@@ -88,8 +88,6 @@ class BookModule extends VuexModule {
 
   @Mutation
   private SET_BOOK(payload: Book) {
-    // eslint-disable-next-line no-console
-    console.log("SET_BOOK# Book:", payload);
     this.book = payload;
   }
   @Mutation
