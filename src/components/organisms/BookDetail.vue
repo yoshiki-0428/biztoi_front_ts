@@ -38,22 +38,6 @@
         </div>
       </v-col>
     </v-row>
-    <!-- <div>
-      <v-img
-        contain
-        max-height="250"
-        :src="book.pictureUrl"
-        class="text-center"
-      ></v-img>
-      <div>
-        <v-card-title v-text="book.title" class="justify-center"></v-card-title>
-        <v-card-subtitle
-          v-text="book.detail"
-          class="justify-center"
-        ></v-card-subtitle>
-      </div>
-    </div> -->
-
     <v-card-actions>
       <v-spacer></v-spacer>
       <v-btn icon @click="toggleIsActive">
