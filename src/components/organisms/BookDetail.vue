@@ -1,6 +1,44 @@
 <template>
   <v-card class="mb-4">
-    <div>
+    <v-row>
+      <v-col cols="4" class="mt-3 ml-2 pa-1">
+        <v-img
+          :src="book.pictureUrl"
+          max-height="200"
+          contain
+          class="ma-1"
+        ></v-img>
+      </v-col>
+      <v-col cols="7" class="pb-0">
+        <div class="text-left">
+          <v-card-title
+            v-text="book.title"
+            class="subtitle-2 pt-1"
+          ></v-card-title>
+        </div>
+        <div class="text-left">
+          <!-- TO DO 
+          著者が空欄の場合非表示
+          v-if="isExsistAuthor"
+          -->
+          <v-card-title
+            v-text="getAuthor(book.author)"
+            class="subtitle-2 pt-1"
+          ></v-card-title>
+        </div>
+        <div class="text-left">
+          <!--TO DO
+          カテゴリーが空欄の場合非表示
+          v-if="isExsistCategory"
+          -->
+          <v-card-title
+            v-text="getCategory(book.category)"
+            class="subtitle-2 pt-1"
+          ></v-card-title>
+        </div>
+      </v-col>
+    </v-row>
+    <!-- <div>
       <v-img
         contain
         max-height="250"
@@ -14,7 +52,7 @@
           class="justify-center"
         ></v-card-subtitle>
       </div>
-    </div>
+    </div> -->
 
     <v-card-actions>
       <v-spacer></v-spacer>
@@ -42,6 +80,12 @@ export default class BookOverView extends Vue {
   private toggleIsActive() {
     this.book.favorite = !this.book.favorite;
     this.onClick({ id: this.book.id, active: this.book.favorite });
+  }
+  private getAuthor(author: string[]): string {
+    return author.join(",");
+  }
+  private getCategory(category: string[]): string {
+    return category.join(",");
   }
   @Emit("on-click-favorite")
   private onClick(sendLikeInfo: SendLikeInfo) {}
