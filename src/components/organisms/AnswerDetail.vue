@@ -16,7 +16,8 @@
             <v-list-item-subtitle>
               <v-row justify="start" class="ma-0 mb-3">
                 <v-list-item-title
-                  class="title font-weight-medium pa-2 blue lighten-3"
+                  class="title font-weight-bold pa-3 primary"
+                  style="border-radius:25px;"
                   >Question</v-list-item-title
                 >
               </v-row>
@@ -27,7 +28,8 @@
             <v-list-item-subtitle v-if="isExistAnswers(q.id)">
               <v-row justify="start" class="ma-0 mb-3">
                 <v-list-item-title
-                  class="title font-weight-medium pa-2 red lighten-4"
+                  class="title font-weight-bold pa-3 accent"
+                  style="border-radius:25px;"
                   >Answer</v-list-item-title
                 >
               </v-row>
