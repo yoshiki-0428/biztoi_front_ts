@@ -13,28 +13,25 @@
         <div class="text-left">
           <v-card-title
             v-text="book.title"
-            class="subtitle-2 pt-1"
+            class="font-weight-bold subtitle-2 pt-1"
           ></v-card-title>
         </div>
         <div class="text-left">
-          <!-- TO DO 
-          著者が空欄の場合非表示
-          v-if="isExsistAuthor"
-          -->
           <v-card-title
             v-text="getAuthor(book.author)"
             class="subtitle-2 pt-1"
           ></v-card-title>
         </div>
         <div class="text-left">
-          <!--TO DO
-          カテゴリーが空欄の場合非表示
-          v-if="isExsistCategory"
-          -->
           <v-card-title
             v-text="getCategory(book.category)"
             class="subtitle-2 pt-1"
           ></v-card-title>
+        </div>
+        <div class="text-left ml-2">
+          <v-btn color="primary" class="font-weight-bold" :href="book.linkUrl">
+            書誌情報
+          </v-btn>
         </div>
       </v-col>
     </v-row>
@@ -66,10 +63,10 @@ export default class BookOverView extends Vue {
     this.onClick({ id: this.book.id, active: this.book.favorite });
   }
   private getAuthor(author: string[]): string {
-    return author.join(",");
+    return author.join();
   }
   private getCategory(category: string[]): string {
-    return category.join(",");
+    return category.join();
   }
   @Emit("on-click-favorite")
   private onClick(sendLikeInfo: SendLikeInfo) {}
