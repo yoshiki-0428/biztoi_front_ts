@@ -19,18 +19,13 @@
       <v-row class="justify-end">
         <v-card-actions class="pr-2">
           <v-spacer></v-spacer>
-          <v-btn text color="primary" :to="'/top/book/' + book.id"
-            >詳細へ</v-btn
-          >
-          <v-btn icon v-if="!active" @click="bookmark">
-            <v-icon>mdi-heart</v-icon>
+          <v-btn text color="primary" :to="'/top/book/' + book.id">
+            詳細へ
           </v-btn>
-          <v-btn icon v-else color="pink" @click="bookmark">
-            <v-icon>mdi-heart</v-icon>
-          </v-btn>
-          <v-btn icon>
-            <v-icon>mdi-share-variant</v-icon>
-          </v-btn>
+          <share-icon-button
+            :url="shareUrl"
+            :text="`BizToiアプリで${book.title}の本詳細を見る`"
+          />
         </v-card-actions>
       </v-row>
     </v-col>
@@ -40,21 +35,20 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Book } from "@/axios/biztoi";
-
-@Component
+import ShareIconButton from "@/components/atoms/ShareIconButton.vue";
+@Component({
+  components: { ShareIconButton }
+})
 export default class BookOverView extends Vue {
-  @Prop({ required: true })
-  private book!: Book;
-  private active: Boolean = false;
-
-  getCutText(cutText: string): string {
+  @Prop({ required: true }) private book!: Book;
+  private getCutText(cutText: string): string {
     const cutNum = 50;
     return cutText.length > cutNum
       ? `${cutText.substring(0, cutNum)} ... `
       : cutText;
   }
-  bookmark() {
-    this.active = !this.active;
+  private get shareUrl(): string {
+    return `${window.location.origin}/top/book/${this.book.id}`;
   }
 }
 </script>

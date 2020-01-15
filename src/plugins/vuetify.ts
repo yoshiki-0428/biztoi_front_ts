@@ -4,11 +4,15 @@ import "vuetify/dist/vuetify.min.css";
 import "@mdi/font/css/materialdesignicons.css";
 import "material-design-icons-iconfont/dist/material-design-icons.css";
 import "@fortawesome/fontawesome-free/css/all.css";
+// @ts-ignore
 import { VuetifyPreset } from "vuetify/types/presets";
 
 Vue.use(Vuetify);
 
 const opts: VuetifyPreset = {
+  theme: {
+    dark: false
+  },
   icons: {
     iconfont: "mdi" || "md" || "fa"
   }

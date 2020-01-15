@@ -31,7 +31,8 @@ class AnswerStore extends VuexModule {
     answers: [],
     modified: "",
     toiId: "",
-    category: ""
+    category: "",
+    likeInfo: { active: false, sum: 0 }
   };
 
   /**
@@ -97,7 +98,8 @@ class AnswerStore extends VuexModule {
       inserted: new Date().toDateString(),
       publishFlg: true,
       id: "",
-      userId: ""
+      userId: "",
+      likeInfo: { active: false, sum: 0 }
     };
     const res: AxiosResponse<AnswerHead> = await baseApi.postAnswerHead(
       params.bookId,
@@ -148,7 +150,8 @@ class AnswerShareStore extends VuexModule {
     answers: [],
     modified: "",
     toiId: "",
-    category: ""
+    category: "",
+    likeInfo: { active: false, sum: 0 }
   };
 
   @Action

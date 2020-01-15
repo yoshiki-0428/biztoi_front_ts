@@ -10,7 +10,12 @@ import { baseApi } from "@/plugins/axios";
 import store from "@/store";
 import { AxiosResponse } from "axios";
 
-@Module({ dynamic: true, store: store, name: "toiModule", namespaced: true })
+@Module({
+  dynamic: true,
+  store: store,
+  name: "questionModule",
+  namespaced: true
+})
 class QuestionModule extends VuexModule {
   // state
   public question: Question = {
