@@ -4,42 +4,45 @@
       <v-expansion-panel-header class="title">
         Step {{ s.no }} {{ s.name }}
       </v-expansion-panel-header>
-      <v-expansion-panel-content>
+      <v-expansion-panel-content class="ma-0 pa-0">
         <v-list-item
           three-line
           v-for="(q, index) in filterdQuestions(s.no)"
           :key="index"
           class="text-left"
         >
-          <!-- TODO UIの整理、調整  -->
-          <v-list-item-content>
-            <v-list-item-subtitle>
-              <v-row justify="start" class="ma-0 mb-3">
-                <v-list-item-title
-                  class="title font-weight-bold pa-3 primary"
-                  style="border-radius:25px;"
-                  >Question</v-list-item-title
-                >
+          <div>
+            <v-row justify="start" class="ma-0">
+              <v-list-item-title class="title font-weight-bold mb-1">
+                Question
+                <v-divider class="primary"></v-divider>
+              </v-list-item-title>
+            </v-row>
+            <v-row justify="start" class="subtitle-1 ma-0 mb-1">
+              {{ q.title }}
+            </v-row>
+            <v-row justify="start" class="ma-0">
+              <v-list-item-title class="title font-weight-bold mb-1">
+                Answer
+                <v-divider class="red accent-1"></v-divider>
+              </v-list-item-title>
+            </v-row>
+            <div v-if="isExistAnswers(q.id)" class="mb-3">
+              <v-row
+                v-for="(a, index) in filterdAnswers(q.id)"
+                :key="index"
+                justify="start"
+                class="subtitle-1 ma-0 mb-1"
+              >
+                {{ a.answer }}
               </v-row>
-              <v-row justify="start" class="ma-0 mb-3 subtitle-1 mb-5">
-                {{ q.title }}
+            </div>
+            <div v-else class="mb-3">
+              <v-row justify="start" class="ma-0 mb-3 subtitle-1">
+                未回答
               </v-row>
-            </v-list-item-subtitle>
-            <v-list-item-subtitle v-if="isExistAnswers(q.id)">
-              <v-row justify="start" class="ma-0 mb-3">
-                <v-list-item-title
-                  class="title font-weight-bold pa-3 accent"
-                  style="border-radius:25px;"
-                  >Answer</v-list-item-title
-                >
-              </v-row>
-              <div v-for="(a, index) in filterdAnswers(q.id)" :key="index">
-                <v-row justify="start" class="ma-0 mb-3 subtitle-1">
-                  {{ a.answer }}
-                </v-row>
-              </div>
-            </v-list-item-subtitle>
-          </v-list-item-content>
+            </div>
+          </div>
         </v-list-item>
       </v-expansion-panel-content>
     </v-expansion-panel>
@@ -77,3 +80,9 @@ export default class AnswerDetail extends Vue {
   }
 }
 </script>
+
+<style lang="scss">
+.v-expansion-panel-content__wrap {
+  padding: 8px;
+}
+</style>
