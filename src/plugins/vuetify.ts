@@ -11,7 +11,7 @@ Vue.use(Vuetify);
 
 const opts: VuetifyPreset = {
   theme: {
-    dark: false
+    dark: true
   },
   icons: {
     iconfont: "mdi" || "md" || "fa"
