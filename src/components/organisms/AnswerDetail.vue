@@ -1,24 +1,48 @@
 <template>
-  <v-expansion-panels multiple accordion v-model="panel">
+  <v-expansion-panels multiple v-model="panel">
     <v-expansion-panel v-for="(s, index) in stepMap" :key="index">
       <v-expansion-panel-header class="title">
         Step {{ s.no }} {{ s.name }}
       </v-expansion-panel-header>
-      <v-expansion-panel-content>
+      <v-expansion-panel-content class="ma-0 pa-0">
         <v-list-item
           three-line
           v-for="(q, index) in filterdQuestions(s.no)"
           :key="index"
+          class="text-left"
         >
-          <!-- TODO UIの整理、調整  -->
-          <v-list-item-content>
-            <v-list-item-subtitle>Q. {{ q.title }}</v-list-item-subtitle>
-            <v-list-item-subtitle
-              v-for="(a, index) in filterdAnswers(q.id)"
-              :key="index"
-              >A. {{ a.answer }}</v-list-item-subtitle
-            >
-          </v-list-item-content>
+          <div>
+            <v-row justify="start" class="ma-0">
+              <v-list-item-title class="title font-weight-bold mb-1">
+                Question
+                <v-divider class="primary"></v-divider>
+              </v-list-item-title>
+            </v-row>
+            <v-row justify="start" class="subtitle-1 ma-0 mb-1">
+              {{ q.title }}
+            </v-row>
+            <v-row justify="start" class="ma-0">
+              <v-list-item-title class="title font-weight-bold mb-1">
+                Answer
+                <v-divider class="red accent-1"></v-divider>
+              </v-list-item-title>
+            </v-row>
+            <div v-if="isExistAnswers(q.id)" class="mb-3">
+              <v-row
+                v-for="(a, index) in filterdAnswers(q.id)"
+                :key="index"
+                justify="start"
+                class="subtitle-1 ma-0 mb-1"
+              >
+                {{ a.answer }}
+              </v-row>
+            </div>
+            <div v-else class="mb-3">
+              <v-row justify="start" class="ma-0 mb-3 subtitle-1">
+                未回答
+              </v-row>
+            </div>
+          </div>
         </v-list-item>
       </v-expansion-panel-content>
     </v-expansion-panel>
@@ -47,5 +71,18 @@ export default class AnswerDetail extends Vue {
     if (isUndefined(this.answerHead.answers)) return [];
     return this.answerHead.answers!.filter(a => a.questionId === questionId);
   }
+  private isExistAnswers(questionId: string): boolean {
+    if (isUndefined(this.answerHead.answers)) return false;
+    return (
+      this.answerHead.answers!.filter(a => a.questionId === questionId)
+        .length !== 0
+    );
+  }
 }
 </script>
+
+<style lang="scss">
+.v-expansion-panel-content__wrap {
+  padding: 8px;
+}
+</style>
