@@ -1,8 +1,8 @@
 <template>
   <v-card class="mb-4">
-    <v-row justify="center" dense>
-      <v-col cols="4" class="pa-0">
-        <v-img class="radious" :src="book.pictureUrl"></v-img>
+    <v-row dense>
+      <v-col cols="4" class="pa-0 pl-1">
+        <v-img :src="book.pictureUrl" />
       </v-col>
       <v-col cols="8" class="d-flex flex-column pa-0 pl-1">
         <v-card-text class="text-left pa-0">
@@ -13,9 +13,9 @@
         </v-card-text>
         <v-card-text
           v-if="getAuthor(book.author) !== ''"
-          class="text-left pa-0"
+          class="text-left pa-1"
         >
-          <v-card-title class="caption pa-1">
+          <v-card-title class="caption pa-0">
             <v-icon class="mr-2" color="black" size="15">
               fa-pencil-alt
             </v-icon>
@@ -24,9 +24,9 @@
         </v-card-text>
         <v-card-text
           v-if="getCategory(book.category) !== ''"
-          class="text-left pa-0"
+          class="text-left pa-1"
         >
-          <v-card-title class="caption pa-1">
+          <v-card-title class="caption pa-0">
             <v-icon class="mr-2" color="black" size="15">
               fa-book
             </v-icon>
