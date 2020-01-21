@@ -1,13 +1,27 @@
 # biztoi_front_ts
 
-## Project setup
+## Project setup front
 ```
 yarn install
+yarn openapi:sync
+yarn openapi
+```
+
+## Project setup api
+```
+docker-compose up -d
 ```
 
 ### Compiles and hot-reloads for development
+
+#### Repositoryのopenapi versionに合わせてビルドする
 ```
-yarn serve
+yarn serve:sync
+```
+
+#### Submoduleの最新openapi versionに合わせてビルドする
+```
+yarn serve:update
 ```
 
 ### Compiles and minifies for production
