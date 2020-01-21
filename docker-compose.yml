@@ -1,10 +1,10 @@
 version: "3"
 services:
   api:
-    image: registry.gitlab.com/rrrtcdish2/biztoi_api/feature/back:latest
-    environment:
-      SPRING_ENVIRONMENT: "dev"
-      SPRING_DATASOURCE_URL: "jdbc:mysql://db:3306/BizToi"
+    image: registry.gitlab.com/rrrtcdish2/biztoi_api_mock/master:latest
+#    environment:
+#      SPRING_ENVIRONMENT: "dev"
+#      SPRING_DATASOURCE_URL: "jdbc:mysql://db:3306/BizToi"
     ports:
       - 8000:8000
     #    volumes:
