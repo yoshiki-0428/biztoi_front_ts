@@ -12,25 +12,25 @@
           ></v-card-title>
         </v-card-text>
         <v-card-text
-          v-if="getAuthor(book.author) !== ''"
+          v-if="Array.isArray(book.author) && book.author.length >= 1"
           class="text-left pa-1"
         >
           <v-card-title class="caption pa-0">
             <v-icon class="mr-2" color="black" size="12">
               fa-pencil-alt
             </v-icon>
-            {{ getAuthor(book.author) }}
+            {{ joinArray(book.author) }}
           </v-card-title>
         </v-card-text>
         <v-card-text
-          v-if="getCategory(book.category) !== ''"
+          v-if="Array.isArray(book.category) && book.category.length >= 1"
           class="text-left pa-1"
         >
           <v-card-title class="caption pa-0">
             <v-icon class="mr-2" color="black" size="12">
               fa-book
             </v-icon>
-            {{ getCategory(book.category) }}
+            {{ joinArray(book.category) }}
           </v-card-title>
         </v-card-text>
         <v-spacer></v-spacer>
@@ -58,7 +58,7 @@ import ShareIconButton from "@/components/atoms/ShareIconButton.vue";
 @Component({
   components: { ShareIconButton }
 })
-export default class BookOverView extends Vue {
+export default class BookDetail extends Vue {
   @Prop({ required: true }) private book!: Book;
   private isActive: boolean = false;
   private get getColor(): string {
@@ -68,11 +68,8 @@ export default class BookOverView extends Vue {
     this.book.favorite = !this.book.favorite;
     this.onClick({ id: this.book.id, active: this.book.favorite });
   }
-  private getAuthor(author: string[]): string | undefined | null {
-    return author.join();
-  }
-  private getCategory(category: string[]): string | undefined | null {
-    return category.join();
+  private joinArray(ary: string[]): string | undefined | null {
+    return ary.join();
   }
   @Emit("on-click-favorite")
   private onClick(sendLikeInfo: SendLikeInfo) {}
