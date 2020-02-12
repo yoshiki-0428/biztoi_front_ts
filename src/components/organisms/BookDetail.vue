@@ -1,40 +1,48 @@
 <template>
   <v-card class="mb-4">
     <v-row dense>
-      <v-col cols="4" class="pa-0 pl-1">
+      <v-col :cols="colImg" class="pa-0 pl-1">
         <v-img height="100%" :src="book.pictureUrl" />
       </v-col>
-      <v-col cols="8" class="d-flex flex-column pa-0 pl-1">
-        <v-card-text class="text-left pa-0">
+      <v-col :cols="colText" class="d-flex flex-column">
+        <v-card-text class="text-left pa-1 pl-1">
           <v-card-title
             v-text="book.title"
-            class="font-weight-bold subtitle-1 pa-1"
+            class="font-weight-bold pa-0 subtitle-2"
           ></v-card-title>
         </v-card-text>
         <v-card-text
-          v-if="Array.isArray(book.author) && book.author.length >= 1"
-          class="text-left pa-1"
+          v-if="
+            Array.isArray(book.author) &&
+              book.author.length >= 1 &&
+              isMinimum == false
+          "
+          class="alignText pa-1 ml-1"
         >
           <v-card-title class="caption pa-0">
-            <v-icon class="mr-2" color="black" size="12">
+            <v-icon class="mr-1" color="black" size="12">
               fa-pencil-alt
             </v-icon>
             {{ joinArray(book.author) }}
           </v-card-title>
         </v-card-text>
         <v-card-text
-          v-if="Array.isArray(book.category) && book.category.length >= 1"
-          class="text-left pa-1"
+          v-if="
+            Array.isArray(book.category) &&
+              book.category.length >= 1 &&
+              isMinimum == false
+          "
+          class="text-left pa-1 ml-1"
         >
           <v-card-title class="caption pa-0">
-            <v-icon class="mr-2" color="black" size="12">
+            <v-icon class="mr-1" color="black" size="12">
               fa-book
             </v-icon>
             {{ joinArray(book.category) }}
           </v-card-title>
         </v-card-text>
         <v-spacer></v-spacer>
-        <v-card-actions>
+        <v-card-actions class="pa-0 mb-1">
           <v-spacer></v-spacer>
           <v-btn icon :href="book.linkUrl">
             <v-icon>fa-share</v-icon>
@@ -43,6 +51,7 @@
             <v-icon :color="getColor">mdi-heart</v-icon>
           </v-btn>
           <share-icon-button
+            class="mr-1"
             :text="`BizToiアプリで${book.title}の本詳細を見る`"
           />
         </v-card-actions>
@@ -52,13 +61,29 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from "vue-property-decorator";
+import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
 import { Book, SendLikeInfo } from "@/axios/biztoi";
 import ShareIconButton from "@/components/atoms/ShareIconButton.vue";
+import { watch } from "fs";
 @Component({
   components: { ShareIconButton }
 })
 export default class BookDetail extends Vue {
+  @Prop({ default: false }) private isMinimum!: boolean;
+  private get colImg(): Number {
+    if (this.isMinimum) {
+      return 2;
+    } else {
+      return 4;
+    }
+  }
+  private get colText(): Number {
+    if (this.isMinimum) {
+      return 10;
+    } else {
+      return 8;
+    }
+  }
   @Prop({ required: true }) private book!: Book;
   private isActive: boolean = false;
   private get getColor(): string {
