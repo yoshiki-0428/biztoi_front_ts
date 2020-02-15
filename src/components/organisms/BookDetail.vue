@@ -5,7 +5,7 @@
         <v-img height="100%" :src="book.pictureUrl" />
       </v-col>
       <v-col :cols="colText" class="d-flex flex-column">
-        <v-card-text class="text-left pa-1 pl-1">
+        <v-card-text :class="alignText">
           <v-card-title
             v-text="book.title"
             class="font-weight-bold pa-0 subtitle-2"
@@ -17,10 +17,10 @@
               book.author.length >= 1 &&
               isMinimum == false
           "
-          class="alignText pa-1 ml-1"
+          :class="alignText"
         >
-          <v-card-title class="caption pa-0">
-            <v-icon class="mr-1" color="black" size="12">
+          <v-card-title :class="infoSize">
+            <v-icon class="mr-2" color="black" size="10">
               fa-pencil-alt
             </v-icon>
             {{ joinArray(book.author) }}
@@ -32,18 +32,18 @@
               book.category.length >= 1 &&
               isMinimum == false
           "
-          class="text-left pa-1 ml-1"
+          :class="alignText"
         >
-          <v-card-title class="caption pa-0">
-            <v-icon class="mr-1" color="black" size="12">
+          <v-card-title :class="infoSize">
+            <v-icon class="mr-2" color="black" size="10">
               fa-book
             </v-icon>
             {{ joinArray(book.category) }}
           </v-card-title>
         </v-card-text>
-        <v-spacer></v-spacer>
+        <v-spacer />
         <v-card-actions class="pa-0 mb-1">
-          <v-spacer></v-spacer>
+          <v-spacer />
           <v-btn icon :href="book.linkUrl">
             <v-icon>fa-share</v-icon>
           </v-btn>
@@ -51,7 +51,6 @@
             <v-icon :color="getColor">mdi-heart</v-icon>
           </v-btn>
           <share-icon-button
-            class="mr-1"
             :text="`BizToiアプリで${book.title}の本詳細を見る`"
           />
         </v-card-actions>
@@ -61,23 +60,24 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
+import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { Book, SendLikeInfo } from "@/axios/biztoi";
 import ShareIconButton from "@/components/atoms/ShareIconButton.vue";
-import { watch } from "fs";
 @Component({
   components: { ShareIconButton }
 })
 export default class BookDetail extends Vue {
+  alignText: string = "pa-1 ml-1 text-left";
+  infoSize: string = "caption pa-0";
   @Prop({ default: false }) private isMinimum!: boolean;
-  private get colImg(): Number {
+  private get colImg(): number {
     if (this.isMinimum) {
       return 2;
     } else {
       return 4;
     }
   }
-  private get colText(): Number {
+  private get colText(): number {
     if (this.isMinimum) {
       return 10;
     } else {
