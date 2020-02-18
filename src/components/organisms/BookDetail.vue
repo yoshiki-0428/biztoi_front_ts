@@ -44,7 +44,7 @@
         <v-spacer />
         <v-card-actions class="pa-0 mb-1">
           <v-spacer />
-          <v-btn icon :href="book.linkUrl">
+          <v-btn icon v-if="book.linkUrl" :href="book.linkUrl" target="_blank">
             <v-icon>fa-share</v-icon>
           </v-btn>
           <v-btn icon @click="toggleIsActive">
@@ -71,18 +71,10 @@ export default class BookDetail extends Vue {
   infoSize: string = "caption pa-0";
   @Prop({ default: false }) private isMinimum!: boolean;
   private get colImg(): number {
-    if (this.isMinimum) {
-      return 2;
-    } else {
-      return 4;
-    }
+    return this.isMinimum ? 2 : 4;
   }
   private get colText(): number {
-    if (this.isMinimum) {
-      return 10;
-    } else {
-      return 8;
-    }
+    return this.isMinimum ? 10 : 8;
   }
   @Prop({ required: true }) private book!: Book;
   private isActive: boolean = false;

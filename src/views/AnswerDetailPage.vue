@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <book-detail isMinimum="true"></book-detail>
+    <book-detail :is-minimum="true"></book-detail>
     <answer-detail></answer-detail>
   </v-container>
 </template>
