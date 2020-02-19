@@ -2,8 +2,8 @@
   <v-card class="mb-4" elevation="2">
     <v-card-title>{{ title }}</v-card-title>
     <v-slide-group v-model="books">
-      <v-slide-item v-for="book in books" :key="book.id">
-        <v-card elevation="0" :to="'/top/book/' + book.id" class="ma-2">
+      <v-slide-item v-for="book in books" :key="book.isbn">
+        <v-card elevation="0" :to="'/top/book/' + book.isbn" class="ma-2">
           <v-img height="120" width="80" :src="book.pictureUrl" />
         </v-card>
       </v-slide-item>

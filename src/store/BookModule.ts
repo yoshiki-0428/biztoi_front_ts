@@ -16,35 +16,34 @@ import BookUtil, { IVolume, IVolumes } from "@/util/BookUtil";
 class BookModule extends VuexModule {
   // state
   public book: Book = {
-    id: "",
     isbn: "",
     detail: "",
     pictureUrl: "",
     linkUrl: "",
     title: "",
-    author: [],
-    category: [],
+    authors: [],
+    categories: [],
     favorite: false
   };
   public books: Book[] = [];
   public searchBooks: Book[] = [];
 
   @Action
-  public async getBook(id: string) {
+  public async getBook(isbn: string) {
     // 以前検索したStoreから検索, API検索
-    const book1: Book | undefined = this.books.find(book => book.id === id);
+    const book1: Book | undefined = this.books.find(book => book.isbn === isbn);
     if (book1) {
       this.SET_BOOK(book1);
       return;
     }
     const book2: Book | undefined = this.searchBooks.find(
-      searchBook => searchBook.id === id
+      searchBook => searchBook.isbn === isbn
     );
     if (book2) {
       this.SET_BOOK(book2);
       return;
     }
-    const res: AxiosResponse<Book> = await baseApi.getBookId(id);
+    const res: AxiosResponse<Book> = await baseApi.getBookId(isbn);
     if (res.data) {
       this.SET_BOOK(res.data);
       return;

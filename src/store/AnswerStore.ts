@@ -25,13 +25,12 @@ class AnswerStore extends VuexModule {
   // ユーザが回答済み回答ヘッダ、既に回答済みの場合は回答も含まれる
   public answerHead: AnswerHead = {
     id: "",
+    bookId: "",
     userId: "",
     publishFlg: true,
     inserted: "",
     answers: [],
     modified: "",
-    toiId: "",
-    category: "",
     likeInfo: { active: false, sum: 0 }
   };
 
@@ -78,7 +77,6 @@ class AnswerStore extends VuexModule {
         id: UUID.v4(),
         answer: "",
         answerHeadId: this.answerHead.id,
-        answerType: "",
         inserted: "",
         orderId: "0",
         questionId: params.questionId
@@ -93,12 +91,12 @@ class AnswerStore extends VuexModule {
   @Action
   public async postAnswerHead(params: { bookId: string }) {
     const answerHead: AnswerHead = {
+      id: "",
+      bookId: "",
+      userId: "",
       answers: undefined,
-      category: undefined,
       inserted: new Date().toDateString(),
       publishFlg: true,
-      id: "",
-      userId: "",
       likeInfo: { active: false, sum: 0 }
     };
     const res: AxiosResponse<AnswerHead> = await baseApi.postAnswerHead(
@@ -144,13 +142,12 @@ class AnswerShareStore extends VuexModule {
   public answerHeads: AnswerHead[] = [];
   public answerHead: AnswerHead = {
     id: "",
+    bookId: "",
     userId: "",
     publishFlg: true,
     inserted: "",
     answers: [],
     modified: "",
-    toiId: "",
-    category: "",
     likeInfo: { active: false, sum: 0 }
   };
 

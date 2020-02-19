@@ -20,7 +20,7 @@
       <v-btn
         text
         color="primary"
-        :to="'/top/book/' + bookId + '/answer/' + answerHead.id"
+        :to="'/top/book/' + answerHead.bookId + '/answer/' + answerHead.id"
         >詳細を見る</v-btn
       >
       <v-btn icon @click="toggleIsActive">
@@ -46,7 +46,6 @@ import ShareIconButton from "@/components/atoms/ShareIconButton.vue";
 })
 export default class AnswerOverView extends Vue {
   @Prop({ required: true }) private answerHead!: AnswerHead;
-  @Prop() private bookId!: string;
   private get getColor(): string {
     return this.answerHead.likeInfo.active ? "primary" : "";
   }

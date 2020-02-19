@@ -4,14 +4,13 @@ import { isNil } from "lodash";
 export default class BookUtil {
   static bookConverter(volume: IVolume): Book {
     return {
-      id: volume.id || "",
       isbn: this.getIsbn(volume),
       detail: this.getDetail(volume.volumeInfo!),
       pictureUrl: this.getPictureurl(volume.volumeInfo!),
       linkUrl: volume.volumeInfo!.infoLink || "No link",
       title: volume.volumeInfo!.title || "No title",
-      author: volume.volumeInfo!.authors || [],
-      category: volume.volumeInfo!.categories || [],
+      authors: volume.volumeInfo!.authors || [],
+      categories: volume.volumeInfo!.categories || [],
       favorite: false
     };
   }

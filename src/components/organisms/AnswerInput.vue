@@ -103,12 +103,11 @@ export default class AnswerInput extends Vue {
     // TODO orderId answersのorderIdのMax値を取得して+1する
     this.answers!.push({
       id: UUID.v4(),
+      orderId: "",
       answer: "",
       answerHeadId: this.answers[0].answerHeadId,
-      answerType: "",
-      inserted: "",
-      orderId: "",
-      questionId: this.answers[0].questionId
+      questionId: this.answers[0].questionId,
+      inserted: ""
     });
   }
   private deleteAnswer(item: Answer) {
