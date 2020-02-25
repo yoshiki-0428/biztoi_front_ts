@@ -26,6 +26,7 @@ import router from "@/router";
   }
 })
 export default class BookDetailPage extends Vue {
+  // ToDo URL ex(/top/book/bookId)
   private paths: IBreadcrumbs[] = [
     {
       name: "top",
