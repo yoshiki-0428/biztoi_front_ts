@@ -8,7 +8,8 @@
           :to="item.path"
           class="subtitle-1"
         >
-          {{ item.name }}
+          <v-icon v-if="item.name === 'top'" size="20">mdi-home</v-icon>
+          <v-card-text v-else>{{ item.name }}</v-card-text>
         </v-breadcrumbs-item>
       </template>
     </v-breadcrumbs>

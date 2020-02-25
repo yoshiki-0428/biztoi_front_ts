@@ -23,7 +23,7 @@ export default class FavoritePage extends Vue {
   // URL ex(/top/favorite)
   private paths: IBreadcrumbs[] = [
     {
-      name: "TOPへ戻る",
+      name: "top",
       path: "/top",
       disabled: false
     }

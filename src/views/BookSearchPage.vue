@@ -23,7 +23,7 @@ export default class BookSearchPage extends Vue {
   // ToDo URL ex(/top/search)
   private paths: IBreadcrumbs[] = [
     {
-      name: "TOPへ戻る",
+      name: "top",
       path: "/top",
       disabled: false
     }
