@@ -25,7 +25,6 @@ export interface IBreadcrumbs {
 }
 @Component
 export default class Breadcrumb extends Vue {
-  // private paths: string[] = router.currentRoute.path.split("/");
   @Prop({ default: () => [] })
   private items!: IBreadcrumbs[];
 }

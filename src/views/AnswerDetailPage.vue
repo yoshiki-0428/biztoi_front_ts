@@ -39,7 +39,7 @@ export default class AnswerDetailPage extends Vue {
       name: router.currentRoute.params.answerHeadId,
       path: `/top/book/${router.currentRoute.params.bookId}
       /${router.currentRoute.params.answerHeadId}`,
-      disabled: false
+      disabled: true
     }
   ];
 }

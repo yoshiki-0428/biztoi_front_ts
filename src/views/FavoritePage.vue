@@ -23,15 +23,10 @@ export default class FavoritePage extends Vue {
   // URL ex(/top/favorite)
   private paths: IBreadcrumbs[] = [
     {
-      name: "top",
+      name: "TOPへ戻る",
       path: "/top",
       disabled: false
     }
-    // {
-    //   name: "accont",
-    //   path: `/top/${router.currentRoute.params.accountId}`,
-    //   disabled: false
-    // }
   ];
 }
 </script>

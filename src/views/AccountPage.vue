@@ -29,8 +29,8 @@ export default class TopPage extends Vue {
     }
     // {
     //   name: "accont",
-    //   path: `/top/${router.currentRoute.params.accountId}`,
-    //   disabled: false
+    //   path: `/top/${router.currentRoute.params.userId}`,
+    //   disabled: true
     // }
   ];
 }

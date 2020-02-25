@@ -36,7 +36,7 @@ export default class BookDetailPage extends Vue {
     {
       name: router.currentRoute.params.bookId,
       path: `/top/book/${router.currentRoute.params.bookId}`,
-      disabled: false
+      disabled: true
     }
   ];
 }
