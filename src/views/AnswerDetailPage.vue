@@ -7,13 +7,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import BookDetail from "@/container/BookDetail";
 import AnswerDetail from "@/container/AnswerDetail";
 import Breadcrumb, {
   IBreadcrumbs
 } from "@/components/organisms/Breadcrumb.vue";
-import router from "@/router";
 
 @Component({
   components: {
@@ -23,6 +22,11 @@ import router from "@/router";
   }
 })
 export default class AnswerDetailPage extends Vue {
+  @Prop()
+  "bookId": string;
+  @Prop()
+  "answerHeadId": string;
+
   // URL ex(/top/book/bookId/answer/answerHeadId)
   private paths: IBreadcrumbs[] = [
     {
@@ -31,14 +35,13 @@ export default class AnswerDetailPage extends Vue {
       disabled: false
     },
     {
-      name: router.currentRoute.params.bookId,
-      path: `/top/book/${router.currentRoute.params.bookId}`,
+      name: this.bookId,
+      path: `/top/book/${this.bookId}`,
       disabled: false
     },
     {
-      name: router.currentRoute.params.answerHeadId,
-      path: `/top/book/${router.currentRoute.params.bookId}
-      /${router.currentRoute.params.answerHeadId}`,
+      name: this.answerHeadId,
+      path: `/top/book/${this.bookId}/answer/${this.answerHeadId}`,
       disabled: true
     }
   ];

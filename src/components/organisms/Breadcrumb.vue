@@ -17,7 +17,6 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import router from "@/router";
 
 export interface IBreadcrumbs {
   name: string;

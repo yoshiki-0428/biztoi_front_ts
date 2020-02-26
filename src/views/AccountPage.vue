@@ -6,12 +6,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import Account from "@/components/organisms/Account.vue";
 import Breadcrumb, {
   IBreadcrumbs
 } from "@/components/organisms/Breadcrumb.vue";
-import router from "@/router";
 
 @Component({
   components: {
@@ -19,7 +18,9 @@ import router from "@/router";
     Breadcrumb
   }
 })
-export default class TopPage extends Vue {
+export default class AccountPage extends Vue {
+  @Prop()
+  "userId": string;
   // URL ex(/top/account)
   private paths: IBreadcrumbs[] = [
     {
@@ -29,7 +30,7 @@ export default class TopPage extends Vue {
     }
     // {
     //   name: "accont",
-    //   path: `/top/${router.currentRoute.params.userId}`,
+    //   path: `/top/${this.userId}`,
     //   disabled: true
     // }
   ];

@@ -11,7 +11,6 @@ import BookSearch from "@/container/BookSearch";
 import Breadcrumb, {
   IBreadcrumbs
 } from "@/components/organisms/Breadcrumb.vue";
-import router from "@/router";
 
 @Component({
   components: {

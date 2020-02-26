@@ -15,7 +15,6 @@ import AnswerOverViewList from "@/container/AnswerOverViewList";
 import Breadcrumb, {
   IBreadcrumbs
 } from "@/components/organisms/Breadcrumb.vue";
-import router from "@/router";
 
 @Component({
   components: {
@@ -26,6 +25,8 @@ import router from "@/router";
   }
 })
 export default class BookDetailPage extends Vue {
+  @Prop()
+  private "bookId": string;
   // ToDo URL ex(/top/book/bookId)
   private paths: IBreadcrumbs[] = [
     {
@@ -34,8 +35,8 @@ export default class BookDetailPage extends Vue {
       disabled: false
     },
     {
-      name: router.currentRoute.params.bookId,
-      path: `/top/book/${router.currentRoute.params.bookId}`,
+      name: this.bookId,
+      path: `/top/book/${this.bookId}`,
       disabled: true
     }
   ];
