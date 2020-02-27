@@ -26,7 +26,7 @@ class QuestionModule extends VuexModule {
     detail: "",
     example: "",
     required: true,
-    step: 0,
+    step: "",
     answerType: ""
   };
   public questionList: Question[] = [];

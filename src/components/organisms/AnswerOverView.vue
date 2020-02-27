@@ -3,10 +3,14 @@
     <!-- TODO 表示内容を精査 -->
     <v-card-title>
       <v-avatar color="accent" size="30" class="mr-1">
-        <v-img :src="answerHead.userInfo.pictureUrl"></v-img>
+        <!-- TODO userInfoがからのときはデフォルト画像 -->
+        <v-img
+          :src="answerHead.userInfo.pictureUrl"
+          v-if="answerHead.userInfo !== null"
+        ></v-img>
       </v-avatar>
-      <span>{{ answerHead.userInfo.nickname }}</span>
-      <span class="title">{{ answerHead.answers[0].answer }}</span>
+      <!--      <span>{{ answerHead.userInfo.nickname }}</span>-->
+      <!--      <span class="title">{{ answerHead.answers[0].answer }}</span>-->
     </v-card-title>
     <v-card-text
       v-for="(answer, i) in answerHead.answers"
@@ -29,9 +33,7 @@
       <span class="subheading mr-2">{{ answerHead.likeInfo.sum }}</span>
       <share-icon-button
         :url="shareUrl"
-        :text="
-          `BizToiアプリで${answerHead.userInfo.nickname}さんの回答内容を見る`
-        "
+        :text="`BizToiアプリで回答内容を見る`"
       />
     </v-card-actions>
   </div>
