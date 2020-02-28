@@ -26,7 +26,12 @@ export default class AnswerDetailPage extends Vue {
   "bookId": string;
   @Prop()
   "answerHeadId": string;
-
+  private cutDisplayName(displayName: string): string {
+    const cutNum: number = 5;
+    return displayName.length > cutNum
+      ? `${displayName.substring(0, cutNum)} ... `
+      : displayName;
+  }
   // URL ex(/top/book/bookId/answer/answerHeadId)
   private paths: IBreadcrumbs[] = [
     {
@@ -35,12 +40,12 @@ export default class AnswerDetailPage extends Vue {
       disabled: false
     },
     {
-      name: this.bookId,
+      name: this.cutDisplayName(this.bookId),
       path: `/top/book/${this.bookId}`,
       disabled: false
     },
     {
-      name: this.answerHeadId,
+      name: this.cutDisplayName(this.answerHeadId),
       path: `/top/book/${this.bookId}/answer/${this.answerHeadId}`,
       disabled: true
     }

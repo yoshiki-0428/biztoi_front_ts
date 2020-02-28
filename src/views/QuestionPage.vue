@@ -23,6 +23,13 @@ export default class QuestionPage extends Vue {
   "bookId": string;
   @Prop()
   "questionId": string;
+
+  private cutDisplayName(displayName: string): string {
+    const cutNum: number = 5;
+    return displayName.length > cutNum
+      ? `${displayName.substring(0, cutNum)} ... `
+      : displayName;
+  }
   // ToDo URL ex(/top/book/bookId/toi/questions/questionId)
   private paths: IBreadcrumbs[] = [
     {
@@ -31,12 +38,12 @@ export default class QuestionPage extends Vue {
       disabled: false
     },
     {
-      name: this.bookId,
+      name: this.cutDisplayName(this.bookId),
       path: `/top/book/${this.bookId}`,
       disabled: false
     },
     {
-      name: this.questionId,
+      name: this.cutDisplayName(this.questionId),
       path: `/top/book/toi/questions/${this.questionId}`,
       disabled: false
     }

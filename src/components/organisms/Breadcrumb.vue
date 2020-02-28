@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-breadcrumbs :items="items" class="pa-1">
+    <v-breadcrumbs large :items="items" class="pa-1 mb-3">
       <template v-slot:item="{ item }">
         <v-breadcrumbs-item exact :disabled="item.disabled" :to="item.path">
-          <v-icon v-if="item.name === 'top'" size="25">mdi-home</v-icon>
-          <v-card-text v-else class="subtitle-1">{{ item.name }}</v-card-text>
+          <v-icon v-if="item.name === 'top'" size="20">mdi-home</v-icon>
+          <v-list-item-title v-else>{{ item.name }}</v-list-item-title>
         </v-breadcrumbs-item>
       </template>
     </v-breadcrumbs>

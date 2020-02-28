@@ -27,6 +27,13 @@ import Breadcrumb, {
 export default class BookDetailPage extends Vue {
   @Prop()
   private "bookId": string;
+
+  private cutDisplayName(displayName: string): string {
+    const cutNum: number = 5;
+    return displayName.length > cutNum
+      ? `${displayName.substring(0, cutNum)} ... `
+      : displayName;
+  }
   // ToDo URL ex(/top/book/bookId)
   private paths: IBreadcrumbs[] = [
     {
@@ -35,7 +42,7 @@ export default class BookDetailPage extends Vue {
       disabled: false
     },
     {
-      name: this.bookId,
+      name: this.cutDisplayName(this.bookId),
       path: `/top/book/${this.bookId}`,
       disabled: true
     }
