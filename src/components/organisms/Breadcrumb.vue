@@ -4,7 +4,7 @@
       <template v-slot:item="{ item }">
         <v-breadcrumbs-item exact :disabled="item.disabled" :to="item.path">
           <v-icon v-if="item.name === 'top'" size="20">mdi-home</v-icon>
-          <v-list-item-title v-else>{{ item.name }}</v-list-item-title>
+          <v-breadcrumbs-item v-else>{{ item.name }}</v-breadcrumbs-item>
         </v-breadcrumbs-item>
       </template>
     </v-breadcrumbs>
