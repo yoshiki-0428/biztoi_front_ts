@@ -20,17 +20,20 @@ const routes = [
       {
         path: "book/:bookId",
         name: "bookDetail",
-        component: () => import("@/views/BookDetailPage.vue")
+        component: () => import("@/views/BookDetailPage.vue"),
+        props: true
       },
       {
         path: "book/:bookId/answer/:answerHeadId",
         name: "answerDetail",
-        component: () => import("@/views/AnswerDetailPage.vue")
+        component: () => import("@/views/AnswerDetailPage.vue"),
+        props: true
       },
       {
         path: "book/:bookId/toi/questions/:questionId",
         name: "toi",
-        component: () => import("@/views/QuestionPage.vue")
+        component: () => import("@/views/QuestionPage.vue"),
+        props: true
       },
       {
         path: "favorite",
@@ -40,7 +43,8 @@ const routes = [
       {
         path: "account",
         name: "account",
-        component: () => import("@/views/AccountPage.vue")
+        component: () => import("@/views/AccountPage.vue"),
+        props: true
       },
       {
         path: "search",
