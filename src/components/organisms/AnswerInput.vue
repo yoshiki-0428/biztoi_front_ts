@@ -73,7 +73,6 @@
 <script lang="ts">
 import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { Answer, Question } from "@/axios/biztoi";
-import UUID from "uuid";
 import size from "lodash/size";
 
 @Component
@@ -102,8 +101,12 @@ export default class AnswerInput extends Vue {
   private createEmptyAnswer() {
     // TODO orderId answersのorderIdのMax値を取得して+1する
     this.answers!.push({
-      id: UUID.v4(),
-      orderId: "",
+      id: "",
+      orderId:
+        Math.max.apply(
+          null,
+          this.answers.map(ans => ans.orderId)
+        ) + 1,
       answer: "",
       answerHeadId: this.answers[0].answerHeadId,
       questionId: this.answers[0].questionId,

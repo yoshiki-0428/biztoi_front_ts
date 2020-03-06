@@ -9,7 +9,6 @@ import { baseApi } from "@/plugins/axios";
 import store from "@/store";
 import { Answer, AnswerHead } from "@/axios/biztoi";
 import { AxiosResponse } from "axios";
-import UUID from "uuid";
 import size from "lodash/size";
 
 @Module({
@@ -70,15 +69,14 @@ class AnswerStore extends VuexModule {
       return;
     }
 
-    // TODO orderId を数字に変更する
     // Not found Answer
     this.SET_ANSWERS([
       {
-        id: UUID.v4(),
+        id: "",
         answer: "",
         answerHeadId: this.answerHead.id,
         inserted: "",
-        orderId: "0",
+        orderId: 0,
         questionId: params.questionId
       }
     ]);
@@ -95,7 +93,7 @@ class AnswerStore extends VuexModule {
       bookId: "",
       userId: "",
       answers: undefined,
-      inserted: new Date().toDateString(),
+      inserted: "",
       publishFlg: true,
       likeInfo: { active: false, sum: 0, id: "" }
     };
