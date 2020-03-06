@@ -37,14 +37,14 @@ class AnswerStore extends VuexModule {
    * ユーザが回答したAnswersをサーバに登録する
    * @param params { bookId: string; questionId: string }
    */
-  @Action
+  @Action({ rawError: true })
   public postAnswers(params: { bookId: string; questionId: string }) {
     const resStore: Answer[] = this.answers!.filter(
       (answer: Answer) => answer.questionId === params.questionId
     );
     baseApi.postAnswerMeByQuestion(
       params.bookId,
-      resStore[0].answerHeadId,
+      this.answerHead.id,
       params.questionId,
       { answers: resStore }
     );
@@ -56,14 +56,6 @@ class AnswerStore extends VuexModule {
    */
   @Action({ rawError: true })
   public async getAnswers(params: { bookId: string; questionId: string }) {
-    // Store検索
-    const resStore: Answer[] = this.answerHead.answers!.filter(
-      (answer: Answer) => answer.questionId === params.questionId
-    );
-    if (size(resStore) > 0) {
-      this.SET_ANSWERS(resStore);
-      return;
-    }
     // API検索
     const res: AxiosResponse<Answer[]> = await baseApi.getAnswerMeByQuestion(
       params.bookId,
