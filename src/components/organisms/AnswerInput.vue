@@ -99,7 +99,6 @@ export default class AnswerInput extends Vue {
   }
 
   private createEmptyAnswer() {
-    // TODO orderId answersのorderIdのMax値を取得して+1する
     this.answers!.push({
       id: "",
       orderId:

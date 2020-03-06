@@ -42,7 +42,12 @@ class AnswerStore extends VuexModule {
     const resStore: Answer[] = this.answers!.filter(
       (answer: Answer) => answer.questionId === params.questionId
     );
-    baseApi.postAnswer(params.bookId, params.questionId, { answers: resStore });
+    baseApi.postAnswerMeByQuestion(
+      params.bookId,
+      resStore[0].answerHeadId,
+      params.questionId,
+      { answers: resStore }
+    );
   }
 
   /**
@@ -55,16 +60,17 @@ class AnswerStore extends VuexModule {
     const resStore: Answer[] = this.answerHead.answers!.filter(
       (answer: Answer) => answer.questionId === params.questionId
     );
-    if (size(resStore) !== 0) {
+    if (size(resStore) > 0) {
       this.SET_ANSWERS(resStore);
       return;
     }
     // API検索
-    const res: AxiosResponse<Answer[]> = await baseApi.getAnswerByQuestion(
+    const res: AxiosResponse<Answer[]> = await baseApi.getAnswerMeByQuestion(
       params.bookId,
+      this.answerHead.id,
       params.questionId
     );
-    if (size(res.data) !== 0) {
+    if (size(res.data) > 0) {
       this.SET_ANSWERS(res.data);
       return;
     }
@@ -110,11 +116,11 @@ class AnswerStore extends VuexModule {
    */
   @Action
   public async getAnswerHead(params: { bookId: string }) {
-    const res: AxiosResponse<AnswerHead> = await baseApi.getAnswersMe(
+    const res: AxiosResponse<AnswerHead[]> = await baseApi.getAnswerHeadMeList(
       params.bookId
     );
-    if (res.data) {
-      this.SET_ANSWER_HEAD(res.data);
+    if (res.data && res.data.length > 0) {
+      this.SET_ANSWER_HEAD(res.data[0]);
     }
   }
 
@@ -150,14 +156,14 @@ class AnswerShareStore extends VuexModule {
   };
 
   @Action
-  public async getAnswerHead(params: { bookId: string; answerId: string }) {
-    const res = await baseApi.getAnswer(params.bookId, params.answerId);
+  public async getAnswerHead(params: { bookId: string; answerHeadId: string }) {
+    const res = await baseApi.getAnswerHead(params.bookId, params.answerHeadId);
     this.SET_ANSWER_HEAD(res.data);
   }
 
   @Action
   public async getAnswerHeads(params: { bookId: string }) {
-    const res: AxiosResponse<AnswerHead[]> = await baseApi.getAnswers(
+    const res: AxiosResponse<AnswerHead[]> = await baseApi.getAnswerHeadList(
       params.bookId
     );
     this.SET_ANSWER_HEADS(res.data);
