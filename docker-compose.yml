@@ -1,10 +1,12 @@
 version: "3"
 services:
   api:
-    image: registry.gitlab.com/rrrtcdish2/biztoi_api_mock/master:latest
-#    environment:
-#      SPRING_ENVIRONMENT: "dev"
-#      SPRING_DATASOURCE_URL: "jdbc:mysql://db:3306/BizToi"
+    image: registry.gitlab.com/rrrtcdish2/biztoi_api_java/feature/openapi:latest
+    environment:
+      SPRING_ENVIRONMENT: 'dev'
+      SPRING_DATASOURCE_URL: 'jdbc:postgressql://db:5432/biztoi'
+      SPRING_DATASOURCE_USERNAME: 'biztoi'
+      SPRING_DATASOURCE_PASSWORD: 'biztoi'
     ports:
       - 8000:8000
     #    volumes:
@@ -12,12 +14,10 @@ services:
     depends_on:
       - db
   db:
-    image: mysql:5.7
+    image: postgres:11-alpine
     environment:
-      MYSQL_DATABASE: BizToi
-      MYSQL_USER: biztoi
-      MYSQL_PASSWORD: biztoi
-      MYSQL_ROOT_PASSWORD: biztoi
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+      POSTGRES_DB: 'biztoi'
+      POSTGRES_USER: 'biztoi'
+      POSTGRES_PASSWORD: 'biztoi'
     ports:
-      - 3306:3306
+      - 5432:5432
