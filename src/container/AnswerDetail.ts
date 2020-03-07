@@ -17,7 +17,7 @@ export default connect({
       });
       await answerShareModule.getAnswerHead({
         bookId: router.currentRoute.params.bookId,
-        answerId: router.currentRoute.params.answerHeadId
+        answerHeadId: router.currentRoute.params.answerHeadId
       });
     }
   }

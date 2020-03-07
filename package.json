@@ -5,6 +5,7 @@
   "scripts": {
     "serve:update": "yarn openapi:update && yarn openapi && vue-cli-service serve --port 3000 --mode dev",
     "serve:sync": "yarn openapi:sync && yarn openapi && vue-cli-service serve --port 3000 --mode dev",
+    "serve:heroku": "yarn openapi:sync && yarn openapi && vue-cli-service serve --port 3000 --mode heroku",
     "serve:https": "yarn openapi && vue-cli-service serve --port 3000 --mode dev --https",
     "build": "yarn openapi && vue-cli-service build --mode production",
     "test:unit": "vue-cli-service test:unit",

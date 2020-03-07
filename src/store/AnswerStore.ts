@@ -9,7 +9,6 @@ import { baseApi } from "@/plugins/axios";
 import store from "@/store";
 import { Answer, AnswerHead } from "@/axios/biztoi";
 import { AxiosResponse } from "axios";
-import UUID from "uuid";
 import size from "lodash/size";
 
 @Module({
@@ -25,26 +24,30 @@ class AnswerStore extends VuexModule {
   // ユーザが回答済み回答ヘッダ、既に回答済みの場合は回答も含まれる
   public answerHead: AnswerHead = {
     id: "",
+    bookId: "",
     userId: "",
     publishFlg: true,
     inserted: "",
     answers: [],
     modified: "",
-    toiId: "",
-    category: "",
-    likeInfo: { active: false, sum: 0 }
+    likeInfo: { active: false, sum: 0, id: "" }
   };
 
   /**
    * ユーザが回答したAnswersをサーバに登録する
    * @param params { bookId: string; questionId: string }
    */
-  @Action
+  @Action({ rawError: true })
   public postAnswers(params: { bookId: string; questionId: string }) {
     const resStore: Answer[] = this.answers!.filter(
       (answer: Answer) => answer.questionId === params.questionId
     );
-    baseApi.postAnswer(params.bookId, params.questionId, { answers: resStore });
+    baseApi.postAnswerMeByQuestion(
+      params.bookId,
+      this.answerHead.id,
+      params.questionId,
+      { answers: resStore }
+    );
   }
 
   /**
@@ -53,34 +56,25 @@ class AnswerStore extends VuexModule {
    */
   @Action({ rawError: true })
   public async getAnswers(params: { bookId: string; questionId: string }) {
-    // Store検索
-    const resStore: Answer[] = this.answerHead.answers!.filter(
-      (answer: Answer) => answer.questionId === params.questionId
-    );
-    if (size(resStore) !== 0) {
-      this.SET_ANSWERS(resStore);
-      return;
-    }
     // API検索
-    const res: AxiosResponse<Answer[]> = await baseApi.getAnswerByQuestion(
+    const res: AxiosResponse<Answer[]> = await baseApi.getAnswerMeByQuestion(
       params.bookId,
+      this.answerHead.id,
       params.questionId
     );
-    if (size(res.data) !== 0) {
+    if (size(res.data) > 0) {
       this.SET_ANSWERS(res.data);
       return;
     }
 
-    // TODO orderId を数字に変更する
     // Not found Answer
     this.SET_ANSWERS([
       {
-        id: UUID.v4(),
+        id: "",
         answer: "",
         answerHeadId: this.answerHead.id,
-        answerType: "",
         inserted: "",
-        orderId: "0",
+        orderId: 0,
         questionId: params.questionId
       }
     ]);
@@ -93,13 +87,13 @@ class AnswerStore extends VuexModule {
   @Action
   public async postAnswerHead(params: { bookId: string }) {
     const answerHead: AnswerHead = {
-      answers: undefined,
-      category: undefined,
-      inserted: new Date().toDateString(),
-      publishFlg: true,
       id: "",
+      bookId: "",
       userId: "",
-      likeInfo: { active: false, sum: 0 }
+      answers: undefined,
+      inserted: "",
+      publishFlg: true,
+      likeInfo: { active: false, sum: 0, id: "" }
     };
     const res: AxiosResponse<AnswerHead> = await baseApi.postAnswerHead(
       params.bookId,
@@ -114,11 +108,11 @@ class AnswerStore extends VuexModule {
    */
   @Action
   public async getAnswerHead(params: { bookId: string }) {
-    const res: AxiosResponse<AnswerHead> = await baseApi.getAnswersMe(
+    const res: AxiosResponse<AnswerHead[]> = await baseApi.getAnswerHeadMeList(
       params.bookId
     );
-    if (res.data) {
-      this.SET_ANSWER_HEAD(res.data);
+    if (res.data && res.data.length > 0) {
+      this.SET_ANSWER_HEAD(res.data[0]);
     }
   }
 
@@ -144,25 +138,24 @@ class AnswerShareStore extends VuexModule {
   public answerHeads: AnswerHead[] = [];
   public answerHead: AnswerHead = {
     id: "",
+    bookId: "",
     userId: "",
     publishFlg: true,
     inserted: "",
     answers: [],
     modified: "",
-    toiId: "",
-    category: "",
-    likeInfo: { active: false, sum: 0 }
+    likeInfo: { active: false, sum: 0, id: "" }
   };
 
   @Action
-  public async getAnswerHead(params: { bookId: string; answerId: string }) {
-    const res = await baseApi.getAnswer(params.bookId, params.answerId);
+  public async getAnswerHead(params: { bookId: string; answerHeadId: string }) {
+    const res = await baseApi.getAnswerHead(params.bookId, params.answerHeadId);
     this.SET_ANSWER_HEAD(res.data);
   }
 
   @Action
   public async getAnswerHeads(params: { bookId: string }) {
-    const res: AxiosResponse<AnswerHead[]> = await baseApi.getAnswers(
+    const res: AxiosResponse<AnswerHead[]> = await baseApi.getAnswerHeadList(
       params.bookId
     );
     this.SET_ANSWER_HEADS(res.data);

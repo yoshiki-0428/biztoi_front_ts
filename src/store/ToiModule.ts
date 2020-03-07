@@ -14,14 +14,9 @@ import { AxiosResponse } from "axios";
 class ToiModule extends VuexModule {
   // state
   public toi: Toi = {
-    id: "",
-    userId: "",
-    bookId: "",
     title: "",
     detail: "",
-    publishFlg: true,
-    inserted: "",
-    modified: ""
+    publishFlg: true
   };
 
   @Action

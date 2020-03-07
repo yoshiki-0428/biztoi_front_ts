@@ -5,10 +5,7 @@ import {
   getModule,
   Module
 } from "vuex-module-decorators";
-import { Toi } from "@/axios/biztoi";
-import { baseApi } from "@/plugins/axios";
 import store from "@/store";
-import { AxiosResponse } from "axios";
 
 @Module({ dynamic: true, store: store, name: "dialogModule", namespaced: true })
 class DialogModule extends VuexModule {
