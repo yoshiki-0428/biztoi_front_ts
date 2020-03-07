@@ -63,6 +63,7 @@
 import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { Book, SendLikeInfo } from "@/axios/biztoi";
 import ShareIconButton from "@/components/atoms/ShareIconButton.vue";
+
 @Component({
   components: { ShareIconButton }
 })

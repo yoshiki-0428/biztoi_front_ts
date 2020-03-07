@@ -1,18 +1,28 @@
 <template>
-  <div>
+  <v-card>
     <v-card-title>みんなの回答一覧</v-card-title>
-    <v-card
-      v-for="(answerHead, index) in answerHeads"
-      :key="index"
-      class="mb-4"
-    >
-      <answer-over-view
-        :answer-head="answerHead"
-        :book-id="bookId"
-        @on-click-like="onClick"
-      />
-    </v-card>
-  </div>
+    <div v-if="isExsistAnswerHeads()">
+      <v-card
+        v-for="(answerHead, index) in answerHeads"
+        :key="index"
+        class="mb-4"
+      >
+        <answer-over-view
+          :answer-head="answerHead"
+          :book-id="bookId"
+          @on-click-like="onClick"
+        />
+      </v-card>
+    </div>
+    <div v-else>
+      <v-card>
+        <v-card-title class="subtitle-1">回答がありません</v-card-title>
+        <v-card-text class="text-left">
+          最初の回答者になってみませんか？
+        </v-card-text>
+      </v-card>
+    </div>
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -22,9 +32,17 @@ import AnswerOverView from "@/components/organisms/AnswerOverView.vue";
 
 @Component({ components: { AnswerOverView } })
 export default class AnswerOverViewList extends Vue {
-  @Prop({ default: () => [] }) private answerHeads: AnswerHead[] | undefined;
+  @Prop({ default: () => [] }) private answerHeads!: AnswerHead[] | undefined;
   @Prop() private bookId!: string;
   @Emit("on-click-like")
   private onClick(sendLikeInfo: SendLikeInfo) {}
+  private isExsistAnswerHeads(): boolean {
+    if (this.answerHeads) {
+      if (this.answerHeads.length <= 0 && this.answerHeads) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
 </script>
