@@ -16,10 +16,20 @@
     </div>
     <div v-else>
       <v-card>
-        <v-card-title class="subtitle-1">回答がありません</v-card-title>
+        <v-card-title class="subtitle-1">まだ回答がありません</v-card-title>
         <v-card-text class="text-left">
           最初の回答者になってみませんか？
         </v-card-text>
+        <v-card-actions>
+          <v-btn
+            :to="'/top/book/' + bookId + '/toi/questions/first'"
+            outlined
+            block
+            color="primary"
+          >
+            回答する
+          </v-btn>
+        </v-card-actions>
       </v-card>
     </div>
   </v-card>
@@ -38,11 +48,11 @@ export default class AnswerOverViewList extends Vue {
   private onClick(sendLikeInfo: SendLikeInfo) {}
   private isExsistAnswerHeads(): boolean {
     if (this.answerHeads) {
-      if (this.answerHeads.length <= 0 && this.answerHeads) {
-        return false;
-      }
+      if (this.answerHeads.length > 0) {
+        return true;
+      } else return false;
     }
-    return true;
+    return false;
   }
 }
 </script>
