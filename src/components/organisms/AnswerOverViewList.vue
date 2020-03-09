@@ -25,9 +25,9 @@
             :to="'/top/book/' + bookId + '/toi/questions/first'"
             outlined
             block
-            color="primary"
+            color="accent"
           >
-            回答する
+            回答してみる
           </v-btn>
         </v-card-actions>
       </v-card>
