@@ -5,16 +5,22 @@
       <v-avatar color="accent" size="30" class="mr-1">
         <v-img :src="answerHead.userInfo.pictureUrl"></v-img>
       </v-avatar>
-      <span>{{ answerHead.userInfo.nickname }}</span>
-      <span class="title">{{ answerHead.answers[0].answer }}</span>
+      <span class="ml-1">{{ answerHead.userInfo.nickname }}</span>
     </v-card-title>
-    <v-card-text
+    <v-card-text class="caption text-left">
+      {{ displayInsertedDate(answerHead.inserted) }}
+    </v-card-text>
+    <v-card-title class="subtitle-2 text-left">
+      {{ displayAnswerTitle(answerHead.answers[0].answer) }}
+    </v-card-title>
+    <!-- タイトルだけあればよさそう？ -->
+    <!-- <v-card-text
       v-for="(answer, i) in answerHead.answers"
       :key="i"
-      class="text-truncate ma-0 pa-0"
+      class="text-truncate ma-0 pa-0 text-left"
     >
       {{ answer.answer }}
-    </v-card-text>
+    </v-card-text> -->
     <v-card-actions>
       <v-spacer></v-spacer>
       <v-btn
@@ -47,6 +53,14 @@ import ShareIconButton from "@/components/atoms/ShareIconButton.vue";
 export default class AnswerOverView extends Vue {
   @Prop({ required: true }) private answerHead!: AnswerHead;
   @Prop() private bookId!: string;
+  private displayInsertedDate(str: string) {
+    const cutNum: number = 10;
+    return str.length > cutNum ? `回答日：${str.substring(0, cutNum)}` : str;
+  }
+  private displayAnswerTitle(str: string) {
+    const cutNum: number = 50;
+    return str.length > cutNum ? `${str.substring(0, cutNum)}...` : str;
+  }
   private get getColor(): string {
     return this.answerHead.likeInfo.active ? "primary" : "";
   }
