@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>みんなの回答一覧</v-card-title>
-    <div v-if="isExsistAnswerHeads()">
+    <div v-if="existAnswerHeads()">
       <v-card
         v-for="(answerHead, index) in answerHeads"
         :key="index"
@@ -46,7 +46,7 @@ export default class AnswerOverViewList extends Vue {
   @Prop() private bookId!: string;
   @Emit("on-click-like")
   private onClick(sendLikeInfo: SendLikeInfo) {}
-  private isExsistAnswerHeads(): boolean {
+  private existAnswerHeads(): boolean {
     if (this.answerHeads) {
       if (this.answerHeads.length > 0) {
         return true;
