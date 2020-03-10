@@ -10,9 +10,11 @@
     <v-card-text class="caption text-left">
       {{ displayInsertedDate(answerHead.inserted) }}
     </v-card-text>
-    <v-card-title class="subtitle-2 text-left">
-      {{ displayAnswerTitle(answerHead.answers[0].answer) }}
-    </v-card-title>
+    <div v-if="!isDetail">
+      <v-card-title class="subtitle-2 text-left">
+        {{ displayAnswerTitle(answerHead.answers[0].answer) }}
+      </v-card-title>
+    </div>
     <!-- タイトルだけあればよさそう？ -->
     <!-- <v-card-text
       v-for="(answer, i) in answerHead.answers"
@@ -24,6 +26,7 @@
     <v-card-actions>
       <v-spacer></v-spacer>
       <v-btn
+        v-if="!isDetail"
         text
         color="primary"
         :to="'/top/book/' + bookId + '/answer/' + answerHead.id"
@@ -34,6 +37,7 @@
       </v-btn>
       <span class="subheading mr-2">{{ answerHead.likeInfo.sum }}</span>
       <share-icon-button
+        v-if="!isDetail"
         :url="shareUrl"
         :text="
           `BizToiアプリで${answerHead.userInfo.nickname}さんの回答内容を見る`
@@ -53,6 +57,7 @@ import ShareIconButton from "@/components/atoms/ShareIconButton.vue";
 export default class AnswerOverView extends Vue {
   @Prop({ required: true }) private answerHead!: AnswerHead;
   @Prop() private bookId!: string;
+  @Prop({ default: false }) private isDetail!: boolean;
   private displayInsertedDate(str: string) {
     const cutNum: number = 10;
     return str.length > cutNum ? `回答日：${str.substring(0, cutNum)}` : str;
