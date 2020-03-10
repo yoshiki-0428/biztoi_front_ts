@@ -21,26 +21,26 @@
           >
             <div>
               <v-row justify="start" class="ma-0">
-                <v-list-item-title class="title font-weight-bold mb-1">
+                <v-list-item-title class="title font-weight-bold mb-3">
                   Question
                   <v-divider class="primary"></v-divider>
                 </v-list-item-title>
               </v-row>
-              <v-row justify="start" class="subtitle-1 ma-0 mb-1">
+              <v-row justify="start" class="subtitle-1 ma-0 mb-2">
                 {{ q.title }}
               </v-row>
               <v-row justify="start" class="ma-0">
-                <v-list-item-title class="title font-weight-bold mb-1">
+                <v-list-item-title class="title font-weight-bold mb-3 mt-3">
                   Answer
                   <v-divider class="red accent-1"></v-divider>
                 </v-list-item-title>
               </v-row>
-              <div v-if="isExistAnswers(q.id)" class="mb-3">
+              <div v-if="isExistAnswers(q.id)" class="mb-5">
                 <v-row
                   v-for="(a, index) in filterdAnswers(q.id)"
                   :key="index"
                   justify="start"
-                  class="subtitle-1 ma-0 mb-1"
+                  class="subtitle-1 ma-0 mb-2"
                 >
                   {{ a.answer }}
                 </v-row>

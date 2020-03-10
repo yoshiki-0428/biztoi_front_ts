@@ -25,7 +25,7 @@
             :to="'/top/book/' + bookId + '/toi/questions/first'"
             outlined
             block
-            color="accent"
+            color="white"
           >
             回答してみる
           </v-btn>

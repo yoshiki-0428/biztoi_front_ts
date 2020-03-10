@@ -7,7 +7,7 @@
       </v-avatar>
       <span class="ml-1">{{ answerHead.userInfo.nickname }}</span>
     </v-card-title>
-    <v-card-text class="caption text-left">
+    <v-card-text class="caption text-left pb-0">
       {{ displayInsertedDate(answerHead.inserted) }}
     </v-card-text>
     <div v-if="!isDetail">
