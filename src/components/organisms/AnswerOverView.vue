@@ -3,7 +3,11 @@
     <!-- TODO 表示内容を精査 -->
     <v-card-title>
       <v-avatar color="accent" size="30" class="mr-1">
-        <v-img :src="answerHead.userInfo.pictureUrl"></v-img>
+        <!-- TODO userInfoがからのときはデフォルト画像 -->
+        <v-img
+          :src="answerHead.userInfo.pictureUrl"
+          v-if="answerHead.userInfo !== null"
+        ></v-img>
       </v-avatar>
       <span class="ml-1">{{ answerHead.userInfo.nickname }}</span>
     </v-card-title>
@@ -29,7 +33,7 @@
         v-if="!isDetail"
         text
         color="primary"
-        :to="'/top/book/' + bookId + '/answer/' + answerHead.id"
+        :to="'/top/book/' + answerHead.bookId + '/answer/' + answerHead.id"
         >詳細を見る</v-btn
       >
       <v-btn icon @click="toggleIsActive">
@@ -39,9 +43,7 @@
       <share-icon-button
         v-if="!isDetail"
         :url="shareUrl"
-        :text="
-          `BizToiアプリで${answerHead.userInfo.nickname}さんの回答内容を見る`
-        "
+        :text="`BizToiアプリで回答内容を見る`"
       />
     </v-card-actions>
   </div>

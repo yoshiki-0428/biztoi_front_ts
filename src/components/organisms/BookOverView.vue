@@ -19,7 +19,7 @@
       <v-row class="justify-end">
         <v-card-actions class="pr-2">
           <v-spacer></v-spacer>
-          <v-btn text color="primary" :to="'/top/book/' + book.id">
+          <v-btn text color="primary" :to="'/top/book/' + book.isbn">
             詳細へ
           </v-btn>
           <share-icon-button
@@ -48,7 +48,7 @@ export default class BookOverView extends Vue {
       : cutText;
   }
   private get shareUrl(): string {
-    return `${window.location.origin}/top/book/${this.book.id}`;
+    return `${window.location.origin}/top/book/${this.book.isbn}`;
   }
 }
 </script>

@@ -20,13 +20,14 @@ class QuestionModule extends VuexModule {
   // state
   public question: Question = {
     id: "",
-    toiId: "",
-    title: "",
-    required: true,
-    nextQuestionId: "",
-    answerType: "",
+    patternId: 0,
     orderId: 1,
-    step: 0
+    title: "",
+    detail: "",
+    example: "",
+    required: true,
+    step: "",
+    answerType: ""
   };
   public questionList: Question[] = [];
   public questionNo: number = 1;

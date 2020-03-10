@@ -77,7 +77,7 @@ export default class AnswerDetail extends Vue {
   ];
   private panel: number[] = [0, 1, 2];
   private filterdQuestions(step: string): Question[] {
-    return this.questionList.filter(q => q.step === Number(step));
+    return this.questionList.filter(q => q.step === step);
   }
   private filterdAnswers(questionId: string): Answer[] {
     if (isUndefined(this.answerHead.answers)) return [];

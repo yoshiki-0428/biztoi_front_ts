@@ -12,33 +12,25 @@
           ></v-card-title>
         </v-card-text>
         <v-card-text
-          v-if="
-            Array.isArray(book.author) &&
-              book.author.length >= 1 &&
-              isMinimum == false
-          "
+          v-if="isArray(book.authors) && !isMinimum"
           :class="alignText"
         >
           <v-card-title :class="infoSize">
             <v-icon class="mr-2" color="black" size="10">
               fa-pencil-alt
             </v-icon>
-            {{ joinArray(book.author) }}
+            {{ joinArray(book.authors) }}
           </v-card-title>
         </v-card-text>
         <v-card-text
-          v-if="
-            Array.isArray(book.category) &&
-              book.category.length >= 1 &&
-              isMinimum == false
-          "
+          v-if="isArray(book.categories) && !isMinimum"
           :class="alignText"
         >
           <v-card-title :class="infoSize">
             <v-icon class="mr-2" color="black" size="10">
               fa-book
             </v-icon>
-            {{ joinArray(book.category) }}
+            {{ joinArray(book.categories) }}
           </v-card-title>
         </v-card-text>
         <v-spacer />
@@ -70,12 +62,16 @@ import ShareIconButton from "@/components/atoms/ShareIconButton.vue";
 export default class BookDetail extends Vue {
   alignText: string = "pa-1 ml-1 text-left";
   infoSize: string = "caption pa-0";
-  @Prop({ default: false }) private isMinimum!: boolean;
-  private get colImg(): number {
+  @Prop({ default: false })
+  private isMinimum!: boolean;
+  get colImg(): number {
     return this.isMinimum ? 2 : 4;
   }
-  private get colText(): number {
+  get colText(): number {
     return this.isMinimum ? 10 : 8;
+  }
+  private isArray(arr: string[]): boolean {
+    return Array.isArray(arr) && arr.length >= 1;
   }
   @Prop({ required: true }) private book!: Book;
   private isActive: boolean = false;
@@ -84,7 +80,7 @@ export default class BookDetail extends Vue {
   }
   private toggleIsActive() {
     this.book.favorite = !this.book.favorite;
-    this.onClick({ id: this.book.id, active: this.book.favorite });
+    this.onClick({ id: this.book.isbn, active: this.book.favorite });
   }
   private joinArray(ary: string[]): string | undefined | null {
     return ary.join();
