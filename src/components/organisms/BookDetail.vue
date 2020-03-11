@@ -16,7 +16,7 @@
           :class="alignText"
         >
           <v-card-title :class="infoSize">
-            <v-icon class="mr-2" color="black" size="10">
+            <v-icon class="mr-2" size="10">
               fa-pencil-alt
             </v-icon>
             {{ joinArray(book.authors) }}
@@ -27,7 +27,7 @@
           :class="alignText"
         >
           <v-card-title :class="infoSize">
-            <v-icon class="mr-2" color="black" size="10">
+            <v-icon class="mr-2" size="10">
               fa-book
             </v-icon>
             {{ joinArray(book.categories) }}
