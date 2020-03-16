@@ -6,17 +6,17 @@
       </v-avatar>
       <v-spacer></v-spacer>
     </div>
-    <v-container>
-      <v-card-title class="justify-center">
+    <div>
+      <v-card-title class="justify-center pa-1">
         {{ userInfo.nickname }}
       </v-card-title>
-      <v-card-subtitle class="justify-center">
+      <v-card-text class="pa-1">
         {{ userInfo.id }}
-      </v-card-subtitle>
+      </v-card-text>
       <v-divider />
-      <v-card-subtitle>Email</v-card-subtitle>
-      <v-card-text>{{ userInfo.email }}</v-card-text>
-    </v-container>
+      <v-card-subtitle class="pa-1">Email</v-card-subtitle>
+      <v-card-text class="pa-1">{{ userInfo.email }}</v-card-text>
+    </div>
   </v-card>
 </template>
 

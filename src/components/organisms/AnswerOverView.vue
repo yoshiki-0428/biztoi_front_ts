@@ -1,24 +1,19 @@
 <template>
   <div>
     <!-- TODO 表示内容を精査 -->
-    <v-card-title>
+    <v-card-title class="py-2">
       <v-avatar color="accent" size="30" class="mr-1">
         <!-- TODO userInfoがからのときはデフォルト画像 -->
-        <v-img
-          :src="answerHead.userInfo.pictureUrl"
-          v-if="answerHead.userInfo !== null"
-        ></v-img>
+        <v-img :src="answerHead.userInfo.pictureUrl"></v-img>
       </v-avatar>
       <span class="ml-1">{{ answerHead.userInfo.nickname }}</span>
     </v-card-title>
-    <v-card-text class="caption text-left pb-0">
+    <v-card-text class="caption text-left py-1">
       {{ displayInsertedDate(answerHead.inserted) }}
     </v-card-text>
-    <div v-if="!isDetail">
-      <v-card-title class="subtitle-2 text-left">
-        {{ displayAnswerTitle(answerHead.answers[0].answer) }}
-      </v-card-title>
-    </div>
+    <v-card-title class="subtitle-2 text-left py-1">
+      {{ displayAnswerTitle(answerHead.answers[0].answer) }}
+    </v-card-title>
     <!-- タイトルだけあればよさそう？ -->
     <!-- <v-card-text
       v-for="(answer, i) in answerHead.answers"
@@ -27,7 +22,7 @@
     >
       {{ answer.answer }}
     </v-card-text> -->
-    <v-card-actions>
+    <v-card-actions class="py-1">
       <v-spacer></v-spacer>
       <v-btn
         v-if="!isDetail"

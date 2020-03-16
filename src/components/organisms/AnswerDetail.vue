@@ -9,8 +9,8 @@
     </v-card>
     <v-expansion-panels multiple v-model="panel">
       <v-expansion-panel v-for="(s, index) in stepMap" :key="index">
-        <v-expansion-panel-header class="title">
-          Step {{ s.no }} {{ s.name }}
+        <v-expansion-panel-header class="title py-2">
+          STEP {{ s.no }} {{ s.name }}
         </v-expansion-panel-header>
         <v-expansion-panel-content class="ma-0 pa-0">
           <v-list-item
