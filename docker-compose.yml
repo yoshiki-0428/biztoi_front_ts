@@ -1,16 +1,15 @@
 version: "3"
 services:
   api:
-    image: registry.gitlab.com/rrrtcdish2/biztoi_api_java/feature/openapi:latest
+    image: registry.gitlab.com/rrrtcdish2/biztoi_api_java/feature/cognito:latest
     environment:
-      SPRING_ENVIRONMENT: 'dev'
-      SPRING_DATASOURCE_URL: 'jdbc:postgressql://db:5432/biztoi'
+      SPRING_PROFILES_ACTIVE: 'dev'
+      SPRING_DATASOURCE_URL: 'jdbc:postgresql://db:5432/biztoi'
       SPRING_DATASOURCE_USERNAME: 'biztoi'
       SPRING_DATASOURCE_PASSWORD: 'biztoi'
+      DRIVER_CLASS_NAME: 'org.postgresql.Driver'
     ports:
       - 8000:8000
-    #    volumes:
-    #      - ./backend/:/usr/src/app/
     depends_on:
       - db
   db:
