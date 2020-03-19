@@ -25,14 +25,8 @@
         <v-spacer />
         <v-card-actions class="pa-1">
           <v-spacer />
-          <v-btn
-            outlined
-            color="primary"
-            :to="'/top/book/' + book.isbn"
-            class="caption"
-          >
-            詳細へ
-            <v-icon class="ml-2">fa-caret-right</v-icon>
+          <v-btn icon :to="'/top/book/' + book.isbn" class="caption">
+            <v-icon class="ml-2">fa-share-square</v-icon>
           </v-btn>
           <v-btn icon @click="toggleIsActive">
             <v-icon :color="getColor">mdi-heart</v-icon>

@@ -26,10 +26,9 @@
       <v-spacer></v-spacer>
       <v-btn
         v-if="!isDetail"
-        text
-        color="primary"
+        icon
         :to="'/top/book/' + answerHead.bookId + '/answer/' + answerHead.id"
-        >詳細を見る</v-btn
+        ><v-icon>fa-share-square</v-icon></v-btn
       >
       <v-btn icon @click="toggleIsActive">
         <v-icon :color="getColor">mdi-thumb-up</v-icon>

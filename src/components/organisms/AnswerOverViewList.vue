@@ -1,6 +1,8 @@
 <template>
-  <v-card>
-    <v-card-title>みんなの回答一覧</v-card-title>
+  <v-container class="pa-0">
+    <v-card class="mb-4">
+      <v-card-title class="pa-3">みんなの回答一覧</v-card-title>
+    </v-card>
     <div v-if="existAnswerHeads()">
       <v-card
         v-for="(answerHead, index) in answerHeads"
@@ -32,7 +34,7 @@
         </v-card-actions>
       </v-card>
     </div>
-  </v-card>
+  </v-container>
 </template>
 
 <script lang="ts">
