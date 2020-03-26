@@ -3,17 +3,13 @@
     <v-card class="mb-4">
       <v-card-title class="pa-3">みんなの回答一覧</v-card-title>
     </v-card>
-    <div v-if="existAnswerHeads()">
+    <div v-if="existAnswerHeads">
       <v-card
         v-for="(answerHead, index) in answerHeads"
         :key="index"
         class="mb-4"
       >
-        <answer-over-view
-          :answer-head="answerHead"
-          :book-id="bookId"
-          @on-click-like="onClick"
-        />
+        <answer-over-view :answer-head="answerHead" @on-click-like="onClick" />
       </v-card>
     </div>
     <div v-else>
@@ -24,7 +20,7 @@
         </v-card-text>
         <v-card-actions>
           <v-btn
-            :to="'/top/book/' + bookId + '/toi/questions/first'"
+            :to="'/top/book/' + answerHead.bookId + '/toi/questions/first'"
             outlined
             block
             color="white"
@@ -45,16 +41,10 @@ import AnswerOverView from "@/components/organisms/AnswerOverView.vue";
 @Component({ components: { AnswerOverView } })
 export default class AnswerOverViewList extends Vue {
   @Prop({ default: () => [] }) private answerHeads!: AnswerHead[] | undefined;
-  @Prop() private bookId!: string;
   @Emit("on-click-like")
   private onClick(sendLikeInfo: SendLikeInfo) {}
-  private existAnswerHeads(): boolean {
-    if (this.answerHeads) {
-      if (this.answerHeads.length > 0) {
-        return true;
-      } else return false;
-    }
-    return false;
+  private get existAnswerHeads(): boolean {
+    return Boolean(this.answerHeads) && this.answerHeads!.length > 0;
   }
 }
 </script>

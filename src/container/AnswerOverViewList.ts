@@ -7,8 +7,7 @@ import { SendLikeInfo } from "@/axios/biztoi";
 
 export default connect({
   stateToProps: {
-    answerHeads: () => answerShareModule.answerHeads,
-    bookId: () => router.currentRoute.params.bookId
+    answerHeads: () => answerShareModule.answerHeads
   },
   actionsToEvents: {
     "on-click-like": (_, sendLikeInfo: SendLikeInfo) => {
