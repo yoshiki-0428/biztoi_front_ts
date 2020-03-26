@@ -1,5 +1,5 @@
 import { connect } from "vuex-connect";
-import { answerShareModule } from "@/store/AnswerStore";
+import { answerMeModule } from "@/store/AnswerStore";
 import AnswerOverViewList from "@/components/organisms/AnswerOverViewList.vue";
 import router from "@/router";
 import { baseApi } from "@/plugins/axios";
@@ -7,7 +7,7 @@ import { SendLikeInfo } from "@/axios/biztoi";
 
 export default connect({
   stateToProps: {
-    answerHeads: () => answerShareModule.answerHeads,
+    answerHeads: () => answerMeModule.answerHeads,
     bookId: () => router.currentRoute.params.bookId
   },
   actionsToEvents: {
@@ -21,8 +21,8 @@ export default connect({
   },
   lifecycle: {
     created: () =>
-      answerShareModule.getAnswerHeads({
+      answerMeModule.getAnswerHeads({
         bookId: router.currentRoute.params.bookId
       })
   }
-})("answer-over-view-list", AnswerOverViewList);
+})("answer-over-view-list-me", AnswerOverViewList);

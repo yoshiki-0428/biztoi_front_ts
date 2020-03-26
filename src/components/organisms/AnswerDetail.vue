@@ -1,13 +1,6 @@
 <template>
   <div>
-    <v-card class="mb-4">
-      <answer-over-view
-        :isDetail="true"
-        :answer-head="answerHead"
-        @on-click-like="onClick"
-      />
-    </v-card>
-    <v-expansion-panels multiple v-model="panel">
+    <v-expansion-panels multiple accordion v-model="panel">
       <v-expansion-panel v-for="(s, index) in stepMap" :key="index">
         <v-expansion-panel-header class="title py-2">
           STEP {{ s.no }} {{ s.name }}

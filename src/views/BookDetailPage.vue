@@ -3,7 +3,8 @@
     <breadcrumb :items="paths" />
     <book-detail />
     <toi-card />
-    <answer-over-view-list />
+    <answer-over-view-list-me title="あなたの回答" :is-newer="false" />
+    <answer-over-view-list title="みんなの回答一覧" :is-newer="true" />
   </v-container>
 </template>
 
@@ -12,6 +13,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import BookDetail from "@/container/BookDetail";
 import ToiCard from "@/container/ToiCard";
 import AnswerOverViewList from "@/container/AnswerOverViewList";
+import AnswerOverViewListMe from "@/container/AnswerOverViewListMe";
 import Breadcrumb, {
   IBreadcrumbs
 } from "@/components/organisms/Breadcrumb.vue";
@@ -19,6 +21,7 @@ import Breadcrumb, {
 @Component({
   components: {
     AnswerOverViewList,
+    AnswerOverViewListMe,
     ToiCard,
     BookDetail,
     Breadcrumb

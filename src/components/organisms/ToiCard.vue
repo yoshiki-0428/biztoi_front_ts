@@ -13,7 +13,7 @@
         outlined
         block
         color="primary"
-        :to="'/top/book/' + bookId + '/toi/questions/first'"
+        :to="'/top/book/' + bookId + '/step/1'"
       >
         回答してみる
       </v-btn>
