@@ -1,6 +1,10 @@
 <template>
   <v-row justify="center">
-    <v-dialog v-model="isShowInner" max-width="90%">
+    <v-dialog
+      v-model="isShowInner"
+      max-width="90%"
+      @click:outside="closeDialog"
+    >
       <v-card>
         <v-card-title class="headline justify-center">
           回答お疲れさまでした。

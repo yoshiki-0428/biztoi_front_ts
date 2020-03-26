@@ -3,9 +3,7 @@ import { BiztoiApi } from "@/axios/biztoi";
 import { VolumesApi } from "@/axios/books";
 
 const apiAxios: AxiosInstance = axios.create({
-  headers: {
-    Authorization: "Bearer This.is.Authorization"
-  }
+  withCredentials: true
 });
 
 apiAxios.interceptors.response.use(

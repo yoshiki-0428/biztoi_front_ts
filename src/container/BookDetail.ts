@@ -20,13 +20,7 @@ export default connect({
   },
   lifecycle: {
     created: async () => {
-      // 既存Storeから本を検索し、APIサーバに作成依頼を行う
       await bookModule.getBook(router.currentRoute.params.bookId);
-      if (bookModule.book) {
-        await baseApi.booksPost(bookModule.book);
-        // await baseApi.postToi(router.currentRoute.params.bookId, toiModule.toi);
-        // await baseApi.postQuestion(router.currentRoute.params.bookId, questionModule.question);
-      }
     }
   }
 })("book-detail", BookDetail);
