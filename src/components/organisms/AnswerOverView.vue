@@ -8,14 +8,13 @@
         answerHead.userInfo ? answerHead.userInfo.nickname : ""
       }}</span>
     </v-card-title>
-    <v-card-text class="caption text-left py-1">
-      {{ displayInsertedDate(answerHead.inserted) }}
-    </v-card-text>
-    <v-card-title class="subtitle-2 text-left py-1">
+    <v-card-title class="subtitle-1 text-left py-1">
       {{ displayAnswerTitle(answerHead.answers[0].answer) }}
     </v-card-title>
     <v-card-actions class="py-1">
-      <v-spacer></v-spacer>
+      <v-card-text class="caption text-left pl-2">
+        {{ displayInsertedDate(answerHead.inserted) }}
+      </v-card-text>
       <v-btn
         v-if="!isDetail"
         icon
@@ -49,7 +48,9 @@ export default class AnswerOverView extends Vue {
 
   displayInsertedDate(str: string) {
     const cutNum: number = 10;
-    return str.length > cutNum ? `回答日: ${str.substring(0, cutNum)}` : str;
+    return str.length > cutNum
+      ? `最終更新日: ${str.substring(0, cutNum)}`
+      : str;
   }
 
   displayAnswerTitle(str: string) {
