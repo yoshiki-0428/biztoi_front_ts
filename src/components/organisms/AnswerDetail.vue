@@ -45,10 +45,10 @@
               </div>
             </div>
           </v-list-item>
-          <v-card-actions v-if="answerHead.userId == userInfo.id">
+          <v-card-actions v-if="answerHead.userId === userInfo.id">
             <v-spacer></v-spacer>
-            <v-btn outlined class="px-6"
-              >EDIT<v-icon class="pl-2" size="15">fa-edit</v-icon></v-btn
+            <v-btn outlined class="px-2"
+              >修正する<v-icon class="pl-2" size="15">fa-edit</v-icon></v-btn
             >
           </v-card-actions>
         </v-expansion-panel-content>
