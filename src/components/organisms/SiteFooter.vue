@@ -1,6 +1,11 @@
 <template>
   <v-footer padless>
     <v-col class="text-center" cols="12">
+      <router-link tag="v-card-subtitle" :to="'/kiyaku'">
+        <v-card-subtitle class="lead">
+          利用規約
+        </v-card-subtitle>
+      </router-link>
       <v-card-text>
         <v-btn
           icon
@@ -12,7 +17,10 @@
           <v-icon dark large v-text="item.icon"></v-icon>
         </v-btn>
       </v-card-text>
-      {{ new Date().getFullYear() }} — <strong>ビジトイ</strong>
+      {{ new Date().getFullYear() }} —
+      <strong
+        ><router-link tag="strong" :to="'/'">ビジトイ</router-link></strong
+      >
     </v-col>
   </v-footer>
 </template>
