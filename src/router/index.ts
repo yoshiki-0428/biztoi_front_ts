@@ -30,7 +30,7 @@ const routes = [
         props: true
       },
       {
-        path: "book/:bookId/step/:stepNo",
+        path: "book/:bookId/answer/:answerHeadId/step/:stepNo",
         name: "step",
         component: () => import("@/views/QuestionPage.vue"),
         props: true
