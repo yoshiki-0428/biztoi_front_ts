@@ -102,10 +102,6 @@ class AnswerStore extends VuexModule {
     this.SET_ANSWER_HEAD(res.data);
   }
 
-  /**
-   * 回答ヘッダを取得する
-   * @param params { bookId: string }
-   */
   @Action
   public async getAnswerHeads(params: { bookId: string }) {
     const res: AxiosResponse<AnswerHead[]> = await baseApi.getAnswerHeadMeList(
@@ -114,6 +110,14 @@ class AnswerStore extends VuexModule {
     this.SET_ANSWER_HEADS(res.data);
   }
 
+  @Action
+  public async getAnswerHead(params: { bookId: string; answerHeadId: string }) {
+    const res: AxiosResponse<AnswerHead> = await baseApi.getAnswerHeadMe(
+      params.bookId,
+      params.answerHeadId
+    );
+    this.SET_ANSWER_HEAD(res.data);
+  }
   @Mutation
   private SET_ANSWERS(payload: Answer[]) {
     this.answers = payload;

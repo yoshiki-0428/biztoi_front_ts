@@ -1,28 +1,27 @@
 <template>
   <v-container>
     <breadcrumb :items="paths" />
-    <answer-input />
+    <answer-for-step />
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import AnswerInput from "@/container/AnswerInput";
+import AnswerForStep from "@/container/AnswerForStep";
 import Breadcrumb, {
   IBreadcrumbs
 } from "@/components/organisms/Breadcrumb.vue";
 
 @Component({
   components: {
-    AnswerInput,
+    AnswerForStep,
     Breadcrumb
   }
 })
 export default class QuestionPage extends Vue {
-  @Prop()
-  "bookId": string;
-  @Prop()
-  "questionId": string;
+  @Prop() "bookId": string;
+  @Prop() "answerHeadId": string;
+  @Prop() "stepNo": string;
 
   private cutDisplayName(displayName: string): string {
     const cutNum: number = 5;
@@ -30,7 +29,7 @@ export default class QuestionPage extends Vue {
       ? `${displayName.substring(0, cutNum)} ... `
       : displayName;
   }
-  // ToDo URL ex(/top/book/bookId/toi/questions/questionId)
+
   private paths: IBreadcrumbs[] = [
     {
       name: "top",
@@ -43,9 +42,24 @@ export default class QuestionPage extends Vue {
       disabled: false
     },
     {
-      name: this.cutDisplayName(this.questionId),
-      path: `/top/book/toi/questions/${this.questionId}`,
+      name: this.cutDisplayName(this.answerHeadId),
+      path: `/top/book/${this.bookId}/answer/${this.answerHeadId}`,
       disabled: false
+    },
+    {
+      name: "1",
+      path: `/top/book/${this.bookId}/answer/${this.answerHeadId}/step/1`,
+      disabled: "1" >= this.stepNo
+    },
+    {
+      name: "2",
+      path: `/top/book/${this.bookId}/answer/${this.answerHeadId}/step/2`,
+      disabled: "2" >= this.stepNo
+    },
+    {
+      name: "3",
+      path: `/top/book/${this.bookId}/answer/${this.answerHeadId}/step/3`,
+      disabled: "3" >= this.stepNo
     }
   ];
 }

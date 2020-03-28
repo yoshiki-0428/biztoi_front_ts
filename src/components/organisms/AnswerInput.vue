@@ -82,6 +82,7 @@ export default class AnswerInput extends Vue {
   @Prop({ default: 0 }) private questionNo?: number;
   @Prop({ default: 0 }) private questionMax?: number;
   @Emit() private async postAnswer(question: Question) {}
+
   private async postAndPush(question: Question, path: string) {
     await this.postAnswer(question);
     await this.$router.push(path);
