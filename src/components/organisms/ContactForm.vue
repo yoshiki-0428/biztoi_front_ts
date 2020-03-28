@@ -11,9 +11,3 @@
     </v-card-subtitle>
   </v-card>
 </template>
-
-<script>
-@Component
-export default class ContactForm extends Vue {}
-</script>
-<style lang="scss" scoped></style>
