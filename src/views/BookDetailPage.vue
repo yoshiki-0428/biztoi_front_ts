@@ -37,7 +37,6 @@ export default class BookDetailPage extends Vue {
       ? `${displayName.substring(0, cutNum)} ... `
       : displayName;
   }
-  // ToDo URL ex(/top/book/bookId)
   private paths: IBreadcrumbs[] = [
     {
       name: "top",
