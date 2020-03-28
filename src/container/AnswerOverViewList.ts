@@ -1,5 +1,5 @@
 import { connect } from "vuex-connect";
-import { answerShareModule } from "@/store/AnswerStore";
+import { answerMeModule, answerShareModule } from "@/store/AnswerStore";
 import AnswerOverViewList from "@/components/organisms/AnswerOverViewList.vue";
 import router from "@/router";
 import { baseApi } from "@/plugins/axios";
@@ -17,6 +17,13 @@ export default connect({
       } else {
         baseApi.deleteLikesAnswers(sendLikeInfo);
       }
+    },
+    "create-answer-head": async _ => {
+      const id = router.currentRoute.params.bookId;
+      await answerMeModule.postAnswerHead({ bookId: id });
+      await router.push(
+        `/top/book/${id}/answer/${answerMeModule.answerHead.id}/step/1`
+      );
     }
   },
   lifecycle: {

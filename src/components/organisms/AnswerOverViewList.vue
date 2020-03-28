@@ -23,12 +23,7 @@
           最初の回答者になってみませんか？
         </v-card-text>
         <v-card-actions>
-          <v-btn
-            :to="`/top/book/${bookId}/step/1`"
-            outlined
-            block
-            color="white"
-          >
+          <v-btn outlined block color="white" @click="createAnswerHead">
             回答してみる
           </v-btn>
         </v-card-actions>
@@ -53,5 +48,7 @@ export default class AnswerOverViewList extends Vue {
   get existAnswerHeads(): boolean {
     return Boolean(this.answerHeads) && this.answerHeads!.length > 0;
   }
+  @Emit()
+  private createAnswerHead() {}
 }
 </script>
