@@ -8,7 +8,7 @@
     </v-card>
     <v-card
       class="pa-2 mb-12"
-      v-for="(question, index) in questionList.filter(q => q.step === stepNo)"
+      v-for="(question, index) in questionList"
       :key="index"
     >
       <v-row align="center" justify="center">
@@ -20,7 +20,7 @@
       <v-row align="center" justify="center" class="pa-2">
         <v-container>
           <v-textarea outlined>
-            <template v-if="answerList.length > 1" v-slot:append>
+            <template v-if="true" v-slot:append>
               <v-btn text icon color="accent" @click="deleteAnswer(item)">
                 <v-icon>mdi-close</v-icon>
               </v-btn>
@@ -37,7 +37,18 @@
     </v-card>
     <v-card>
       <v-card-actions>
-        <v-btn outlined block color="primary">
+        <v-btn
+          outlined
+          block
+          color="primary"
+          @click="
+            push(
+              `/top/book/${answerHead.bookId}/answer/${
+                answerHead.id
+              }/step/${parseInt(stepNo) + 1}`
+            )
+          "
+        >
           次のステップへ進む
         </v-btn>
       </v-card-actions>
@@ -46,19 +57,25 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from "vue-property-decorator";
-import { Answer, Question } from "@/axios/biztoi";
-import size from "lodash/size";
+import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
+import { AnswerHead, Question } from "@/axios/biztoi";
+import router from "@/router";
 
 @Component
 export default class AnswerInput extends Vue {
   @Prop({ default: () => [] }) private questionList!: Question[];
-  @Prop({ default: () => [] }) private answerList!: Answer[];
+  @Prop({ default: null }) private answerHead!: AnswerHead;
   @Prop({ default: 1 }) private stepNo!: string;
 
   @Prop({ default: 0 }) private questionNo?: number;
   @Prop({ default: 0 }) private questionMax?: number;
   @Emit() private async postAnswer(question: Question) {}
+
+  @Watch("stepNo")
+  private watch() {
+    // eslint-disable-next-line no-console
+    console.log(this.stepNo);
+  }
 
   private getProgressValue = (): number => {
     if (this.questionNo && this.questionMax) {
@@ -66,6 +83,10 @@ export default class AnswerInput extends Vue {
     }
     return 0;
   };
+
+  private async push(path: string) {
+    await this.$router.push(path);
+  }
 
   // private clickPlus() {
   //   this.createEmptyAnswer();

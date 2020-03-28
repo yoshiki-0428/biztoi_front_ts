@@ -5,26 +5,27 @@ import { answerMeModule } from "@/store/AnswerStore";
 import { questionModule } from "@/store/QuestionModule";
 import UpdateRouteCheckMixin from "@/container/UpdateRouteCheckMixin";
 import router from "@/router";
-import { Answer, Question } from "@/axios/biztoi";
-import { isUndefined } from "lodash";
+import { AnswerHead, Question } from "@/axios/biztoi";
 
 export default connect({
   stateToProps: {
     questionList: (): Question[] => questionModule.questionList,
-    answerList: (): Answer[] =>
-      isUndefined(answerMeModule.answerHead.answers)
-        ? []
-        : answerMeModule.answerHead.answers,
-    stepNo: (): string => router.currentRoute.params.stepNo
+    answerHead: (): AnswerHead => answerMeModule.answerHead,
+    stepNo: (): string => questionModule.stepNo
   },
   actionsToEvents: {
     "update-before-route": async () => {
       const bookId = router.currentRoute.params.bookId;
       const answerHeadId = router.currentRoute.params.answerHeadId;
-      const params = { bookId: bookId, answerHeadId: answerHeadId };
+      const stepNo = router.currentRoute.params.stepNo;
+      const params = {
+        bookId: bookId,
+        answerHeadId: answerHeadId,
+        stepNo: stepNo
+      };
 
       // 質問一覧を取得する
-      await questionModule.getQuestionList(params);
+      await questionModule.getQuestionListForStep(params);
       await answerMeModule.getAnswerHead(params);
     },
     "post-answer": async (_, question: Question) => {

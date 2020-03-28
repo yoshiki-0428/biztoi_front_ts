@@ -49,17 +49,17 @@ export default class QuestionPage extends Vue {
     {
       name: "1",
       path: `/top/book/${this.bookId}/answer/${this.answerHeadId}/step/1`,
-      disabled: "1" >= this.stepNo
+      disabled: false
     },
     {
       name: "2",
       path: `/top/book/${this.bookId}/answer/${this.answerHeadId}/step/2`,
-      disabled: "2" >= this.stepNo
+      disabled: false
     },
     {
       name: "3",
       path: `/top/book/${this.bookId}/answer/${this.answerHeadId}/step/3`,
-      disabled: "3" >= this.stepNo
+      disabled: false
     }
   ];
 }
