@@ -5,7 +5,7 @@ import { answerMeModule } from "@/store/AnswerStore";
 import { questionModule } from "@/store/QuestionModule";
 import UpdateRouteCheckMixin from "@/container/UpdateRouteCheckMixin";
 import router from "@/router";
-import { AnswerHead, Question } from "@/axios/biztoi";
+import { Answer, AnswerHead, Question } from "@/axios/biztoi";
 
 export default connect({
   stateToProps: {
@@ -24,9 +24,27 @@ export default connect({
         stepNo: stepNo
       };
 
-      // 質問一覧を取得する
+      // 質問一覧を取得
       await questionModule.getQuestionListForStep(params);
+      // 自分回答データを取得
       await answerMeModule.getAnswerHead(params);
+      // 質問リストに紐づく回答情報をセット
+      await answerMeModule.setAnswerForQuestion({
+        questionList: questionModule.questionList,
+        answerHeadId: answerHeadId
+      });
+    },
+    "create-empty-answer": async (
+      _,
+      params: {
+        questionId: string;
+        answerHeadId: string;
+      }
+    ) => {
+      answerMeModule.createEmptyAnswer(params);
+    },
+    "delete-answer": async (_, answer: Answer) => {
+      answerMeModule.deleteAnswer({ answer: answer });
     },
     "post-answer": async (_, question: Question) => {
       const bookId = router.currentRoute.params.bookId;

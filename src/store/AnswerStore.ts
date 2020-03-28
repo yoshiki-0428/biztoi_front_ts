@@ -1,13 +1,13 @@
 import {
-  Mutation,
   Action,
-  VuexModule,
   getModule,
-  Module
+  Module,
+  Mutation,
+  VuexModule
 } from "vuex-module-decorators";
 import { baseApi } from "@/plugins/axios";
 import store from "@/store";
-import { Answer, AnswerHead } from "@/axios/biztoi";
+import { Answer, AnswerHead, Question } from "@/axios/biztoi";
 import { AxiosResponse } from "axios";
 import size from "lodash/size";
 
@@ -112,12 +112,85 @@ class AnswerStore extends VuexModule {
 
   @Action
   public async getAnswerHead(params: { bookId: string; answerHeadId: string }) {
-    const res: AxiosResponse<AnswerHead> = await baseApi.getAnswerHeadMe(
+    const res: AxiosResponse<AnswerHead[]> = await baseApi.getAnswerHeadMeList(
       params.bookId,
       params.answerHeadId
     );
-    this.SET_ANSWER_HEAD(res.data);
+    const answerHead: AnswerHead | undefined = res.data.find(
+      answerHead => answerHead.id === params.answerHeadId
+    );
+    if (res.data && answerHead) {
+      this.SET_ANSWER_HEAD(answerHead);
+    }
   }
+
+  @Action({ rawError: true })
+  public async setAnswerForQuestion(params: {
+    questionList: Question[];
+    answerHeadId: string;
+  }) {
+    const initAnswers: Answer[] = params.questionList.map(
+      (q): Answer => {
+        return {
+          id: "",
+          orderId: 1,
+          answer: "",
+          answerHeadId: params.answerHeadId,
+          questionId: q.id,
+          inserted: ""
+        };
+      }
+    );
+
+    if (this.answerHead.answers) {
+      const questionIds = this.answerHead.answers.map(a => a.questionId);
+      const editInAnswers = initAnswers
+        .filter(a => !questionIds.includes(a.questionId))
+        .concat(this.answerHead.answers);
+      this.SET_ANSWER_HEAD_ANSWERS(editInAnswers);
+    } else {
+      this.SET_ANSWER_HEAD_ANSWERS(initAnswers);
+    }
+  }
+
+  @Action({ rawError: true })
+  public async createEmptyAnswer(params: {
+    questionId: string;
+    answerHeadId: string;
+  }) {
+    if (this.answerHead.answers) {
+      const max: number = Math.max.apply(
+        null,
+        this.answerHead.answers
+          .filter(a => a.questionId === params.questionId)
+          .map(a => a.orderId)
+      );
+      // eslint-disable-next-line no-console
+      console.log(max);
+
+      this.ADD_ANSWER_HEAD_ANSWER({
+        id: "",
+        orderId: max + 1,
+        answer: "",
+        answerHeadId: params.answerHeadId,
+        questionId: params.questionId,
+        inserted: ""
+      });
+    }
+  }
+
+  @Action({ rawError: true })
+  public deleteAnswer(param: { answer: Answer }) {
+    if (this.answerHead.answers) {
+      const index = this.answerHead.answers.findIndex(
+        v =>
+          v.orderId === param.answer.orderId &&
+          v.questionId === param.answer.questionId
+      );
+      this.answerHead.answers.splice(index, 1);
+    }
+  }
+
   @Mutation
   private SET_ANSWERS(payload: Answer[]) {
     this.answers = payload;
@@ -126,6 +199,18 @@ class AnswerStore extends VuexModule {
   @Mutation
   private SET_ANSWER_HEAD(payload: AnswerHead) {
     this.answerHead = payload;
+  }
+
+  @Mutation
+  private SET_ANSWER_HEAD_ANSWERS(payload: Answer[]) {
+    this.answerHead.answers = payload;
+  }
+
+  @Mutation
+  private ADD_ANSWER_HEAD_ANSWER(payload: Answer) {
+    if (this.answerHead.answers) {
+      this.answerHead.answers.push(payload);
+    }
   }
 
   @Mutation

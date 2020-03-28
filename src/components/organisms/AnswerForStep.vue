@@ -4,6 +4,7 @@
       <v-row align="center" justify="center">
         <v-card-title class="pa-0 pb-1">Step: {{ stepNo }}</v-card-title>
       </v-row>
+      <v-progress-linear :value="getProgressValue()"></v-progress-linear>
       <v-divider></v-divider>
     </v-card>
     <v-card
@@ -18,17 +19,39 @@
       </v-row>
 
       <v-row align="center" justify="center" class="pa-2">
-        <v-container>
-          <v-textarea outlined>
-            <template v-if="true" v-slot:append>
-              <v-btn text icon color="accent" @click="deleteAnswer(item)">
-                <v-icon>mdi-close</v-icon>
-              </v-btn>
-            </template>
-          </v-textarea>
+        <v-container v-if="answerHead.answers">
+          <div
+            v-for="(answer, index) in filterAnswerQuestion(question.id)"
+            :key="index"
+          >
+            <!-- TODO change:event入力完了時終了後にデータをPostするように修正  -->
+            <v-textarea
+              v-model="answer.answer"
+              :label="`例) ${question.example}`"
+              outlined
+            >
+              <template
+                v-if="filterAnswerQuestion(question.id).length > 1"
+                v-slot:append
+              >
+                <v-btn text icon color="accent" @click="deleteAnswer(answer)">
+                  <v-icon>mdi-close</v-icon>
+                </v-btn>
+              </template>
+            </v-textarea>
+          </div>
 
           <v-row align="center" justify="center">
-            <v-btn icon color="accent">
+            <v-btn
+              icon
+              color="accent"
+              @click="
+                createEmptyAnswer({
+                  questionId: question.id,
+                  answerHeadId: answerHead.id
+                })
+              "
+            >
               <v-icon>mdi-plus</v-icon>
             </v-btn>
           </v-row>
@@ -37,12 +60,24 @@
     </v-card>
     <v-card>
       <v-card-actions>
+        <!-- TODO ダイアログ表示してトップへ -->
         <v-btn
+          v-if="stepNo === '3'"
+          outlined
+          block
+          color="primary"
+          @click="postAndPush(`/top/`)"
+        >
+          回答終了する
+        </v-btn>
+        <!-- TODO バリデーション -->
+        <v-btn
+          v-else
           outlined
           block
           color="primary"
           @click="
-            push(
+            postAndPush(
               `/top/book/${answerHead.bookId}/answer/${
                 answerHead.id
               }/step/${parseInt(stepNo) + 1}`
@@ -57,8 +92,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
-import { AnswerHead, Question } from "@/axios/biztoi";
+import { Component, Emit, Prop, Vue } from "vue-property-decorator";
+import { Answer, AnswerHead, Question } from "@/axios/biztoi";
 import router from "@/router";
 
 @Component
@@ -67,62 +102,26 @@ export default class AnswerInput extends Vue {
   @Prop({ default: null }) private answerHead!: AnswerHead;
   @Prop({ default: 1 }) private stepNo!: string;
 
-  @Prop({ default: 0 }) private questionNo?: number;
-  @Prop({ default: 0 }) private questionMax?: number;
-  @Emit() private async postAnswer(question: Question) {}
+  @Emit() private async postAnswer() {}
+  @Emit() private async createEmptyAnswer(params: {
+    questionId: string;
+    answerHeadId: string;
+  }) {}
+  @Emit() private async deleteAnswer(answer: Answer) {}
 
-  @Watch("stepNo")
-  private watch() {
-    // eslint-disable-next-line no-console
-    console.log(this.stepNo);
+  private filterAnswerQuestion(questionId: string): Answer[] {
+    if (this.answerHead.answers) {
+      return this.answerHead.answers.filter(a => a.questionId === questionId);
+    }
+    return [];
   }
 
   private getProgressValue = (): number => {
-    if (this.questionNo && this.questionMax) {
-      return this.questionNo * (100 / this.questionMax);
-    }
-    return 0;
+    return (100 / 3) * parseInt(this.stepNo);
   };
 
-  private async push(path: string) {
-    await this.$router.push(path);
+  private async postAndPush(path: string) {
+    await router.push(path);
   }
-
-  // private clickPlus() {
-  //   this.createEmptyAnswer();
-  // }
-
-  // private createEmptyAnswer() {
-  //   this.answers!.push({
-  //     id: "",
-  //     orderId:
-  //       Math.max.apply(
-  //         null,
-  //         this.answers.map(ans => ans.orderId)
-  //       ) + 1,
-  //     answer: "",
-  //     answerHeadId: this.answers[0].answerHeadId,
-  //     questionId: this.answers[0].questionId,
-  //     inserted: ""
-  //   });
-  // }
-  // private deleteAnswer(item: Answer) {
-  //   if (this.answers) {
-  //     const index = this.answers.findIndex(v => v.id === item.id);
-  //     this.answers.splice(index, 1);
-  //   }
-  // }
-  // // FIXME v-textareaのrulesがすぐに反応してしまい、バグのように見える
-  // private rules: Function[] = [(value: string) => !!value || "必須項目です。"];
-  // get answersValidate(): boolean {
-  //   if (this.question.required) {
-  //     const noInputAnswers = this.answers.filter(
-  //       answer => answer.answer.length === 0
-  //     );
-  //     return size(noInputAnswers) > 0;
-  //   } else {
-  //     return false;
-  //   }
-  // }
 }
 </script>
