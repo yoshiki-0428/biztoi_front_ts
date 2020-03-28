@@ -1,0 +1,19 @@
+<template>
+  <v-card>
+    <v-card-subtitle>
+      <v-btn
+        class="title"
+        outlined
+        target="blank"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSdKz0jUSlSABW7swGaM924YKqnjkzaIKs8UuNlslwsKv9RIgA/viewform"
+        >お問い合わせ
+      </v-btn>
+    </v-card-subtitle>
+  </v-card>
+</template>
+
+<script>
+@Component
+export default class ContactForm extends Vue {}
+</script>
+<style lang="scss" scoped></style>
