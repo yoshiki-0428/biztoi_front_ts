@@ -81,6 +81,15 @@ class BookModule extends VuexModule {
     const books: Book[] = results.items
       .filter(item => !isNil(item))
       .map((val): Book => BookUtil.bookConverter(val as IVolume));
+    // ToDo isbnでフィルター or 検索Apiを変更する
+    // .filter(
+    //   book => book.isbn.length === 13
+    //   {
+    //   // eslint-disable-next-line no-console
+    //   console.log(book);
+    //   return true;
+    // }
+    // );
 
     this.SET_SEARCH_BOOKS(books);
   }
