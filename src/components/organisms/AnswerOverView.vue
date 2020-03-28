@@ -17,10 +17,12 @@
       </v-card-text>
       <v-btn
         v-if="!isDetail"
-        icon
+        small
+        outlined
+        class="caption"
         :to="'/top/book/' + answerHead.bookId + '/answer/' + answerHead.id"
-        ><v-icon>fa-share-square</v-icon></v-btn
-      >
+        >詳細へ
+      </v-btn>
       <v-btn icon @click="toggleIsActive">
         <v-icon :color="color">mdi-thumb-up</v-icon>
       </v-btn>
