@@ -23,13 +23,6 @@ export default class QuestionPage extends Vue {
   @Prop() "answerHeadId": string;
   @Prop() "stepNo": string;
 
-  private cutDisplayName(displayName: string): string {
-    const cutNum: number = 5;
-    return displayName.length > cutNum
-      ? `${displayName.substring(0, cutNum)} ... `
-      : displayName;
-  }
-
   private paths: IBreadcrumbs[] = [
     {
       name: "top",
@@ -37,27 +30,27 @@ export default class QuestionPage extends Vue {
       disabled: false
     },
     {
-      name: this.cutDisplayName(this.bookId),
+      name: "本詳細",
       path: `/top/book/${this.bookId}`,
       disabled: false
     },
     {
-      name: this.cutDisplayName(this.answerHeadId),
+      name: "回答詳細",
       path: `/top/book/${this.bookId}/answer/${this.answerHeadId}`,
       disabled: false
     },
     {
-      name: "1",
+      name: "Step1",
       path: `/top/book/${this.bookId}/answer/${this.answerHeadId}/step/1`,
       disabled: false
     },
     {
-      name: "2",
+      name: "Step2",
       path: `/top/book/${this.bookId}/answer/${this.answerHeadId}/step/2`,
       disabled: false
     },
     {
-      name: "3",
+      name: "Step3",
       path: `/top/book/${this.bookId}/answer/${this.answerHeadId}/step/3`,
       disabled: false
     }
