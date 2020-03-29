@@ -28,7 +28,7 @@
               v-model="answer.answer"
               :rules="rules"
               :label="`例) ${question.example}`"
-              @input="debouncePostAnswer(answer)"
+              @change="debouncePostAnswer(answer)"
               outlined
             >
               <template
@@ -116,7 +116,7 @@ export default class AnswerInput extends Vue {
 
   private debouncePostAnswer: Function = debounce(
     (answer: Answer) => this.postAnswer(answer),
-    1000
+    500
   );
 
   rules: Function[] = [(value: string) => !!value || "必須項目です。"];
