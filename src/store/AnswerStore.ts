@@ -21,7 +21,7 @@ class AnswerStore extends VuexModule {
   // state
   // ユーザが回答中の内容、質問の内容に応じて書き換わる
   public answers: Answer[] = [];
-  // ユーザが回答済み回答ヘッダ、既に回答済みの場合は回答も含まれる
+  public answerHeads: AnswerHead[] = [];
   public answerHead: AnswerHead = {
     id: "",
     bookId: "",
@@ -68,16 +68,16 @@ class AnswerStore extends VuexModule {
     }
 
     // Not found Answer
-    this.SET_ANSWERS([
-      {
-        id: "",
-        answer: "",
-        answerHeadId: this.answerHead.id,
-        inserted: "",
-        orderId: 0,
-        questionId: params.questionId
-      }
-    ]);
+    // this.SET_ANSWERS([
+    //   {
+    //     id: "",
+    //     answer: "",
+    //     answerHeadId: this.answerHead.id,
+    //     inserted: "",
+    //     orderId: 0,
+    //     questionId: params.questionId
+    //   }
+    // ]);
   }
 
   /**
@@ -107,13 +107,11 @@ class AnswerStore extends VuexModule {
    * @param params { bookId: string }
    */
   @Action
-  public async getAnswerHead(params: { bookId: string }) {
+  public async getAnswerHeads(params: { bookId: string }) {
     const res: AxiosResponse<AnswerHead[]> = await baseApi.getAnswerHeadMeList(
       params.bookId
     );
-    if (res.data && res.data.length > 0) {
-      this.SET_ANSWER_HEAD(res.data[0]);
-    }
+    this.SET_ANSWER_HEADS(res.data);
   }
 
   @Mutation
@@ -124,6 +122,11 @@ class AnswerStore extends VuexModule {
   @Mutation
   private SET_ANSWER_HEAD(payload: AnswerHead) {
     this.answerHead = payload;
+  }
+
+  @Mutation
+  private SET_ANSWER_HEADS(payload: AnswerHead[]) {
+    this.answerHeads = payload;
   }
 }
 

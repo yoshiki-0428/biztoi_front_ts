@@ -30,8 +30,6 @@ export default connect({
         // 質問一覧を取得する
         await questionModule.getQuestionList(params);
         params.questionId = questionModule.question.id;
-        // 回答一覧を取得する（回答済みも含め）
-        await answerMeModule.getAnswerHead(params);
       }
       await questionModule.getQuestion(params);
       await answerMeModule.getAnswers(params);

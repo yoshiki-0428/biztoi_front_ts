@@ -16,7 +16,7 @@
           :class="alignText"
         >
           <v-card-title :class="infoSize">
-            <v-icon class="mr-2" color="black" size="10">
+            <v-icon class="mr-2" size="10">
               fa-pencil-alt
             </v-icon>
             {{ joinArray(book.authors) }}
@@ -27,7 +27,7 @@
           :class="alignText"
         >
           <v-card-title :class="infoSize">
-            <v-icon class="mr-2" color="black" size="10">
+            <v-icon class="mr-2" size="10">
               fa-book
             </v-icon>
             {{ joinArray(book.categories) }}
@@ -37,7 +37,7 @@
         <v-card-actions class="pa-0 mb-1">
           <v-spacer />
           <v-btn icon v-if="book.linkUrl" :href="book.linkUrl" target="_blank">
-            <v-icon>fa-share</v-icon>
+            <v-icon>fa-registered</v-icon>
           </v-btn>
           <v-btn icon @click="toggleIsActive">
             <v-icon :color="getColor">mdi-heart</v-icon>
@@ -55,6 +55,7 @@
 import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { Book, SendLikeInfo } from "@/axios/biztoi";
 import ShareIconButton from "@/components/atoms/ShareIconButton.vue";
+
 @Component({
   components: { ShareIconButton }
 })

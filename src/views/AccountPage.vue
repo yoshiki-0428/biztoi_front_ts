@@ -1,38 +1,17 @@
 <template>
   <v-container>
-    <breadcrumb :items="paths" />
     <account />
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import Account from "@/components/organisms/Account.vue";
-import Breadcrumb, {
-  IBreadcrumbs
-} from "@/components/organisms/Breadcrumb.vue";
+import Account from "@/container/Account";
 
 @Component({
   components: {
-    Account,
-    Breadcrumb
+    Account
   }
 })
-export default class AccountPage extends Vue {
-  @Prop()
-  "userId": string;
-  // URL ex(/top/account)
-  private paths: IBreadcrumbs[] = [
-    {
-      name: "top",
-      path: "/top",
-      disabled: false
-    }
-    // {
-    //   name: "accont",
-    //   path: `/top/${this.userId}`,
-    //   disabled: true
-    // }
-  ];
-}
+export default class AccountPage extends Vue {}
 </script>

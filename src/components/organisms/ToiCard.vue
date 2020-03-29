@@ -9,12 +9,7 @@
     </div>
 
     <v-card-actions>
-      <v-btn
-        outlined
-        block
-        color="primary"
-        :to="'/top/book/' + bookId + '/toi/questions/first'"
-      >
+      <v-btn outlined block color="primary" @click="createAnswerHead">
         回答してみる
       </v-btn>
     </v-card-actions>
@@ -22,14 +17,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { Toi } from "@/axios/biztoi";
-import router from "@/router";
 
 @Component
 export default class ToiCard extends Vue {
   @Prop()
   private toi?: Toi;
-  private bookId = router.currentRoute.params.bookId;
+  @Prop()
+  private bookId?: string;
+  @Emit()
+  private createAnswerHead() {}
 }
 </script>
