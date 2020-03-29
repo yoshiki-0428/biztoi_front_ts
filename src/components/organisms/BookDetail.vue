@@ -37,7 +37,7 @@
         <v-card-actions class="pa-0 mb-1">
           <v-spacer />
           <v-btn icon v-if="book.linkUrl" :href="book.linkUrl" target="_blank">
-            <v-icon>fa-share</v-icon>
+            <v-icon>fa-registered</v-icon>
           </v-btn>
           <v-btn icon @click="toggleIsActive">
             <v-icon :color="getColor">mdi-heart</v-icon>

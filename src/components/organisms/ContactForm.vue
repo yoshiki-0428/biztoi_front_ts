@@ -1,0 +1,13 @@
+<template>
+  <v-card>
+    <v-card-subtitle>
+      <v-btn
+        class="title"
+        text
+        target="blank"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSdKz0jUSlSABW7swGaM924YKqnjkzaIKs8UuNlslwsKv9RIgA/viewform"
+        >お問い合わせはこちら
+      </v-btn>
+    </v-card-subtitle>
+  </v-card>
+</template>
