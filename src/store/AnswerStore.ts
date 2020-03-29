@@ -249,8 +249,16 @@ class AnswerShareStore extends VuexModule {
 
   @Action
   public async getAnswerHead(params: { bookId: string; answerHeadId: string }) {
-    const res = await baseApi.getAnswerHead(params.bookId, params.answerHeadId);
-    this.SET_ANSWER_HEAD(res.data);
+    const res = await baseApi.getAnswerHeadList(
+      params.bookId,
+      params.answerHeadId
+    );
+    if (res.data) {
+      const answerHead = res.data.find(a => a.id === params.answerHeadId);
+      if (answerHead) {
+        this.SET_ANSWER_HEAD(answerHead);
+      }
+    }
   }
 
   @Action
