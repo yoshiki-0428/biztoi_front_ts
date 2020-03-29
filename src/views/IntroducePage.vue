@@ -36,8 +36,8 @@
           こんな人におすすめ！
         </v-card-title>
         <v-list class="pa-4">
-          <v-list-item v-for="item in bullet" :key="item.index">
-            <v-icon>fa-check</v-icon>
+          <v-list-item v-for="item in bullet" :key="item.index" class="ma-1">
+            <v-icon class="mr-1">fa-check</v-icon>
             <v-list-item-title>{{ item.text }}</v-list-item-title>
           </v-list-item>
         </v-list>
