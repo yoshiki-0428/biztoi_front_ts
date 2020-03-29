@@ -30,7 +30,6 @@ export default class QuestionPage extends Vue {
       ? `${displayName.substring(0, cutNum)} ... `
       : displayName;
   }
-  // ToDo URL ex(/top/book/bookId/toi/questions/questionId)
   private paths: IBreadcrumbs[] = [
     {
       name: "top",

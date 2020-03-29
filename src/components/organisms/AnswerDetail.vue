@@ -45,6 +45,12 @@
               </div>
             </div>
           </v-list-item>
+          <v-card-actions v-if="answerHead.userId === userInfo.id">
+            <v-spacer></v-spacer>
+            <v-btn outlined class="px-2"
+              >修正する<v-icon class="pl-2" size="15">fa-edit</v-icon></v-btn
+            >
+          </v-card-actions>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -56,11 +62,13 @@ import { Component, Prop, Emit, Vue } from "vue-property-decorator";
 import { Answer, AnswerHead, Question, SendLikeInfo } from "@/axios/biztoi";
 import isUndefined from "lodash/isUndefined";
 import AnswerOverView from "@/components/organisms/AnswerOverView.vue";
+import { BizToiUser } from "@/axios/biztoi";
 
 @Component({ components: { AnswerOverView } })
 export default class AnswerDetail extends Vue {
   @Prop({ default: null }) private answerHead!: AnswerHead;
   @Prop({ default: () => [] }) private questionList!: Question[];
+  @Prop({ default: {} }) private userInfo!: BizToiUser;
   @Emit("on-click-like")
   private onClick(sendLikeInfo: SendLikeInfo) {}
   private stepMap: { no: number; name: string }[] = [

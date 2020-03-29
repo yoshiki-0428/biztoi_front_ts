@@ -19,7 +19,6 @@ import Breadcrumb, {
   }
 })
 export default class BookSearchPage extends Vue {
-  // ToDo URL ex(/top/search)
   private paths: IBreadcrumbs[] = [
     {
       name: "top",
