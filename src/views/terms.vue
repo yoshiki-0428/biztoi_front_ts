@@ -214,5 +214,5 @@ import SiteFooter from "@/components/organisms/SiteFooter.vue";
     SiteFooter
   }
 })
-export default class kiyaku extends Vue {}
+export default class terms extends Vue {}
 </script>

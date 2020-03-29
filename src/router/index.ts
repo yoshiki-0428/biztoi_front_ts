@@ -9,8 +9,8 @@ const routes = [
     component: () => import("@/views/IntroducePage.vue")
   },
   {
-    path: "/kiyaku",
-    component: () => import("@/views/kiyaku.vue")
+    path: "/terms",
+    component: () => import("@/views/terms.vue")
   },
   {
     path: "/top",
