@@ -6,6 +6,7 @@ import { questionModule } from "@/store/QuestionModule";
 import UpdateRouteCheckMixin from "@/container/UpdateRouteCheckMixin";
 import router from "@/router";
 import { Answer, AnswerHead, Question } from "@/axios/biztoi";
+import { dialogModule } from "@/store/DialogModule";
 
 export default connect({
   stateToProps: {
@@ -50,6 +51,11 @@ export default connect({
       const bookId = router.currentRoute.params.bookId;
       const params = { bookId: bookId, answer: answer };
       await answerMeModule.postAnswers(params);
+    },
+    "finish-answer": async _ => {
+      const bookId = router.currentRoute.params.bookId;
+      await dialogModule.setProperty({ bookId: bookId });
+      await router.push("/top");
     }
   }
 })("answer-for-step", AnswerForStep.mixin(UpdateRouteCheckMixin));

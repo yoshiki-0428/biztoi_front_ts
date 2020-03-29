@@ -24,9 +24,9 @@
             v-for="(answer, index) in filterAnswerQuestion(question.id)"
             :key="index"
           >
-            <!-- TODO change:event入力完了時終了後にデータをPostするように修正  -->
             <v-textarea
               v-model="answer.answer"
+              :rules="rules"
               :label="`例) ${question.example}`"
               @change="postAnswer(answer)"
               outlined
@@ -66,17 +66,18 @@
           v-if="stepNo === '3'"
           outlined
           block
+          :disabled="answersValidate"
           color="primary"
-          @click="postAndPush(`/top/`)"
+          @click="finishAnswer"
         >
           回答終了する
         </v-btn>
-        <!-- TODO バリデーション -->
         <v-btn
           v-else
           outlined
           block
           color="primary"
+          :disabled="answersValidate"
           @click="
             postAndPush(
               `/top/book/${answerHead.bookId}/answer/${
@@ -96,6 +97,7 @@
 import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { Answer, AnswerHead, Question } from "@/axios/biztoi";
 import router from "@/router";
+import size from "lodash/size";
 
 @Component
 export default class AnswerInput extends Vue {
@@ -109,6 +111,22 @@ export default class AnswerInput extends Vue {
   }) {}
   @Emit() private async deleteAnswer(answer: Answer) {}
   @Emit() private async postAnswer(answer: Answer) {}
+  @Emit() private async finishAnswer() {}
+
+  rules: Function[] = [(value: string) => !!value || "必須項目です。"];
+  get answersValidate(): boolean {
+    if (this.answerHead.answers) {
+      const requiredQuestion = this.questionList
+        .filter(q => q.required)
+        .map(q => q.id);
+
+      const noInputAnswers = this.answerHead.answers.filter(
+        a => requiredQuestion.includes(a.questionId) && a.answer.length === 0
+      );
+      return size(noInputAnswers) > 0;
+    }
+    return false;
+  }
 
   private filterAnswerQuestion(questionId: string): Answer[] {
     if (this.answerHead.answers) {
