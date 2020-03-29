@@ -28,6 +28,7 @@
             <v-textarea
               v-model="answer.answer"
               :label="`例) ${question.example}`"
+              @change="postAnswer(answer)"
               outlined
             >
               <template
@@ -102,12 +103,12 @@ export default class AnswerInput extends Vue {
   @Prop({ default: null }) private answerHead!: AnswerHead;
   @Prop({ default: 1 }) private stepNo!: string;
 
-  @Emit() private async postAnswer() {}
   @Emit() private async createEmptyAnswer(params: {
     questionId: string;
     answerHeadId: string;
   }) {}
   @Emit() private async deleteAnswer(answer: Answer) {}
+  @Emit() private async postAnswer(answer: Answer) {}
 
   private filterAnswerQuestion(questionId: string): Answer[] {
     if (this.answerHead.answers) {

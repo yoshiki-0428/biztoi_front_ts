@@ -38,15 +38,12 @@ class AnswerStore extends VuexModule {
    * @param params { bookId: string; questionId: string }
    */
   @Action({ rawError: true })
-  public postAnswers(params: { bookId: string; questionId: string }) {
-    const resStore: Answer[] = this.answers!.filter(
-      (answer: Answer) => answer.questionId === params.questionId
-    );
-    baseApi.postAnswerMeByQuestion(
+  public postAnswers(params: { bookId: string; answer: Answer }) {
+    const res = baseApi.postAnswerMeByQuestion(
       params.bookId,
       this.answerHead.id,
-      params.questionId,
-      { answers: resStore }
+      params.answer.questionId,
+      { answers: [params.answer] }
     );
   }
 

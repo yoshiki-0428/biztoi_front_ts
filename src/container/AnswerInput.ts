@@ -37,7 +37,7 @@ export default connect({
     "post-answer": async (_, question: Question) => {
       const bookId = router.currentRoute.params.bookId;
       const params = { bookId: bookId, questionId: question.id };
-      await answerMeModule.postAnswers(params);
+      // await answerMeModule.postAnswers(params);
       if (question.nextQuestionId === null) {
         await dialogModule.setProperty({ bookId: bookId });
       }
