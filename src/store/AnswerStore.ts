@@ -38,13 +38,26 @@ class AnswerStore extends VuexModule {
    * @param params { bookId: string; questionId: string }
    */
   @Action({ rawError: true })
-  public postAnswers(params: { bookId: string; answer: Answer }) {
-    const res = baseApi.postAnswerMeByQuestion(
+  public async postAnswers(params: { bookId: string; answer: Answer }) {
+    const res: AxiosResponse<Answer[]> = await baseApi.postAnswerMeByQuestion(
       params.bookId,
       this.answerHead.id,
       params.answer.questionId,
       { answers: [params.answer] }
     );
+    if (res.data && this.answerHead.answers) {
+      const registerAnswer = res.data.find(
+        a =>
+          a.orderId === params.answer.orderId &&
+          a.questionId === params.answer.questionId
+      );
+      const index = this.answerHead.answers.findIndex(
+        a =>
+          a.orderId === params.answer.orderId &&
+          a.questionId === params.answer.questionId
+      );
+      this.answerHead.answers.splice(index, 1, registerAnswer!);
+    }
   }
 
   /**
@@ -162,8 +175,6 @@ class AnswerStore extends VuexModule {
           .filter(a => a.questionId === params.questionId)
           .map(a => a.orderId)
       );
-      // eslint-disable-next-line no-console
-      console.log(max);
 
       this.ADD_ANSWER_HEAD_ANSWER({
         id: "",

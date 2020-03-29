@@ -28,7 +28,7 @@
               v-model="answer.answer"
               :rules="rules"
               :label="`例) ${question.example}`"
-              @change="postAnswer(answer)"
+              @input="debouncePostAnswer(answer)"
               outlined
             >
               <template
@@ -98,6 +98,7 @@ import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { Answer, AnswerHead, Question } from "@/axios/biztoi";
 import router from "@/router";
 import size from "lodash/size";
+import debounce from "lodash/debounce";
 
 @Component
 export default class AnswerInput extends Vue {
@@ -112,6 +113,11 @@ export default class AnswerInput extends Vue {
   @Emit() private async deleteAnswer(answer: Answer) {}
   @Emit() private async postAnswer(answer: Answer) {}
   @Emit() private async finishAnswer() {}
+
+  private debouncePostAnswer: Function = debounce(
+    (answer: Answer) => this.postAnswer(answer),
+    1000
+  );
 
   rules: Function[] = [(value: string) => !!value || "必須項目です。"];
   get answersValidate(): boolean {
