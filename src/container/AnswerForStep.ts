@@ -45,7 +45,12 @@ export default connect({
       answerMeModule.createEmptyAnswer(params);
     },
     "delete-answer": async (_, answer: Answer) => {
-      answerMeModule.deleteAnswer({ answer: answer });
+      const bookId = router.currentRoute.params.bookId;
+      const params = {
+        bookId: bookId,
+        answer: answer
+      };
+      await answerMeModule.deleteAnswer(params);
     },
     "post-answer": async (_, answer: Answer) => {
       const bookId = router.currentRoute.params.bookId;

@@ -122,15 +122,12 @@ class AnswerStore extends VuexModule {
 
   @Action
   public async getAnswerHead(params: { bookId: string; answerHeadId: string }) {
-    const res: AxiosResponse<AnswerHead[]> = await baseApi.getAnswerHeadMeList(
+    const res: AxiosResponse<AnswerHead> = await baseApi.getAnswerHeadMe(
       params.bookId,
       params.answerHeadId
     );
-    const answerHead: AnswerHead | undefined = res.data.find(
-      answerHead => answerHead.id === params.answerHeadId
-    );
-    if (res.data && answerHead) {
-      this.SET_ANSWER_HEAD(answerHead);
+    if (res.data) {
+      this.SET_ANSWER_HEAD(res.data);
     }
   }
 
@@ -188,8 +185,14 @@ class AnswerStore extends VuexModule {
   }
 
   @Action({ rawError: true })
-  public deleteAnswer(param: { answer: Answer }) {
+  public async deleteAnswer(param: { bookId: string; answer: Answer }) {
     if (this.answerHead.answers) {
+      await baseApi.deleteAnswerMeByQuestion(
+        param.bookId,
+        param.answer.answerHeadId,
+        param.answer.questionId,
+        { answers: [param.answer] }
+      );
       const index = this.answerHead.answers.findIndex(
         v =>
           v.orderId === param.answer.orderId &&
@@ -249,15 +252,9 @@ class AnswerShareStore extends VuexModule {
 
   @Action
   public async getAnswerHead(params: { bookId: string; answerHeadId: string }) {
-    const res = await baseApi.getAnswerHeadList(
-      params.bookId,
-      params.answerHeadId
-    );
+    const res = await baseApi.getAnswerHead(params.bookId, params.answerHeadId);
     if (res.data) {
-      const answerHead = res.data.find(a => a.id === params.answerHeadId);
-      if (answerHead) {
-        this.SET_ANSWER_HEAD(answerHead);
-      }
+      this.SET_ANSWER_HEAD(res.data);
     }
   }
 
