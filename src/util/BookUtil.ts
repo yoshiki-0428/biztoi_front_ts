@@ -1,16 +1,17 @@
 import { Book } from "@/axios/biztoi";
 import { isNil } from "lodash";
+import { Item } from "@/axios/books";
 
 export default class BookUtil {
-  static bookConverter(volume: IVolume): Book {
+  static bookConverter(item: Item): Book {
     return {
-      isbn: this.getIsbn(volume),
-      detail: this.getDetail(volume.volumeInfo!),
-      pictureUrl: this.getPictureurl(volume.volumeInfo!),
-      linkUrl: volume.volumeInfo!.infoLink || "No link",
-      title: volume.volumeInfo!.title || "No title",
-      authors: volume.volumeInfo!.authors || [],
-      categories: volume.volumeInfo!.categories || [],
+      isbn: item.isbn || "",
+      detail: item.itemCaption || "",
+      pictureUrl: item.largeImageUrl,
+      linkUrl: item.affiliateUrl,
+      title: item.title || "",
+      authors: (item.author || "").split(","),
+      categories: (item.booksGenreId || "").split(","),
       favorite: false
     };
   }

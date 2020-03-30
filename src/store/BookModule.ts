@@ -7,10 +7,11 @@ import {
 } from "vuex-module-decorators";
 import { Book } from "@/axios/biztoi";
 import { baseApi, booksApi } from "@/plugins/axios";
-import { isNil } from "lodash";
+import { isNil, isEmpty, isUndefined } from "lodash";
 import store from "@/store";
 import { AxiosResponse } from "axios";
-import BookUtil, { IVolume, IVolumes } from "@/util/BookUtil";
+import BookUtil from "@/util/BookUtil";
+import { Item, SearchInfo } from "@/axios/books";
 
 @Module({ dynamic: true, store: store, name: "bookModule", namespaced: true })
 class BookModule extends VuexModule {
@@ -56,33 +57,32 @@ class BookModule extends VuexModule {
     this.SET_BOOKS(res.data);
   }
 
-  @Action
-  public async getBooksForGoogleBooks(word: string) {
-    if (isNil(word)) {
+  @Action({ rawError: true })
+  public async getBooksForBooksApi(word: string) {
+    if (isNil(word) || isEmpty(word)) {
       return;
     }
 
-    const res: AxiosResponse<void> = await booksApi.booksVolumesList(
+    const res: AxiosResponse<SearchInfo> = await booksApi.getBooksTotal(
+      process.env.VUE_APP_RAKUTEN_APPLICATION_ID,
+      "000",
       undefined,
       undefined,
+      word,
       undefined,
+      30,
       undefined,
-      "40",
-      "relevance",
-      undefined,
-      undefined,
-      "full",
-      word
+      undefined
     );
-    const results: IVolumes = Object.assign(
-      { kind: "", totalItems: "", items: [] },
-      res.data
-    );
-    const books: Book[] = results.items
-      .filter(item => !isNil(item))
-      .map((val): Book => BookUtil.bookConverter(val as IVolume));
 
-    this.SET_SEARCH_BOOKS(books);
+    // @ts-ignore
+    if (res.data.Items) {
+      // @ts-ignore
+      const books: Book[] = res.data.Items.filter(
+        (item: any) => !isNil(item) && !isUndefined(item.Item)
+      ).map((val: any): Book => BookUtil.bookConverter(val.Item as Item));
+      this.SET_SEARCH_BOOKS(books);
+    }
   }
 
   @Mutation

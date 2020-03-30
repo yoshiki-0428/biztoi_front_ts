@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 import { BiztoiApi } from "@/axios/biztoi";
-import { VolumesApi } from "@/axios/books";
+import { RakutenBooksTotalApi } from "@/axios/books";
 
 const apiAxios: AxiosInstance = axios.create({
   withCredentials: true
@@ -27,8 +27,8 @@ export const baseApi: BiztoiApi = new BiztoiApi(
 );
 
 const booksAxios: AxiosInstance = axios.create();
-export const booksApi = new VolumesApi(
+export const booksApi = new RakutenBooksTotalApi(
   undefined,
-  "https://www.googleapis.com/books/v1".replace(/\/+$/, ""),
+  undefined,
   booksAxios
 );
