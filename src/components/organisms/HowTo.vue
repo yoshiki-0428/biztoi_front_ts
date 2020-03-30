@@ -1,11 +1,12 @@
 <template>
-  <v-list class="pa-5" height="80vh">
+  <v-list class="pa-5" height="600px">
     <v-list-item-title class="display-1 my-10">ご利用方法</v-list-item-title>
+    <v-divider></v-divider>
     <v-list-item class="text-left" v-for="item in step" :key="item.step">
       <v-list-item-avatar class="primary darken-1">
         {{ item.stepNum }}
       </v-list-item-avatar>
-      <v-list-item-content class="ma-5">
+      <v-list-item-content class="ma-3 pb-5">
         <v-list-item-title>
           {{ item.title }}
           <v-icon size="15" class="ml-2 mb-1">{{ item.icon }}</v-icon>
