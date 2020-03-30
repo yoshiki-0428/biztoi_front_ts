@@ -15,11 +15,13 @@
         </v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
+    <login-button />
   </v-list>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import LoginButton from "@/components/organisms/LoginButton.vue";
 
 interface IStep {
   stepNum: number;
@@ -27,7 +29,9 @@ interface IStep {
   icon: string;
   text: string;
 }
-@Component
+@Component({
+  components: { LoginButton }
+})
 export default class HowTo extends Vue {
   step: Array<IStep> = [
     {

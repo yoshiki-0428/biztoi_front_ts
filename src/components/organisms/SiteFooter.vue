@@ -1,12 +1,7 @@
 <template>
-  <v-footer padless>
-    <v-col class="text-center" cols="12">
-      <router-link tag="v-card-subtitle" :to="'/kiyaku'">
-        <v-card-subtitle class="lead">
-          利用規約
-        </v-card-subtitle>
-      </router-link>
-      <v-card-text>
+  <v-footer>
+    <v-col class="text-center pa-1" cols="12">
+      <v-card-text class="pa-2">
         <v-btn
           icon
           class="mx4"
@@ -14,13 +9,26 @@
           :key="item.icon"
           :to="item.link"
         >
-          <v-icon dark large v-text="item.icon"></v-icon>
+          <v-icon dark size="35" v-text="item.icon"></v-icon>
         </v-btn>
       </v-card-text>
+      <v-card-text class="pa-2">
+        <span>
+          <router-link tag="span" :to="'/terms'">
+            利用規約
+          </router-link>
+        </span>
+        —
+        <span>
+          <router-link tag="span" href="">
+            お問い合わせ
+          </router-link>
+        </span>
+      </v-card-text>
       {{ new Date().getFullYear() }} —
-      <strong
-        ><router-link tag="strong" :to="'/'">ビジトイ</router-link></strong
-      >
+      <strong>
+        <router-link tag="strong" :to="'/'">BizToi</router-link>
+      </strong>
     </v-col>
   </v-footer>
 </template>
