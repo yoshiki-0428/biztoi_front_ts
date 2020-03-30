@@ -19,11 +19,14 @@
           </router-link>
         </span>
         —
-        <span>
-          <router-link tag="span" href="">
-            お問い合わせ
-          </router-link>
-        </span>
+        <v-btn
+          class="px-0"
+          text
+          target="blank"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdKz0jUSlSABW7swGaM924YKqnjkzaIKs8UuNlslwsKv9RIgA/viewform"
+        >
+          お問い合わせ
+        </v-btn>
       </v-card-text>
       {{ new Date().getFullYear() }} —
       <strong>
