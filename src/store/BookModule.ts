@@ -76,7 +76,7 @@ class BookModule extends VuexModule {
   @Action
   public async getBooksFavoriteMe() {
     const res = await baseApi.bookFavoriteListMe();
-    this.SET_BOOK_FAVORITE(res.data);
+    this.SET_BOOK_FAVORITE_ME(res.data);
   }
 
   @Action

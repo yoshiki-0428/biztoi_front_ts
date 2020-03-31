@@ -4,9 +4,9 @@ import BookList from "@/components/organisms/BookList.vue";
 
 export default connect({
   stateToProps: {
-    books: () => bookModule.books
+    books: () => bookModule.bookFavoriteMe
   },
   lifecycle: {
-    created: () => bookModule.getBooks()
+    created: () => bookModule.getBooksFavoriteMe()
   }
 })("book-list", BookList);
