@@ -28,6 +28,11 @@ class BookModule extends VuexModule {
   };
   public books: Book[] = [];
   public searchBooks: Book[] = [];
+  public bookLikes: Book[] = [];
+  public bookFavorite: Book[] = [];
+  public bookFavoriteMe: Book[] = [];
+  public bookRecommend: Book[] = [];
+  public bookUnfinished: Book[] = [];
 
   @Action
   public async getBook(isbn: string) {
@@ -55,6 +60,35 @@ class BookModule extends VuexModule {
   public async getBooks() {
     const res = await baseApi.books();
     this.SET_BOOKS(res.data);
+  }
+
+  @Action
+  public async getBooksLike() {
+    const res = await baseApi.bookLikesList();
+    this.SET_BOOK_LIKES(res.data);
+  }
+  @Action
+  public async getBooksFavorite() {
+    const res = await baseApi.bookFavoriteList();
+    this.SET_BOOK_FAVORITE(res.data);
+  }
+
+  @Action
+  public async getBooksFavoriteMe() {
+    const res = await baseApi.bookFavoriteListMe();
+    this.SET_BOOK_FAVORITE(res.data);
+  }
+
+  @Action
+  public async getBooksRecommend() {
+    const res = await baseApi.bookRecommendList();
+    this.SET_BOOK_RECOMMEND(res.data);
+  }
+
+  @Action
+  public async getBooksUnfinished() {
+    const res = await baseApi.bookUnfinishedList();
+    this.SET_BOOK_UNFINISHED(res.data);
   }
 
   @Action({ rawError: true })
@@ -96,6 +130,31 @@ class BookModule extends VuexModule {
   @Mutation
   private SET_SEARCH_BOOKS(payload: Book[]) {
     this.searchBooks = payload;
+  }
+
+  @Mutation
+  private SET_BOOK_LIKES(payload: Book[]) {
+    this.bookLikes = payload;
+  }
+
+  @Mutation
+  private SET_BOOK_FAVORITE(payload: Book[]) {
+    this.bookFavorite = payload;
+  }
+
+  @Mutation
+  private SET_BOOK_FAVORITE_ME(payload: Book[]) {
+    this.bookFavoriteMe = payload;
+  }
+
+  @Mutation
+  private SET_BOOK_RECOMMEND(payload: Book[]) {
+    this.bookRecommend = payload;
+  }
+
+  @Mutation
+  private SET_BOOK_UNFINISHED(payload: Book[]) {
+    this.bookUnfinished = payload;
   }
 }
 
