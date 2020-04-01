@@ -1,7 +1,7 @@
 <template>
   <v-container class="pa-0">
     <!-- キャッチコピー -->
-    <v-card tile height="100vh">
+    <v-card flat tile height="100vh">
       <v-img
         height="100vh"
         class="d-flex align-center justify-center"
@@ -22,7 +22,7 @@
       </v-img>
     </v-card>
     <!-- BizToiとは？ -->
-    <v-card color="white" tile height="800px">
+    <v-card flat tile color="white" height="800px">
       <v-card-title class="black--text display-1 justify-center py-10">
         BizToiとは？
       </v-card-title>
@@ -33,11 +33,11 @@
         </p>
         <p>目的としたサービスです</p>
       </v-card-text>
-      <v-card class="ma-5">
-        <v-card-title class="white--text pt-8 d-flex justify-center">
+      <v-card flat tile class="ma-5">
+        <v-card-title class="white--text pt-5 d-flex justify-center">
           こんな人におすすめ！
         </v-card-title>
-        <v-list class="pb-5">
+        <v-list tile class="pb-5">
           <v-list-item
             v-for="item in bullet"
             :key="item.index"

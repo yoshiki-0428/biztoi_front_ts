@@ -1,22 +1,24 @@
 <template>
-  <v-list class="pa-5" height="600px">
-    <v-list-item-title class="display-1 my-10">ご利用方法</v-list-item-title>
-    <v-divider></v-divider>
-    <v-list-item class="pa-3 text-left" v-for="item in step" :key="item.step">
-      <v-list-item-avatar color="primary">
-        <v-icon size="15">{{ item.icon }}</v-icon>
-      </v-list-item-avatar>
-      <v-list-item-content class="pa-3 mt-1">
-        <v-list-item-title>
-          {{ item.title }}
-        </v-list-item-title>
-        <v-list-item-subtitle class="caption pt-2">
-          {{ item.text }}
-        </v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
-    <login-button />
-  </v-list>
+  <v-card tile>
+    <v-list class="pa-5" height="600px">
+      <v-list-item-title class="display-1 my-10">ご利用方法</v-list-item-title>
+      <v-divider></v-divider>
+      <v-list-item class="pa-2 text-left" v-for="item in step" :key="item.step">
+        <v-list-item-avatar color="primary">
+          <v-icon size="15">{{ item.icon }}</v-icon>
+        </v-list-item-avatar>
+        <v-list-item-content class="pa-3 mt-1">
+          <v-list-item-title>
+            {{ item.title }}
+          </v-list-item-title>
+          <v-list-item-subtitle class="caption pt-2">
+            {{ item.text }}
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <login-button />
+    </v-list>
+  </v-card>
 </template>
 
 <script lang="ts">
