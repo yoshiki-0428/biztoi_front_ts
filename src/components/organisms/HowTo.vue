@@ -1,6 +1,10 @@
 <template>
-  <v-card tile>
-    <v-list class="pa-5" height="600px">
+  <v-list class="pa-0">
+    <v-img
+      height="600px"
+      class="d-flex align-center justify-center pa-5"
+      :src="require('@/assets/HowTow.jpg')"
+    >
       <v-list-item-title class="display-1 my-10">ご利用方法</v-list-item-title>
       <v-divider></v-divider>
       <v-list-item class="pa-2 text-left" v-for="item in step" :key="item.step">
@@ -17,9 +21,11 @@
         </v-list-item-content>
       </v-list-item>
       <login-button />
-    </v-list>
-  </v-card>
+    </v-img>
+  </v-list>
 </template>
+
+<style scoped></style>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";

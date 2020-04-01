@@ -10,17 +10,17 @@
       </thead>
       <tbody>
         <tr>
-          <td>回答投稿</td>
+          <td>lorem</td>
           <td>✔</td>
           <td>✔</td>
         </tr>
         <tr>
-          <td>閲覧制限</td>
+          <td>lorem</td>
           <td>5件/1日</td>
           <td>なし</td>
         </tr>
         <tr>
-          <td>広告</td>
+          <td>lorem</td>
           <td>表示あり</td>
           <td>非表示</td>
         </tr>
