@@ -1,25 +1,25 @@
 <template>
   <v-container class="pa-0">
     <!-- キャッチコピー -->
-    <v-card
-      tile
-      :img="require('@/assets/bg.jpg')"
-      height="100vh"
-      class="d-flex align-center justify-center"
-    >
-      <div>
-        <v-card-title class="black--text display-3 justify-center mb-12">
-          B
-          <span class="primary--text">i</span>zTo
-          <span class="primary--text">i</span>
-        </v-card-title>
-        <v-card-text class="display-1 pa-5 pt-12">
-          <p>「知識」ｘ「行動」</p>
-          <p>忘れない読書を</p>
-          <p>あなたに</p>
-          <login-button />
-        </v-card-text>
-      </div>
+    <v-card tile height="100vh">
+      <v-img
+        height="100vh"
+        class="d-flex align-center justify-center"
+        :src="require('@/assets/bg.jpg')"
+      >
+        <div>
+          <v-card-title class="black--text display-3 justify-center mb-12">
+            B
+            <span class="primary--text">i</span>zTo
+            <span class="primary--text">i</span>
+          </v-card-title>
+          <v-card-text class="display-1 pa-5 pt-12">
+            <p>忘れない読書を</p>
+            <p>あなたに</p>
+            <login-button />
+          </v-card-text>
+        </div>
+      </v-img>
     </v-card>
     <!-- BizToiとは？ -->
     <v-card color="white" tile height="800px">
@@ -37,14 +37,16 @@
         <v-card-title class="white--text pt-8 d-flex justify-center">
           こんな人におすすめ！
         </v-card-title>
-        <v-list>
+        <v-list class="pb-5">
           <v-list-item
             v-for="item in bullet"
             :key="item.index"
             class="ma-1 px-3"
           >
-            <v-icon class="mr-1">fa-check</v-icon>
-            <v-list-item-title>{{ item.text }}</v-list-item-title>
+            <v-icon size="20" class="mr-1">fa-check</v-icon>
+            <v-list-item-title class="text-left ml-5">
+              {{ item.text }}
+            </v-list-item-title>
           </v-list-item>
         </v-list>
       </v-card>
@@ -71,25 +73,25 @@ import HowTo from "@/components/organisms/HowTo.vue";
 export default class IntroducePage extends Vue {
   bullet = [
     {
-      text: "本の内容を覚えていたい！"
+      text: "本の内容を覚えていたい"
     },
     {
-      text: "読んだ後にアウトプットをしたい！"
+      text: "読んだ後にアウトプットをしたい"
     },
     {
-      text: "今すぐ行動に起こしたい！"
+      text: "今すぐ行動に起こしたい"
     },
     {
-      text: "他の人のレビューを見たい！"
+      text: "他の人のレビューを見たい"
     },
     {
-      text: "いつでもメモを取りたい！"
+      text: "いつでもメモを取りたい"
     },
     {
-      text: "部下に本の情報を共有したい！"
+      text: "部下に本の情報を共有したい"
     },
     {
-      text: "ビジネス書の読み方を知りたい！"
+      text: "ビジネス書の読み方を知りたい"
     }
   ];
 }
