@@ -13,6 +13,10 @@ const routes = [
     component: () => import("@/views/terms.vue")
   },
   {
+    path: "/privacy",
+    component: () => import("@/views/privacy.vue")
+  },
+  {
     path: "/top",
     component: () => import("@/views/layout/BaseLayout.vue"),
     children: [

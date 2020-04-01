@@ -1,5 +1,5 @@
 <template>
-  <v-footer>
+  <v-footer class="px-2">
     <v-col class="text-center pa-1" cols="12">
       <v-card-text class="pa-2">
         <v-btn
@@ -12,15 +12,19 @@
           <v-icon dark size="35" v-text="item.icon"></v-icon>
         </v-btn>
       </v-card-text>
-      <v-card-text class="pa-2">
-        <span>
+      <v-card-text class="pa-2 px-0">
+        <span class="mr-3">
           <router-link tag="span" :to="'/terms'">
             利用規約
           </router-link>
         </span>
-        —
+        <span class="mr-3">
+          <router-link tag="span" :to="'/privacy'">
+            プライバシーポリシー
+          </router-link>
+        </span>
         <v-btn
-          class="px-0"
+          class="px-0 pb-1"
           text
           target="blank"
           href="https://docs.google.com/forms/d/e/1FAIpQLSdKz0jUSlSABW7swGaM924YKqnjkzaIKs8UuNlslwsKv9RIgA/viewform"

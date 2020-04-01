@@ -8,12 +8,12 @@
       class="d-flex align-center justify-center"
     >
       <div>
-        <v-card-title class="black--text display-3 justify-center mb-5">
+        <v-card-title class="black--text display-3 justify-center mb-12">
           B
           <span class="primary--text">i</span>zTo
           <span class="primary--text">i</span>
         </v-card-title>
-        <v-card-text class="white--text display-1 pa-5">
+        <v-card-text class="display-1 pa-5 pt-12">
           <p>「知識」ｘ「行動」</p>
           <p>忘れない読書を</p>
           <p>あなたに</p>
