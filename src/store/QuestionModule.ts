@@ -30,7 +30,7 @@ class QuestionModule extends VuexModule {
     answerType: ""
   };
   public questionList: Question[] = [];
-  public questionNo: number = 1;
+  public stepNo: string = "1";
   @Action
   public async getQuestionList(params: { bookId: string }) {
     const res: AxiosResponse<Question[]> = await baseApi.getBookQuestions(
@@ -39,7 +39,20 @@ class QuestionModule extends VuexModule {
 
     if (res.data) {
       this.SET_QUESTION_LIST(res.data);
-      this.SET_QUESTION(res.data[0]);
+    }
+  }
+  @Action
+  public async getQuestionListForStep(params: {
+    bookId: string;
+    stepNo: string;
+  }) {
+    const res: AxiosResponse<Question[]> = await baseApi.getBookQuestions(
+      params.bookId
+    );
+
+    if (res.data) {
+      this.SET_STEP_NO(params.stepNo);
+      this.SET_QUESTION_LIST(res.data.filter(q => q.step === params.stepNo));
     }
   }
 
@@ -71,6 +84,11 @@ class QuestionModule extends VuexModule {
   @Mutation
   private SET_QUESTION_LIST(payload: Question[]) {
     this.questionList = payload;
+  }
+
+  @Mutation
+  private SET_STEP_NO(payload: string) {
+    this.stepNo = payload;
   }
 }
 

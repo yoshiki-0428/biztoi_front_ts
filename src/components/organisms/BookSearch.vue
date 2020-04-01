@@ -20,18 +20,6 @@
         </template>
       </template>
     </v-autocomplete>
-    <v-row>
-      <v-spacer></v-spacer>
-      <v-flex xs6>
-        <v-select
-          class="pr-4"
-          :items="targets"
-          label="絞り込み検索"
-          return-object
-          v-model="selected"
-        ></v-select>
-      </v-flex>
-    </v-row>
     <book-over-view
       v-for="(book, index) in books"
       :key="index"
@@ -54,12 +42,8 @@ import BookOverView from "@/components/organisms/BookOverView.vue";
 export default class BookSearch extends Vue {
   isLoading: boolean = false;
   word: string = "";
-  targets: string[] = ["all", "title", "author"];
-  selected: string = "all";
 
-  @Prop(Array)
-  public books: Book[] | undefined;
-
+  @Prop(Array) public books: Book[] | undefined;
   @Watch("word")
   public wordChanged() {
     if (!isNil(this.word)) {
@@ -67,29 +51,15 @@ export default class BookSearch extends Vue {
       this.debounceSearchBooks();
     }
   }
-  @Watch("selected")
-  public targetsChanged() {
-    if (!isNil(this.word) && !isNil(this.targets)) {
-      this.isLoading = true;
-      this.debounceSearchBooks();
-    }
-  }
+
   private debounceSearchBooks: Function = debounce(
     () => this.searchWord(),
-    400
+    1000
   );
+
   private searchWord() {
-    this.$emit("search-word", BookSearch.getResource(this.selected, this.word));
+    this.$emit("search-word", this.word);
     this.isLoading = false;
-  }
-  private static getResource(searchType: string, word: string): string {
-    if (searchType === "author") {
-      return `inauthor:${word}`;
-    } else if (searchType === "title") {
-      return `intitle:${word}`;
-    } else {
-      return word;
-    }
   }
 }
 </script>

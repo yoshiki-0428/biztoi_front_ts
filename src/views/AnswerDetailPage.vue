@@ -22,17 +22,9 @@ import Breadcrumb, {
   }
 })
 export default class AnswerDetailPage extends Vue {
-  @Prop()
-  "bookId": string;
-  @Prop()
-  "answerHeadId": string;
-  private cutDisplayName(displayName: string): string {
-    const cutNum: number = 5;
-    return displayName.length > cutNum
-      ? `${displayName.substring(0, cutNum)} ... `
-      : displayName;
-  }
-  // URL ex(/top/book/bookId/answer/answerHeadId)
+  @Prop() "bookId": string;
+  @Prop() "answerHeadId": string;
+
   private paths: IBreadcrumbs[] = [
     {
       name: "top",
@@ -40,12 +32,12 @@ export default class AnswerDetailPage extends Vue {
       disabled: false
     },
     {
-      name: this.cutDisplayName(this.bookId),
+      name: "本詳細",
       path: `/top/book/${this.bookId}`,
       disabled: false
     },
     {
-      name: this.cutDisplayName(this.answerHeadId),
+      name: "回答詳細",
       path: `/top/book/${this.bookId}/answer/${this.answerHeadId}`,
       disabled: true
     }

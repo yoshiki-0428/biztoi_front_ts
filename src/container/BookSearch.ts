@@ -7,6 +7,6 @@ export default connect({
     books: () => bookModule.searchBooks
   },
   actionsToEvents: {
-    "search-word": (dispatch, word) => bookModule.getBooksForGoogleBooks(word)
+    "search-word": (dispatch, word) => bookModule.getBooksForBooksApi(word)
   }
 })("book-search", BookSearch);

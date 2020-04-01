@@ -7,10 +7,11 @@ import {
 } from "vuex-module-decorators";
 import { Book } from "@/axios/biztoi";
 import { baseApi, booksApi } from "@/plugins/axios";
-import { isNil } from "lodash";
+import { isNil, isEmpty, isUndefined } from "lodash";
 import store from "@/store";
 import { AxiosResponse } from "axios";
-import BookUtil, { IVolume, IVolumes } from "@/util/BookUtil";
+import BookUtil from "@/util/BookUtil";
+import { Item, SearchInfo } from "@/axios/books";
 
 @Module({ dynamic: true, store: store, name: "bookModule", namespaced: true })
 class BookModule extends VuexModule {
@@ -27,6 +28,11 @@ class BookModule extends VuexModule {
   };
   public books: Book[] = [];
   public searchBooks: Book[] = [];
+  public bookLikes: Book[] = [];
+  public bookFavorite: Book[] = [];
+  public bookFavoriteMe: Book[] = [];
+  public bookRecommend: Book[] = [];
+  public bookUnfinished: Book[] = [];
 
   @Action
   public async getBook(isbn: string) {
@@ -57,32 +63,60 @@ class BookModule extends VuexModule {
   }
 
   @Action
-  public async getBooksForGoogleBooks(word: string) {
-    if (isNil(word)) {
+  public async getBooksLike() {
+    const res = await baseApi.bookLikesList();
+    this.SET_BOOK_LIKES(res.data);
+  }
+  @Action
+  public async getBooksFavorite() {
+    const res = await baseApi.bookFavoriteList();
+    this.SET_BOOK_FAVORITE(res.data);
+  }
+
+  @Action
+  public async getBooksFavoriteMe() {
+    const res = await baseApi.bookFavoriteListMe();
+    this.SET_BOOK_FAVORITE_ME(res.data);
+  }
+
+  @Action
+  public async getBooksRecommend() {
+    const res = await baseApi.bookRecommendList();
+    this.SET_BOOK_RECOMMEND(res.data);
+  }
+
+  @Action
+  public async getBooksUnfinished() {
+    const res = await baseApi.bookUnfinishedList();
+    this.SET_BOOK_UNFINISHED(res.data);
+  }
+
+  @Action({ rawError: true })
+  public async getBooksForBooksApi(word: string) {
+    if (isNil(word) || isEmpty(word)) {
       return;
     }
 
-    const res: AxiosResponse<void> = await booksApi.booksVolumesList(
+    const res: AxiosResponse<SearchInfo> = await booksApi.getBooksTotal(
+      process.env.VUE_APP_RAKUTEN_APPLICATION_ID,
+      "000",
       undefined,
       undefined,
+      word,
       undefined,
+      30,
       undefined,
-      "40",
-      "relevance",
-      undefined,
-      undefined,
-      "full",
-      word
+      undefined
     );
-    const results: IVolumes = Object.assign(
-      { kind: "", totalItems: "", items: [] },
-      res.data
-    );
-    const books: Book[] = results.items
-      .filter(item => !isNil(item))
-      .map((val): Book => BookUtil.bookConverter(val as IVolume));
 
-    this.SET_SEARCH_BOOKS(books);
+    // @ts-ignore
+    if (res.data.Items) {
+      // @ts-ignore
+      const books: Book[] = res.data.Items.filter(
+        (item: any) => !isNil(item) && !isUndefined(item.Item)
+      ).map((val: any): Book => BookUtil.bookConverter(val.Item as Item));
+      this.SET_SEARCH_BOOKS(books);
+    }
   }
 
   @Mutation
@@ -96,6 +130,31 @@ class BookModule extends VuexModule {
   @Mutation
   private SET_SEARCH_BOOKS(payload: Book[]) {
     this.searchBooks = payload;
+  }
+
+  @Mutation
+  private SET_BOOK_LIKES(payload: Book[]) {
+    this.bookLikes = payload;
+  }
+
+  @Mutation
+  private SET_BOOK_FAVORITE(payload: Book[]) {
+    this.bookFavorite = payload;
+  }
+
+  @Mutation
+  private SET_BOOK_FAVORITE_ME(payload: Book[]) {
+    this.bookFavoriteMe = payload;
+  }
+
+  @Mutation
+  private SET_BOOK_RECOMMEND(payload: Book[]) {
+    this.bookRecommend = payload;
+  }
+
+  @Mutation
+  private SET_BOOK_UNFINISHED(payload: Book[]) {
+    this.bookUnfinished = payload;
   }
 }
 

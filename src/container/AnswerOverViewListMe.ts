@@ -1,5 +1,6 @@
 import { connect } from "vuex-connect";
 import { answerMeModule } from "@/store/AnswerStore";
+// @ts-ignore
 import AnswerOverViewList from "@/components/organisms/AnswerOverViewList.vue";
 import router from "@/router";
 import { baseApi } from "@/plugins/axios";
