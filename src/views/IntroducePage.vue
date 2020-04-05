@@ -5,7 +5,7 @@
       <v-img
         height="100vh"
         class="d-flex align-center justify-center"
-        :src="require('@/assets/bg.jpg')"
+        :src="require('@/assets/bg_top.jpg')"
       >
         <div>
           <v-card-title class="black--text display-3 justify-center mb-12">
@@ -73,7 +73,10 @@ import HowTo from "@/components/organisms/HowTo.vue";
 export default class IntroducePage extends Vue {
   bullet = [
     {
-      text: "本の内容を覚えていたい"
+      text: "本の内容を忘れたくない"
+    },
+    {
+      text: "いつでもメモを取りたい"
     },
     {
       text: "読んだ後にアウトプットをしたい"
@@ -82,16 +85,10 @@ export default class IntroducePage extends Vue {
       text: "今すぐ行動に起こしたい"
     },
     {
-      text: "他の人のレビューを見たい"
+      text: "他の人の考えを知りたい"
     },
     {
-      text: "いつでもメモを取りたい"
-    },
-    {
-      text: "部下に本の情報を共有したい"
-    },
-    {
-      text: "ビジネス書の読み方を知りたい"
+      text: "知人に本の情報を共有したい"
     }
   ];
 }
