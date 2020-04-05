@@ -15,6 +15,6 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class LoginButton extends Vue {
-  url: string = `${process.env.VUE_APP_API_BASE_URL}/oauth2/authorization/biztoi-app-client`;
+  url: string = `${process.env.VUE_APP_API_BASE_URL}/oauth2/authorization/biztoi`;
 }
 </script>
