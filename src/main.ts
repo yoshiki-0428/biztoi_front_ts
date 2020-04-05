@@ -10,7 +10,7 @@ import "./plugins/axios";
 Vue.config.productionTip = false;
 
 Vue.use(VueAnalytics, {
-  id: "UA-162848676-1",
+  id: process.env.VUE_APP_GA_ID,
   router
 });
 
