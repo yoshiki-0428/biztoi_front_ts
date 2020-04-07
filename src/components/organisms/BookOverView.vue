@@ -37,19 +37,6 @@
           />
         </v-card-actions>
       </v-col>
-      <!-- <v-col cols="4" class="pa-0">
-        <v-img :src="book.pictureUrl" contain height="100%"></v-img>
-      </v-col>
-      <v-col cols="8" class="pa-2">
-        <div class="text-left">
-          <v-card-title
-            v-text="book.title"
-            class="subtitle-2 pa-0 pb-1"
-          ></v-card-title>
-          
-        </div>
-        
-      </v-col> -->
     </v-row>
   </v-card>
 </template>
