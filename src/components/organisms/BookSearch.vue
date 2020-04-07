@@ -1,49 +1,60 @@
 <template>
   <div>
-    <v-autocomplete
-      :items="books"
-      :loading="isLoading"
-      :search-input.sync="word"
-      label="書籍検索"
-      item-text="title"
-      placeholder="Search"
-      prepend-inner-icon="mdi-database-search"
-      no-filter
-      clearable
+    <v-text-field
       outlined
-    >
-      <template v-slot:item="data">
-        <template>
-          <v-list-item-content>
-            <v-list-item-title v-html="data.item.title"></v-list-item-title>
-          </v-list-item-content>
-        </template>
-      </template>
-    </v-autocomplete>
-    <book-over-view
-      v-for="(book, index) in books"
-      :key="index"
-      :book="book"
-    ></book-over-view>
+      label="書籍検索"
+      :loading="isLoading"
+      v-model="word"
+      prepend-inner-icon="mdi-database-search"
+    ></v-text-field>
+    <v-item-group>
+      <v-container class="pa-0">
+        <v-row>
+          <v-col
+            v-for="(book, index) in books"
+            :key="index"
+            class="d-flex child-flex"
+            cols="4"
+          >
+            <v-card flat class="d-flex" :to="`/top/book/${book.isbn}`">
+              <v-img
+                :src="book.pictureUrl"
+                :lazy-src="book.pictureUrl"
+                aspect-ratio="0.666"
+                class="grey lighten-2"
+              >
+                <template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                  >
+                    <v-progress-circular
+                      indeterminate
+                      color="grey lighten-5"
+                    ></v-progress-circular>
+                  </v-row>
+                </template>
+              </v-img>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-item-group>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { Book } from "@/axios/biztoi";
+import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
+import { Book, SendLikeInfo } from "@/axios/biztoi";
 import { debounce, isNil } from "lodash";
-import BookOverView from "@/components/organisms/BookOverView.vue";
 
-@Component({
-  components: {
-    BookOverView
-  }
-})
+@Component
 export default class BookSearch extends Vue {
-  isLoading: boolean = false;
-  word: string = "";
-
   @Prop(Array) public books: Book[] | undefined;
+  private isLoading: boolean = false;
+  private word: string = "";
+
   @Watch("word")
   public wordChanged() {
     if (!isNil(this.word)) {
@@ -61,5 +72,8 @@ export default class BookSearch extends Vue {
     this.$emit("search-word", this.word);
     this.isLoading = false;
   }
+
+  @Emit("on-click-favorite")
+  private onClick(sendLikeInfo: SendLikeInfo) {}
 }
 </script>
