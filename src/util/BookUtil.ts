@@ -8,7 +8,7 @@ export default class BookUtil {
       isbn: item.isbn || "",
       detail: item.itemCaption || "",
       pictureUrl: item.largeImageUrl,
-      linkUrl: item.affiliateUrl,
+      linkUrl: item.itemUrl,
       title: item.title || "",
       authors: (item.author || "").split(","),
       categories: (item.booksGenreId || "").split(","),
