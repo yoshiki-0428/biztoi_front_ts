@@ -21,6 +21,8 @@
         </div>
       </v-img>
     </v-card>
+    <!-- copy -->
+    <copy />
     <!-- BizToiとは？ -->
     <v-card flat tile color="white" height="800px">
       <v-card-title class="black--text display-1 justify-center py-10">
@@ -44,9 +46,9 @@
             class="ma-1 px-3"
           >
             <v-icon size="20">fa-check</v-icon>
-            <v-list-item-title class="text-left ml-5">
+            <v-list-item-text class="text-left ml-5">
               {{ item.text }}
-            </v-list-item-title>
+            </v-list-item-text>
           </v-list-item>
         </v-list>
       </v-card>
@@ -62,11 +64,13 @@ import { Component, Vue } from "vue-property-decorator";
 import LoginButton from "@/components/organisms/LoginButton.vue";
 import SiteFooter from "@/components/organisms/SiteFooter.vue";
 import HowTo from "@/components/organisms/HowTo.vue";
+import Copy from "@/components/organisms/Copy.vue";
 
 @Component({
   components: {
     LoginButton,
     HowTo,
+    Copy,
     SiteFooter
   }
 })
@@ -88,7 +92,7 @@ export default class IntroducePage extends Vue {
       text: "他の人の考えを知りたい"
     },
     {
-      text: "知人に本の情報を共有したい"
+      text: "本の情報を共有したい"
     }
   ];
 }
