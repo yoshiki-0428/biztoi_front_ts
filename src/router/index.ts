@@ -1,5 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import VueAnalytics from "vue-analytics";
+const Hotjar = require("vue-hotjar");
 
 Vue.use(VueRouter);
 
@@ -59,6 +61,16 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
+});
+
+Vue.use(VueAnalytics, {
+  id: process.env.VUE_APP_GA_ID,
+  router
+});
+
+Vue.use(Hotjar, {
+  id: process.env.VUE_APP_HOTJAR_ID,
+  isProduction: true
 });
 
 export default router;
