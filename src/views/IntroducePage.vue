@@ -46,9 +46,9 @@
             class="ma-1 px-3"
           >
             <v-icon size="20">fa-check</v-icon>
-            <v-list-item-text class="text-left ml-5">
+            <v-list-item-content class="text-left ml-5">
               {{ item.text }}
-            </v-list-item-text>
+            </v-list-item-content>
           </v-list-item>
         </v-list>
       </v-card>
