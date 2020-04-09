@@ -2,7 +2,7 @@
   <v-card class="mb-4">
     <v-row dense>
       <v-col :cols="colImg" class="pa-0 pl-1">
-        <v-img height="100%" :src="book.pictureUrl" />
+        <v-img height="100%" aspect-ratio="0.66" :src="book.pictureUrl" />
       </v-col>
       <v-col :cols="colText" class="d-flex flex-column">
         <v-card-text :class="alignText">
@@ -33,9 +33,18 @@
             {{ joinArray(book.categories) }}
           </v-card-title>
         </v-card-text>
+        <v-card-text v-if="book.detail && !isMinimum" :class="alignText">
+          <v-card-title :class="infoSize" class="">
+            {{ book.detail.substring(0, 30) }}...
+          </v-card-title>
+        </v-card-text>
+
         <v-spacer />
         <v-card-actions class="pa-0 mb-1">
           <v-spacer />
+          <v-btn v-if="isRouting" text small :to="`/top/book/${book.isbn}`"
+            >詳細へ</v-btn
+          >
           <v-btn icon v-if="book.linkUrl" :href="book.linkUrl" target="_blank">
             <v-icon>fa-registered</v-icon>
           </v-btn>
@@ -62,8 +71,8 @@ import ShareIconButton from "@/components/atoms/ShareIconButton.vue";
 export default class BookDetail extends Vue {
   alignText: string = "pa-1 ml-1 text-left";
   infoSize: string = "caption pa-0";
-  @Prop({ default: false })
-  private isMinimum!: boolean;
+  @Prop({ default: false }) private isMinimum!: boolean;
+  @Prop({ default: false }) private isRouting!: boolean;
   get colImg(): number {
     return this.isMinimum ? 2 : 4;
   }

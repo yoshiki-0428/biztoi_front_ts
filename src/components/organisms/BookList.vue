@@ -1,7 +1,7 @@
 <template>
   <div v-if="existFavorite()">
     <div v-for="item in books" :key="item.id">
-      <book-over-view :book="item" />
+      <book-detail :is-routing="true" :book="item" />
     </div>
   </div>
   <v-card v-else>
@@ -22,11 +22,11 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Book } from "@/axios/biztoi";
-import BookOverView from "@/components/organisms/BookOverView.vue";
+import BookDetail from "@/components/organisms/BookDetail.vue";
 
 @Component({
   components: {
-    BookOverView
+    BookDetail
   }
 })
 export default class BookList extends Vue {
