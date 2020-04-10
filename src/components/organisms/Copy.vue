@@ -1,31 +1,41 @@
 <template>
-  <v-card tile flat class="white">
-    <v-card-title class="justify-center pt-10 black--text">
-      こんなことで困っていませんか？
-    </v-card-title>
-    <v-row justify="center">
-      <v-col cols="10" class="pa-2">
-        <v-card-text class="text-left black--text">
-          <p>
-            <v-icon color="black" class="mr-3">fa-comment</v-icon>
+  <v-card flat tile class="white pa-1">
+    <v-list tile class="ma-4">
+      <v-list-title class="white--text pt-5 d-flex justify-center title">
+        こんなことで悩んでいまんせんか？
+      </v-list-title>
+      <v-list-item class="ma-1 px-3">
+        <v-list-item-content class="text-left ml-5">
+          <p class="mt-3">
+            <v-icon class="mr-3">fa-comment</v-icon>
             本の内容を忘れてしまう
           </p>
-          <p>
-            <v-icon color="black" class="mr-3">fa-comment</v-icon>
+          <p class="mt-3">
+            <v-icon class="mr-3">fa-comment</v-icon>
             覚えた知識を使うことができない
           </p>
-          <p>
-            <v-icon color="black" class="mr-3">fa-comment</v-icon>
+          <p class="mt-3">
+            <v-icon class="mr-3">fa-comment</v-icon>
             本の内容を理解できているか不安
           </p>
-        </v-card-text>
-      </v-col>
-      <v-img height="250px" :src="require('@/assets/bg_copy.jpg')"></v-img>
-    </v-row>
+          <v-img
+            contain
+            class="mt-10"
+            height="200px"
+            :src="require('@/assets/copy.png')"
+          ></v-img>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
   </v-card>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+.border {
+  border: solid 1px black;
+  position: relative;
+}
+</style>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
