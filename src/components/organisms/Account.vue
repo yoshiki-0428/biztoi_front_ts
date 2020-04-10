@@ -56,9 +56,7 @@ import { BizToiUser } from "@/axios/biztoi";
 export default class Account extends Vue {
   @Prop({ default: {} }) private userInfo!: BizToiUser;
   private logout() {
-    window.location.href =
-      process.env.VUE_APP_COGNITO_LOGOUT_URI +
-      process.env.VUE_APP_API_LOGOUT_URI;
+    window.location.href = `${process.env.VUE_APP_COGNITO_LOGOUT_URI}${process.env.VUE_APP_API_BASE_URL}/logout`;
   }
 }
 </script>
