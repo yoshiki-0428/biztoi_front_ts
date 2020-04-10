@@ -1,17 +1,6 @@
 <template>
-  <v-footer class="px-2">
+  <v-footer>
     <v-col class="text-center pa-1" cols="12">
-      <v-card-text class="pa-2">
-        <v-btn
-          icon
-          class="mx4"
-          v-for="item in sns"
-          :key="item.icon"
-          :to="item.link"
-        >
-          <v-icon dark size="35" v-text="item.icon"></v-icon>
-        </v-btn>
-      </v-card-text>
       <v-card-text class="pa-2 px-0">
         <span class="mr-3">
           <router-link tag="span" :to="'/terms'">
@@ -50,25 +39,7 @@ interface IMenuBtn {
 }
 
 @Component
-export default class FooterMenu extends Vue {
-  sns: Array<IMenuBtn> = [
-    {
-      icon: "mdi-google",
-      title: "google",
-      link: ""
-    },
-    {
-      icon: "mdi-facebook-box",
-      title: "facebook",
-      link: ""
-    },
-    {
-      icon: "mdi-twitter",
-      title: "twitter",
-      link: ""
-    }
-  ];
-}
+export default class FooterMenu extends Vue {}
 </script>
 
 <style lang="scss" scoped>
