@@ -3,7 +3,20 @@
     <v-card class="pa-0">
       <div>
         <v-avatar size="20%" class="mt-5">
-          <v-img :src="userInfo.pictureUrl" contain></v-img>
+          <v-img
+            :src="userInfo.pictureUrl"
+            :lazy-src="userInfo.pictureUrl"
+            contain
+          >
+            <template v-slot:placeholder>
+              <v-row class="fill-height ma-0" align="center" justify="center">
+                <v-progress-circular
+                  indeterminate
+                  color="grey lighten-5"
+                ></v-progress-circular>
+              </v-row>
+            </template>
+          </v-img>
         </v-avatar>
         <v-spacer></v-spacer>
       </div>
