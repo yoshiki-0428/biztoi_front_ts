@@ -1,5 +1,5 @@
 <template>
-  <v-bottom-navigation v-model="bottomNum" shift dark app>
+  <v-bottom-navigation :active.sync="bottomNum" shift app>
     <v-btn
       v-for="(item, index) in menu"
       :key="item.icon"
