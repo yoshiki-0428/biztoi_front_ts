@@ -9,6 +9,14 @@ const routes = [
     component: () => import("@/views/IntroducePage.vue")
   },
   {
+    path: "/terms",
+    component: () => import("@/views/terms.vue")
+  },
+  {
+    path: "/privacy",
+    component: () => import("@/views/privacy.vue")
+  },
+  {
     path: "/top",
     component: () => import("@/views/layout/BaseLayout.vue"),
     children: [
@@ -58,7 +66,10 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  }
 });
 
 export default router;

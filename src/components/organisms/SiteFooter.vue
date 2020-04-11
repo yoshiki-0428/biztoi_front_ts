@@ -1,18 +1,30 @@
 <template>
-  <v-footer padless>
-    <v-col class="text-center" cols="12">
-      <v-card-text>
+  <v-footer>
+    <v-col class="text-center pa-1" cols="12">
+      <v-card-text class="pa-2 px-0">
+        <span class="mr-3">
+          <router-link tag="span" :to="'/terms'">
+            利用規約
+          </router-link>
+        </span>
+        <span class="mr-3">
+          <router-link tag="span" :to="'/privacy'">
+            プライバシーポリシー
+          </router-link>
+        </span>
         <v-btn
-          icon
-          class="mx4"
-          v-for="item in sns"
-          :key="item.icon"
-          :to="item.link"
+          class="px-0 pb-1"
+          text
+          target="blank"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdKz0jUSlSABW7swGaM924YKqnjkzaIKs8UuNlslwsKv9RIgA/viewform"
         >
-          <v-icon dark large v-text="item.icon"></v-icon>
+          お問い合わせ
         </v-btn>
       </v-card-text>
-      {{ new Date().getFullYear() }} — <strong>ビジトイ</strong>
+      {{ new Date().getFullYear() }} —
+      <strong>
+        <router-link tag="strong" :to="'/'">BizToi</router-link>
+      </strong>
     </v-col>
   </v-footer>
 </template>
@@ -27,25 +39,7 @@ interface IMenuBtn {
 }
 
 @Component
-export default class FooterMenu extends Vue {
-  sns: Array<IMenuBtn> = [
-    {
-      icon: "mdi-google",
-      title: "google",
-      link: ""
-    },
-    {
-      icon: "mdi-facebook-box",
-      title: "facebook",
-      link: ""
-    },
-    {
-      icon: "mdi-twitter",
-      title: "twitter",
-      link: ""
-    }
-  ];
-}
+export default class FooterMenu extends Vue {}
 </script>
 
 <style lang="scss" scoped>

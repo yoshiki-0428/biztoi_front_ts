@@ -1,48 +1,54 @@
 <template>
-  <v-container>
-    <v-layout>
-      <v-flex xs12>
-        <v-card class="white--text mb-4" :img="require('@/assets/back.png')">
-          <v-card-title class="font-weight-bold">
-            ビジトイ
+  <v-container class="pa-0">
+    <!-- キャッチコピー -->
+    <v-card flat tile height="100vh">
+      <v-img
+        height="100vh"
+        class="d-flex align-center justify-center"
+        :src="require('@/assets/bg_top.jpg')"
+      >
+        <div>
+          <v-card-title class="black--text display-3 justify-center mb-12">
+            B
+            <span class="primary--text">i</span>zTo
+            <span class="primary--text">i</span>
           </v-card-title>
-          <v-card-text class="white--text font-weight-bold">
-            <p>それはあなたにとって極上の体験</p>
-            <p>今しかできない体験を今すぐ手に入れよう</p>
+          <v-card-text class="display-1 pa-5 pt-12">
+            <p>忘れない読書を</p>
+            <p>あなたに</p>
             <login-button />
           </v-card-text>
-        </v-card>
-
-        <v-card class="mb-4">
-          <v-card-title>
-            About BizToi
-          </v-card-title>
-          <v-card-text>
-            どんなサービス？
-          </v-card-text>
-        </v-card>
-
-        <v-img class="mb-4" :src="require('@/assets/howto.png')" />
-
-        <v-card class="mb-4">
-          <v-card-title>
-            BizToi
-          </v-card-title>
-          <v-card-text>
-            <h2>
-              あなたの読書をより有意義に「ビジトイ」！
-            </h2>
-            <br />
-            <p>読書した本の内容をどれだけ覚えていますか？</p>
-            <p>あなた知識の吸収を手助けします</p>
-            <p>読書しただけで満足していませんか</p>
-            <p>実際の生活にどれだけ活用できているでしょうか</p>
-            <h3>ビジトイは「忘れない・実践で活かせる読書」を提供します</h3>
-          </v-card-text>
-          <login-button />
-        </v-card>
-      </v-flex>
-    </v-layout>
+        </div>
+      </v-img>
+    </v-card>
+    <!-- copy -->
+    <copy />
+    <!-- BizToiとは？ -->
+    <div class="white" style="height: 800px;">
+      <v-card-title class="black--text display-1 justify-center py-10">
+        BizToiとは？
+      </v-card-title>
+      <v-card-text class="black--text title pa-1">
+        <p>読書で得た<span class="font-weight-bold">「知識」</span>を</p>
+        <p>
+          実際の<span class="font-weight-bold">「行動」</span>に繋げることを
+        </p>
+        <p>目的としたサービスです</p>
+      </v-card-text>
+      <v-list class="ma-5 grey darken-2">
+        <v-list-title class="white--text pa-3 d-flex justify-center title"
+          >こんな人におすすめ！</v-list-title
+        >
+        <v-list-item v-for="item in bullet" :key="item.index" class="ma-1 px-4">
+          <v-icon size="20">fa-check</v-icon>
+          <v-list-item-content class="text-left ml-5">
+            {{ item.text }}
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </div>
+    <!-- 使い方 -->
+    <how-to></how-to>
     <site-footer></site-footer>
   </v-container>
 </template>
@@ -51,21 +57,39 @@
 import { Component, Vue } from "vue-property-decorator";
 import LoginButton from "@/components/organisms/LoginButton.vue";
 import SiteFooter from "@/components/organisms/SiteFooter.vue";
+import HowTo from "@/components/organisms/HowTo.vue";
+import Copy from "@/components/organisms/Copy.vue";
 
 @Component({
   components: {
     LoginButton,
+    HowTo,
+    Copy,
     SiteFooter
   }
 })
-export default class IntroducePage extends Vue {}
+export default class IntroducePage extends Vue {
+  bullet = [
+    {
+      text: "本の内容を忘れたくない"
+    },
+    {
+      text: "いつでもメモを取りたい"
+    },
+    {
+      text: "読んだ後にアウトプットをしたい"
+    },
+    {
+      text: "今すぐ行動に起こしたい"
+    },
+    {
+      text: "他の人の考えを知りたい"
+    },
+    {
+      text: "本の情報を共有したい"
+    }
+  ];
+}
 </script>
 
-<style lang="scss" scoped>
-/*li*/
-/*  list-style: none*/
-
-/*ul {*/
-/*  text-align: left;*/
-/*}*/
-</style>
+<style lang="scss" scoped></style>
