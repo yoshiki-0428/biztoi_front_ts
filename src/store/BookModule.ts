@@ -12,6 +12,7 @@ import store from "@/store";
 import { AxiosResponse } from "axios";
 import BookUtil from "@/util/BookUtil";
 import { Item, SearchInfo } from "@/axios/books";
+import base = Mocha.reporters.base;
 
 @Module({ dynamic: true, store: store, name: "bookModule", namespaced: true })
 class BookModule extends VuexModule {
@@ -97,25 +98,10 @@ class BookModule extends VuexModule {
       return;
     }
 
-    const res: AxiosResponse<SearchInfo> = await booksApi.getBooksTotal(
-      process.env.VUE_APP_RAKUTEN_APPLICATION_ID,
-      "000",
-      undefined,
-      undefined,
-      word,
-      undefined,
-      30,
-      undefined,
-      undefined
-    );
+    const res: AxiosResponse<Book[]> = await baseApi.books(word);
 
-    // @ts-ignore
-    if (res.data.Items) {
-      // @ts-ignore
-      const books: Book[] = res.data.Items.filter(
-        (item: any) => !isNil(item) && !isUndefined(item.Item)
-      ).map((val: any): Book => BookUtil.bookConverter(val.Item as Item));
-      this.SET_SEARCH_BOOKS(books);
+    if (res.data) {
+      this.SET_SEARCH_BOOKS(res.data);
     }
   }
 
