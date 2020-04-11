@@ -1,11 +1,11 @@
 <template>
-  <v-card flat tile class="white pa-1">
-    <v-list tile class="ma-4">
+  <div class="white pa-5">
+    <v-list class="grey darken-2">
       <v-list-title class="white--text pt-5 d-flex justify-center title">
-        こんなことで悩んでいまんせんか？
+        こんなことで悩んでいませんか？
       </v-list-title>
-      <v-list-item class="ma-1 px-3">
-        <v-list-item-content class="text-left ml-5">
+      <v-list-item class="ma-2 px-3">
+        <v-list-item-content class="text-left">
           <p class="mt-3">
             <v-icon class="mr-3">fa-comment</v-icon>
             本の内容を忘れてしまう
@@ -27,7 +27,7 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
-  </v-card>
+  </div>
 </template>
 
 <style scoped lang="scss">

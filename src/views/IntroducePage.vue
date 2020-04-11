@@ -24,7 +24,7 @@
     <!-- copy -->
     <copy />
     <!-- BizToiとは？ -->
-    <v-card flat tile color="white" height="800px">
+    <div class="white" style="height: 800px;">
       <v-card-title class="black--text display-1 justify-center py-10">
         BizToiとは？
       </v-card-title>
@@ -35,24 +35,18 @@
         </p>
         <p>目的としたサービスです</p>
       </v-card-text>
-      <v-card flat tile class="ma-5">
-        <v-card-title class="white--text pt-5 d-flex justify-center">
-          こんな人におすすめ！
-        </v-card-title>
-        <v-list tile class="pb-5">
-          <v-list-item
-            v-for="item in bullet"
-            :key="item.index"
-            class="ma-1 px-3"
-          >
-            <v-icon size="20">fa-check</v-icon>
-            <v-list-item-content class="text-left ml-5">
-              {{ item.text }}
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </v-card>
-    </v-card>
+      <v-list class="ma-5 grey darken-2">
+        <v-list-title class="white--text pa-3 d-flex justify-center title"
+          >こんな人におすすめ！</v-list-title
+        >
+        <v-list-item v-for="item in bullet" :key="item.index" class="ma-1 px-4">
+          <v-icon size="20">fa-check</v-icon>
+          <v-list-item-content class="text-left ml-5">
+            {{ item.text }}
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </div>
     <!-- 使い方 -->
     <how-to></how-to>
     <site-footer></site-footer>
