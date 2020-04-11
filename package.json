@@ -63,7 +63,9 @@
     "typescript": "~3.5.3",
     "uuid": "^3.3.3",
     "vue-analytics": "^5.22.1",
+    "vue-google-adsense": "^1.8.1",
     "vue-hotjar": "^1.1.1",
+    "vue-script2": "^2.1.0",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
