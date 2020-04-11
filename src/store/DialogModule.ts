@@ -11,6 +11,7 @@ import store from "@/store";
 class DialogModule extends VuexModule {
   // state
   public isShowAnswerDialog = false;
+  public isShowNeedLoginDialog = false;
   public dialogProperty: { bookId: string } = { bookId: "" };
 
   @Action
@@ -20,6 +21,16 @@ class DialogModule extends VuexModule {
   @Action
   public async closeDialog() {
     this.CLOSE_ANSWER_DIALOG();
+  }
+
+  @Action
+  public async showDialogNeedLogin() {
+    this.SHOW_NEED_LOGIN_DIALOG();
+  }
+
+  @Action
+  public async closeDialogNeedLogin() {
+    this.CLOSE_NEED_LOGIN_DIALOG();
   }
 
   @Action
@@ -36,6 +47,16 @@ class DialogModule extends VuexModule {
   private CLOSE_ANSWER_DIALOG() {
     this.isShowAnswerDialog = false;
   }
+
+  @Mutation
+  private SHOW_NEED_LOGIN_DIALOG() {
+    this.isShowNeedLoginDialog = true;
+  }
+  @Mutation
+  private CLOSE_NEED_LOGIN_DIALOG() {
+    this.isShowNeedLoginDialog = false;
+  }
+
   @Mutation
   private SET_PROPERTY(property: { bookId: string }) {
     this.dialogProperty = property;
