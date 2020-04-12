@@ -20,7 +20,11 @@
         small
         outlined
         class="caption"
-        :to="'/top/book/' + answerHead.bookId + '/answer/' + answerHead.id"
+        :to="
+          isSample
+            ? `/article/${no}`
+            : '/top/book/' + answerHead.bookId + '/answer/' + answerHead.id
+        "
         >詳細へ
       </v-btn>
       <v-btn icon @click="toggleIsActive">
@@ -47,6 +51,8 @@ export default class AnswerOverView extends Vue {
   @Prop({ required: true }) private answerHead!: AnswerHead;
   @Prop() private bookId!: string;
   @Prop({ default: false }) private isDetail!: boolean;
+  @Prop({ default: false }) private isSample!: boolean;
+  @Prop({ default: "0" }) private no!: string;
 
   displayInsertedDate(str: string) {
     const cutNum: number = 10;

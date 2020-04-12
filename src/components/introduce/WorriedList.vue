@@ -41,5 +41,5 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component
-export default class Copy extends Vue {}
+export default class WorriedList extends Vue {}
 </script>

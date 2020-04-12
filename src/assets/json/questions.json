@@ -1,0 +1,74 @@
+[
+  {
+    "id": "5ae2d89a-76cb-44a3-b81a-dadaf96bf029",
+    "patternId": 0,
+    "orderId": 1,
+    "title": "この本を読んだ目的を設定してみましょう",
+    "detail": null,
+    "example": "リーダーシップを身につけたい",
+    "step": "1",
+    "answerType": null,
+    "required": true,
+    "nextQuestionId": null
+  },
+  {
+    "id": "3c5d1944-4ae2-415e-8ad5-aa22aa1d9561",
+    "patternId": 0,
+    "orderId": 2,
+    "title": "目的を達成することでどのようなメリットがありますか？",
+    "detail": "( 悩みの解決・収入UP etc… )",
+    "example": "チームをまとめる実力を身につけ、会社の幹部へ昇格する, 後輩から慕われる存在になりたい",
+    "step": "1",
+    "answerType": null,
+    "required": false,
+    "nextQuestionId": null
+  },
+  {
+    "id": "5987534d-e272-4276-96b3-ed4d11d4313b",
+    "patternId": 0,
+    "orderId": 3,
+    "title": "この本を読んで得られた知識を書き出してみましょう",
+    "detail": null,
+    "example": "チームで共通の目標を持つ",
+    "step": "2",
+    "answerType": null,
+    "required": true,
+    "nextQuestionId": null
+  },
+  {
+    "id": "a1b18af9-718d-4a92-a1bb-eb6d1d899140",
+    "patternId": 0,
+    "orderId": 4,
+    "title": "「この本から得た知識」×「自らの経験・知識」から「気付き」があれば書いてみよう！",
+    "detail": null,
+    "example": "前に読んだ本と内容が似ているが、結論が違うので、自分なりに行動をして実際に確かめてみる",
+    "step": "2",
+    "answerType": null,
+    "required": false,
+    "nextQuestionId": null
+  },
+  {
+    "id": "9a30e12a-0446-4004-bc4f-886d56d0813b",
+    "patternId": 0,
+    "orderId": 5,
+    "title": "本から得た知識を使って、どのような行動ができそうか？",
+    "detail": "(すぐに書けない時は5W1Hで考えてみよう！)",
+    "example": "チームで話し合って共通の目標を作る",
+    "step": "3",
+    "answerType": null,
+    "required": true,
+    "nextQuestionId": null
+  },
+  {
+    "id": "30e7426e-1aeb-4089-b193-3622001d9f75",
+    "patternId": 0,
+    "orderId": 6,
+    "title": "行動プランを「自分の環境」でのやり方として、具体的に書いてみよう！",
+    "detail": null,
+    "example": "朝礼後にチームメンバーを集めて共通目標の有用性について説明する。",
+    "step": "3",
+    "answerType": null,
+    "required": false,
+    "nextQuestionId": null
+  }
+]

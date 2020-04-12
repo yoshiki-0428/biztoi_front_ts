@@ -17,6 +17,10 @@ const routes = [
     component: () => import("@/views/privacy.vue")
   },
   {
+    path: "/article/:no",
+    component: () => import("@/views/article/Article.vue")
+  },
+  {
     path: "/top",
     component: () => import("@/views/layout/BaseLayout.vue"),
     children: [

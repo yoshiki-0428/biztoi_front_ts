@@ -1,0 +1,302 @@
+[
+  {
+    "id": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5",
+    "bookId": "9784478107775",
+    "userId": "line_u43078c8e44c8aeb177f0fc063c530386",
+    "publishFlg": true,
+    "inserted": "2020-04-12T00:29:02.708834",
+    "modified": "2020-04-12T00:29:02.708834",
+    "answers": [
+      {
+        "id": "0410a5b3-ebfc-4134-ad37-a34caaf42e55",
+        "orderId": 6,
+        "answerHeadId": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5",
+        "questionId": "9a30e12a-0446-4004-bc4f-886d56d0813b",
+        "answer": "浪費する時間から投資する時間へ",
+        "inserted": "2020-04-12T02:33:01.841611",
+        "modified": "2020-04-12T02:33:01.841611"
+      },
+      {
+        "id": "2a532beb-e479-4258-9199-8a7dff5529bd",
+        "orderId": 1,
+        "answerHeadId": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5",
+        "questionId": "5ae2d89a-76cb-44a3-b81a-dadaf96bf029",
+        "answer": "投資家になりたいわけでなく、投資家のマインドセットを学びたい\n不況に強くこれから先何に投資をできるか自分の頭で考えるようになりたい\n投資家の習慣を身に着けたい",
+        "inserted": "2020-04-12T00:29:47.549371",
+        "modified": "2020-04-12T00:29:47.549371"
+      },
+      {
+        "id": "ffaec886-3168-425d-b489-1137514f06b6",
+        "orderId": 1,
+        "answerHeadId": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5",
+        "questionId": "3c5d1944-4ae2-415e-8ad5-aa22aa1d9561",
+        "answer": "一日の過ごし方を変えることで数年後の未来を変える",
+        "inserted": "2020-04-12T00:55:49.855929",
+        "modified": "2020-04-12T00:55:49.855929"
+      },
+      {
+        "id": "e7e307d0-93c3-42b0-a8d2-30161a5946d1",
+        "orderId": 2,
+        "answerHeadId": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "福利の力\n100万が25年で福利3%で+109万円、つまり倍以上になる\n一日の積み重ねが大きなリターンにつながる",
+        "inserted": "2020-04-12T01:06:05.213146",
+        "modified": "2020-04-12T01:06:05.213146"
+      },
+      {
+        "id": "101bb2b2-10a3-4dfe-9280-f971d71a17dd",
+        "orderId": 3,
+        "answerHeadId": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "流行の重要性\n新しいものを取り入れる、自分でいち早く試すことで世の中の価値を再認識できる\nたとえばポケモンGoが流行ったときにやったか？Tiktokが流行ったときに使ってみたか？\n",
+        "inserted": "2020-04-12T01:52:47.449584",
+        "modified": "2020-04-12T01:52:47.449584"
+      },
+      {
+        "id": "966545cf-653b-4834-9b94-07f439d3371a",
+        "orderId": 1,
+        "answerHeadId": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "投資なのか浪費なのか判断する\n「高級なレストランでただ美味しいものを食べたい」これは浪費\n「このレストランにあの人を連れて行ったら喜びそう」「有名なレストランに食事に行ってSNSで発信しよう」これは投資",
+        "inserted": "2020-04-12T00:59:34.749286",
+        "modified": "2020-04-12T00:59:34.749286"
+      },
+      {
+        "id": "4fb20fa2-3a87-4bcc-8643-f6b1753cec2f",
+        "orderId": 1,
+        "answerHeadId": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5",
+        "questionId": "a1b18af9-718d-4a92-a1bb-eb6d1d899140",
+        "answer": "流行なものを食わず嫌いしていたことが経験上多々あるので流行だけど触っていなかったモノに対して触れてみようと思った\nOculus goとか",
+        "inserted": "2020-04-12T01:57:02.955332",
+        "modified": "2020-04-12T01:57:02.955332"
+      },
+      {
+        "id": "b97c6a04-b849-4a43-bc24-a0f969997cab",
+        "orderId": 1,
+        "answerHeadId": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5",
+        "questionId": "9a30e12a-0446-4004-bc4f-886d56d0813b",
+        "answer": "新しいアプリを月に1度は入れる",
+        "inserted": "2020-04-12T02:10:25.402889",
+        "modified": "2020-04-12T02:10:25.402889"
+      },
+      {
+        "id": "549efb77-1131-45d6-8337-89d4447e3d29",
+        "orderId": 2,
+        "answerHeadId": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5",
+        "questionId": "9a30e12a-0446-4004-bc4f-886d56d0813b",
+        "answer": "Oculus Goを買ってみる",
+        "inserted": "2020-04-12T02:10:40.661645",
+        "modified": "2020-04-12T02:10:40.661645"
+      },
+      {
+        "id": "88cc686f-5a11-4357-a240-0b521ae0fc07",
+        "orderId": 3,
+        "answerHeadId": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5",
+        "questionId": "9a30e12a-0446-4004-bc4f-886d56d0813b",
+        "answer": "sammary, taimee, ADDress, 等注目のサービスを試してみる",
+        "inserted": "2020-04-12T02:15:39.947998",
+        "modified": "2020-04-12T02:15:39.947998"
+      },
+      {
+        "id": "2009869c-f3a1-4521-aec7-d2736bd51688",
+        "orderId": 4,
+        "answerHeadId": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5",
+        "questionId": "9a30e12a-0446-4004-bc4f-886d56d0813b",
+        "answer": "毎朝同じことをつぶやく",
+        "inserted": "2020-04-12T02:25:04.819981",
+        "modified": "2020-04-12T02:25:04.819981"
+      },
+      {
+        "id": "47b2aaa2-175b-4306-bfa7-b7f5f7895b6a",
+        "orderId": 5,
+        "answerHeadId": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5",
+        "questionId": "9a30e12a-0446-4004-bc4f-886d56d0813b",
+        "answer": "勉強をやめることをやめない",
+        "inserted": "2020-04-12T02:31:17.246608",
+        "modified": "2020-04-12T02:31:17.246608"
+      }
+    ],
+    "userInfo": {
+      "id": null,
+      "email": null,
+      "pictureUrl": "https://picsum.photos/200/200",
+      "nickname": "",
+      "country": null
+    },
+    "likeInfo": {
+      "active": true,
+      "sum": 1,
+      "id": "c69afb20-1fce-41f7-ab73-ac3eb7b27bb5"
+    }
+  },
+  {
+    "id": "945fc26e-7d40-47db-8f03-e42527f108bb",
+    "bookId": "9784087880212",
+    "userId": "google_108951598133532756374",
+    "publishFlg": true,
+    "inserted": "2020-04-09T13:18:54.618091",
+    "modified": "2020-04-09T13:18:54.618091",
+    "answers": [
+      {
+        "id": "25b2e7ca-b7d9-4e9a-9780-95522af580aa",
+        "orderId": 1,
+        "answerHeadId": "945fc26e-7d40-47db-8f03-e42527f108bb",
+        "questionId": "5ae2d89a-76cb-44a3-b81a-dadaf96bf029",
+        "answer": "「働くこと」に対する幸せを上げたい。",
+        "inserted": "2020-04-09T13:19:24.118550",
+        "modified": "2020-04-09T13:19:24.118550"
+      },
+      {
+        "id": "e9e9c4fb-2fac-4b04-ab0a-b929675d6df0",
+        "orderId": 2,
+        "answerHeadId": "945fc26e-7d40-47db-8f03-e42527f108bb",
+        "questionId": "5ae2d89a-76cb-44a3-b81a-dadaf96bf029",
+        "answer": "持たざる物の仕事術を学ぶため。",
+        "inserted": "2020-04-09T13:34:28.421514",
+        "modified": "2020-04-09T13:34:28.421514"
+      },
+      {
+        "id": "83d47fa1-7a62-4707-bdba-107ff0dfcd35",
+        "orderId": 1,
+        "answerHeadId": "945fc26e-7d40-47db-8f03-e42527f108bb",
+        "questionId": "3c5d1944-4ae2-415e-8ad5-aa22aa1d9561",
+        "answer": "人生において働くこと時間は多い。\nこの時間を幸せにすることで、\n人生の幸せを最大化できる。",
+        "inserted": "2020-04-09T13:36:29.197257",
+        "modified": "2020-04-09T13:36:29.197257"
+      },
+      {
+        "id": "43486b62-f18b-4113-832e-c470f030003c",
+        "orderId": 1,
+        "answerHeadId": "945fc26e-7d40-47db-8f03-e42527f108bb",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "１日１時間考える時間をつくる。",
+        "inserted": "2020-04-09T13:40:38.590066",
+        "modified": "2020-04-09T13:40:38.590066"
+      },
+      {
+        "id": "f41f3f1a-43a1-4923-8fbe-2aa0cc8bcaa3",
+        "orderId": 2,
+        "answerHeadId": "945fc26e-7d40-47db-8f03-e42527f108bb",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "「何をするか」が重要で、何を使うかは二の次。",
+        "inserted": "2020-04-09T13:43:11.979196",
+        "modified": "2020-04-09T13:43:11.979196"
+      },
+      {
+        "id": "1619bc4e-81e1-4520-9704-d8dfbc2392d1",
+        "orderId": 1,
+        "answerHeadId": "945fc26e-7d40-47db-8f03-e42527f108bb",
+        "questionId": "a1b18af9-718d-4a92-a1bb-eb6d1d899140",
+        "answer": "与件を考え、可能な限りそれをつぶす努力をする。→習慣化の際も使う内容",
+        "inserted": "2020-04-09T13:46:08.184132",
+        "modified": "2020-04-09T13:46:08.184132"
+      },
+      {
+        "id": "60e56eb0-5d03-4d76-beed-447ed72acdb2",
+        "orderId": 3,
+        "answerHeadId": "945fc26e-7d40-47db-8f03-e42527f108bb",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "200点満点理論→100点を越えるために。",
+        "inserted": "2020-04-09T13:48:43.618128",
+        "modified": "2020-04-09T13:48:43.618128"
+      },
+      {
+        "id": "7e0db333-6507-4470-b239-c1f5d9cb8d7c",
+        "orderId": 1,
+        "answerHeadId": "945fc26e-7d40-47db-8f03-e42527f108bb",
+        "questionId": "9a30e12a-0446-4004-bc4f-886d56d0813b",
+        "answer": "200点満点理論を使って、\n目標を常に高く設定する。",
+        "inserted": "2020-04-09T13:51:03.412933",
+        "modified": "2020-04-09T13:51:03.412933"
+      },
+      {
+        "id": "b801a84d-b92f-4993-9b02-15c1066f8278",
+        "orderId": 1,
+        "answerHeadId": "945fc26e-7d40-47db-8f03-e42527f108bb",
+        "questionId": "30e7426e-1aeb-4089-b193-3622001d9f75",
+        "answer": "自分の仕事を終わらせることをゴールとせずに、他の人のフォローに入る気持ちで仕事に挑む。",
+        "inserted": "2020-04-09T13:52:23.067765",
+        "modified": "2020-04-09T13:52:23.067765"
+      }
+    ],
+    "userInfo": {
+      "id": null,
+      "email": null,
+      "pictureUrl": "https://picsum.photos/200/201",
+      "nickname": "",
+      "country": null
+    },
+    "likeInfo": {
+      "active": true,
+      "sum": 3,
+      "id": "945fc26e-7d40-47db-8f03-e42527f108bb"
+    }
+  },
+  {
+    "id": "b34ac6bb-732d-4a54-9159-44cd8eb9c456",
+    "bookId": "9784866511245",
+    "userId": "line_u43078c8e44c8aeb177f0fc063c530386",
+    "publishFlg": true,
+    "inserted": "2020-04-12T00:16:19.693284",
+    "modified": "2020-04-12T00:16:19.693284",
+    "answers": [
+      {
+        "id": "f48dd133-1eb5-4fff-9f3c-1514ca8c7090",
+        "orderId": 1,
+        "answerHeadId": "b34ac6bb-732d-4a54-9159-44cd8eb9c456",
+        "questionId": "5ae2d89a-76cb-44a3-b81a-dadaf96bf029",
+        "answer": "お金に対する意識を変えたいと思ったから\n漫画で読みやすいと思ったから",
+        "inserted": "2020-04-12T00:17:27.700040",
+        "modified": "2020-04-12T00:17:27.700040"
+      },
+      {
+        "id": "b650fdb9-635f-48b4-9170-f4d47cc392a6",
+        "orderId": 1,
+        "answerHeadId": "b34ac6bb-732d-4a54-9159-44cd8eb9c456",
+        "questionId": "3c5d1944-4ae2-415e-8ad5-aa22aa1d9561",
+        "answer": "日々のお金の使い方が変わる、投資の考え方を身につけられる",
+        "inserted": "2020-04-12T00:18:45.421882",
+        "modified": "2020-04-12T00:18:45.421882"
+      },
+      {
+        "id": "7a4b27d0-7188-4eca-8677-f06af3e891b5",
+        "orderId": 1,
+        "answerHeadId": "b34ac6bb-732d-4a54-9159-44cd8eb9c456",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "毎月収入の10％を貯金に回す\n余裕ができてきたらまた10％を投資に回す\nギャンブルのように大きく取り返すことを考えずにコツコツとためていくことを考える\n年に5％資産がプラスになることを目指す",
+        "inserted": "2020-04-12T00:19:20.685144",
+        "modified": "2020-04-12T00:19:20.685144"
+      },
+      {
+        "id": "c4131843-443b-4a0b-92ce-5a355e86b8cf",
+        "orderId": 1,
+        "answerHeadId": "b34ac6bb-732d-4a54-9159-44cd8eb9c456",
+        "questionId": "a1b18af9-718d-4a92-a1bb-eb6d1d899140",
+        "answer": "FXでレバレッジをかけて大きくリターンを得ようとしたら、かえってマイナスになってしまったことがある（一時的には勝っていたが欲が出て敗北）",
+        "inserted": "2020-04-12T00:24:34.228815",
+        "modified": "2020-04-12T00:24:34.228815"
+      },
+      {
+        "id": "7939cd2f-37b8-4ccc-8c2f-01de536caf17",
+        "orderId": 1,
+        "answerHeadId": "b34ac6bb-732d-4a54-9159-44cd8eb9c456",
+        "questionId": "9a30e12a-0446-4004-bc4f-886d56d0813b",
+        "answer": "毎月10％を貯蓄に回す\n毎月10％を投資に回す\n毎月の収支を振り返る\n毎月の固定費を見直す",
+        "inserted": "2020-04-12T00:27:04.877792",
+        "modified": "2020-04-12T00:27:04.877792"
+      }
+    ],
+    "userInfo": {
+      "id": null,
+      "email": null,
+      "pictureUrl": "https://picsum.photos/201/201",
+      "nickname": "",
+      "country": null
+    },
+    "likeInfo": {
+      "active": true,
+      "sum": 1,
+      "id": "b34ac6bb-732d-4a54-9159-44cd8eb9c456"
+    }
+  }
+]
