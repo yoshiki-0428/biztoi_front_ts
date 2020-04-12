@@ -392,5 +392,117 @@
       "sum": 1,
       "id": "fab9e711-d508-444b-bb64-cb7c10475aab"
     }
+  },
+  {
+    "id": "ab3f20c0-28e6-4914-9480-c5baa0df9e5c",
+    "bookId": "9784822289607",
+    "userId": "line_u43078c8e44c8aeb177f0fc063c530386",
+    "publishFlg": true,
+    "inserted": "2020-04-12T12:27:37.386261",
+    "modified": "2020-04-12T12:27:37.386261",
+    "answers": [
+      {
+        "id": "4df023a4-98bd-4c19-9eaa-d023e07a5b5c",
+        "orderId": 1,
+        "answerHeadId": "ab3f20c0-28e6-4914-9480-c5baa0df9e5c",
+        "questionId": "5ae2d89a-76cb-44a3-b81a-dadaf96bf029",
+        "answer": "今の世界の情勢、流れ、貧困レベルの常識を変えたかったから",
+        "inserted": "2020-04-12T12:28:57.228849",
+        "modified": "2020-04-12T12:28:57.228849"
+      },
+      {
+        "id": "966e4d25-7e18-4148-a3d4-4a79fb981629",
+        "orderId": 2,
+        "answerHeadId": "ab3f20c0-28e6-4914-9480-c5baa0df9e5c",
+        "questionId": "5ae2d89a-76cb-44a3-b81a-dadaf96bf029",
+        "answer": "ファクトフルネスを身に着けてネットやテレビに振り回されないようにしたい",
+        "inserted": "2020-04-12T12:30:36.469299",
+        "modified": "2020-04-12T12:30:36.469299"
+      },
+      {
+        "id": "80486516-d82e-4fd0-9bbe-ab0db225ff7f",
+        "orderId": 1,
+        "answerHeadId": "ab3f20c0-28e6-4914-9480-c5baa0df9e5c",
+        "questionId": "3c5d1944-4ae2-415e-8ad5-aa22aa1d9561",
+        "answer": "インターネットの誤情報に惑わされなくなる",
+        "inserted": "2020-04-12T12:30:54.115622",
+        "modified": "2020-04-12T12:30:54.115622"
+      },
+      {
+        "id": "89098544-3cc4-4e52-8fee-31fe1e70f3e8",
+        "orderId": 2,
+        "answerHeadId": "ab3f20c0-28e6-4914-9480-c5baa0df9e5c",
+        "questionId": "3c5d1944-4ae2-415e-8ad5-aa22aa1d9561",
+        "answer": "正しい知識を自分で選択することができる",
+        "inserted": "2020-04-12T12:31:04.813456",
+        "modified": "2020-04-12T12:31:04.813456"
+      },
+      {
+        "id": "39084f55-d475-4061-99a8-45a7d6e11ac5",
+        "orderId": 3,
+        "answerHeadId": "ab3f20c0-28e6-4914-9480-c5baa0df9e5c",
+        "questionId": "3c5d1944-4ae2-415e-8ad5-aa22aa1d9561",
+        "answer": "世界の情勢を見極めることができるようになる",
+        "inserted": "2020-04-12T12:32:09.802201",
+        "modified": "2020-04-12T12:32:09.802201"
+      },
+      {
+        "id": "b297b205-70f9-4adb-8aaf-25d0b3a6e3a9",
+        "orderId": 1,
+        "answerHeadId": "ab3f20c0-28e6-4914-9480-c5baa0df9e5c",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "人は直線本能をもつ\n物事のレートは直線的に進むと勘違いしている\n例えば「株価が直近で上昇し続けていると判断した場合、人はずっと上がり続けるだろうと勘違いしやすい」\nウイルスの蔓延度、死亡率とともにずっと上がり続けることはない事実に気づく",
+        "inserted": "2020-04-12T12:35:24.971744",
+        "modified": "2020-04-12T12:35:24.971744"
+      },
+      {
+        "id": "e822d9be-d5fc-4f9f-81a2-78ea726ec544",
+        "orderId": 2,
+        "answerHeadId": "ab3f20c0-28e6-4914-9480-c5baa0df9e5c",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "人は誰かを悪者、犯人にすることで物事が解決すると勘違いしている\n「政府の無策が悪いと叩き続けても何も解決しない、原因は何なのか、何を行えば解決できるのか、提案しなければ何も物事は進まない」\n人は誰かを悪者にすることが簡単に行えるし、愚痴は気持ちの良いことでついやってしまう",
+        "inserted": "2020-04-12T12:37:04.245",
+        "modified": "2020-04-12T12:37:04.245"
+      },
+      {
+        "id": "9575ad60-a366-42c4-9563-49a05e0d856b",
+        "orderId": 3,
+        "answerHeadId": "ab3f20c0-28e6-4914-9480-c5baa0df9e5c",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "世界の80％の人々が電気を使える\n世界の女性の義務教育の平均年数は9年\n世界の温暖化傾向は進んでいる",
+        "inserted": "2020-04-12T12:40:22.964107",
+        "modified": "2020-04-12T12:40:22.964107"
+      },
+      {
+        "id": "73cf6a50-1245-4b6a-a4c5-b554e36417a1",
+        "orderId": 1,
+        "answerHeadId": "ab3f20c0-28e6-4914-9480-c5baa0df9e5c",
+        "questionId": "a1b18af9-718d-4a92-a1bb-eb6d1d899140",
+        "answer": "テレビや新聞などで言われる経済格差はレベル1-4で分けられるが、今はそれほど差があるわけではない",
+        "inserted": "2020-04-12T12:44:45.489433",
+        "modified": "2020-04-12T12:44:45.489433"
+      },
+      {
+        "id": "293ca449-47a7-4b6a-b188-e89d067ded7d",
+        "orderId": 1,
+        "answerHeadId": "ab3f20c0-28e6-4914-9480-c5baa0df9e5c",
+        "questionId": "9a30e12a-0446-4004-bc4f-886d56d0813b",
+        "answer": "ニュースを見た際にあまりにも情報が誇張されている場合は自分でデータを調べるようにする",
+        "inserted": "2020-04-12T12:45:45.906936",
+        "modified": "2020-04-12T12:45:45.906936"
+      }
+    ],
+    "userInfo": {
+      "id": null,
+      "email": null,
+      "pictureUrl": "https://profile.line-scdn.net/0hSLSzVz_DDGNuAyfeVxVzNFJGAg4ZLQorFjYUAU4DAgdGZBw9U2QTA0MKVVEWNRs2AGcRBBkAVlIW",
+      "nickname": "",
+      "country": null
+    },
+    "likeInfo": {
+      "active": false,
+      "sum": 0,
+      "id": null
+    }
   }
 ]
