@@ -298,5 +298,99 @@
       "sum": 1,
       "id": "b34ac6bb-732d-4a54-9159-44cd8eb9c456"
     }
+  },
+  {
+    "id": "fab9e711-d508-444b-bb64-cb7c10475aab",
+    "bookId": "9784761271763",
+    "userId": "google_108951598133532756374",
+    "publishFlg": true,
+    "inserted": "2020-04-12T05:20:26.488232",
+    "modified": "2020-04-12T05:20:26.488232",
+    "answers": [
+      {
+        "id": "1fea0e80-a0a0-43a8-acbd-5524fdca0720",
+        "orderId": 1,
+        "answerHeadId": "fab9e711-d508-444b-bb64-cb7c10475aab",
+        "questionId": "5ae2d89a-76cb-44a3-b81a-dadaf96bf029",
+        "answer": "集中力を最大化するテクニックを知りたいから",
+        "inserted": "2020-04-12T05:21:35.414788",
+        "modified": "2020-04-12T05:21:35.414788"
+      },
+      {
+        "id": "d9cd9c4f-d560-4fd8-a2a9-fe8b847add24",
+        "orderId": 1,
+        "answerHeadId": "fab9e711-d508-444b-bb64-cb7c10475aab",
+        "questionId": "3c5d1944-4ae2-415e-8ad5-aa22aa1d9561",
+        "answer": "集中力アップにより仕事の効率を上げて、自分の時間を増やす。\n→今より自由な時間が増える",
+        "inserted": "2020-04-12T05:22:51.045965",
+        "modified": "2020-04-12T05:22:51.045965"
+      },
+      {
+        "id": "f2d6c845-1693-4f98-9c8f-8ee8676efdb2",
+        "orderId": 1,
+        "answerHeadId": "fab9e711-d508-444b-bb64-cb7c10475aab",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "普段の小さな「選択や決断」にも集中力は使われている。\n選択肢が多いことによる、意思決定で疲れてしまう。",
+        "inserted": "2020-04-12T05:28:23.017529",
+        "modified": "2020-04-12T05:28:23.017529"
+      },
+      {
+        "id": "011a9fcd-fd75-4a1a-977c-308695906154",
+        "orderId": 2,
+        "answerHeadId": "fab9e711-d508-444b-bb64-cb7c10475aab",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "疲労感は錯覚で、やる気やモチベーションが下がったという主観的なもの。",
+        "inserted": "2020-04-12T05:36:01.481444",
+        "modified": "2020-04-12T05:36:01.481444"
+      },
+      {
+        "id": "7b0d04f7-7b91-4df5-896f-f3974bd285d9",
+        "orderId": 1,
+        "answerHeadId": "fab9e711-d508-444b-bb64-cb7c10475aab",
+        "questionId": "a1b18af9-718d-4a92-a1bb-eb6d1d899140",
+        "answer": "集中力を妨げる要素がシャットアウトされている。\n→習慣化など何か行動する時には必要な考え方",
+        "inserted": "2020-04-12T05:39:57.913036",
+        "modified": "2020-04-12T05:39:57.913036"
+      },
+      {
+        "id": "12a35c96-e2cf-4ae6-8571-ff2d1e0640d2",
+        "orderId": 3,
+        "answerHeadId": "fab9e711-d508-444b-bb64-cb7c10475aab",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "ウィルパワーの節約には「習慣化」がベスト\n雑事こそ即時判断が大事。",
+        "inserted": "2020-04-12T05:43:22.967604",
+        "modified": "2020-04-12T05:43:22.967604"
+      },
+      {
+        "id": "12ee7ea6-9d2a-4d65-a520-2aaefa0c5aba",
+        "orderId": 4,
+        "answerHeadId": "fab9e711-d508-444b-bb64-cb7c10475aab",
+        "questionId": "5987534d-e272-4276-96b3-ed4d11d4313b",
+        "answer": "時間を短く区切ることで集中力を上げる",
+        "inserted": "2020-04-12T05:52:03.125300",
+        "modified": "2020-04-12T05:52:03.125300"
+      },
+      {
+        "id": "1f976568-398a-44b4-a6d0-9986e4090abc",
+        "orderId": 1,
+        "answerHeadId": "fab9e711-d508-444b-bb64-cb7c10475aab",
+        "questionId": "9a30e12a-0446-4004-bc4f-886d56d0813b",
+        "answer": "物事に取り組む時は時間を設定する。",
+        "inserted": "2020-04-12T05:52:37.664676",
+        "modified": "2020-04-12T05:52:37.664676"
+      }
+    ],
+    "userInfo": {
+      "id": null,
+      "email": null,
+      "pictureUrl": "https://picsum.photos/202/201",
+      "nickname": "",
+      "country": null
+    },
+    "likeInfo": {
+      "active": true,
+      "sum": 1,
+      "id": "fab9e711-d508-444b-bb64-cb7c10475aab"
+    }
   }
 ]
