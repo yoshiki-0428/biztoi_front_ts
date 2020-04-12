@@ -13,7 +13,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import BookDetail from "@/components/organisms/BookDetail.vue";
 import AnswerDetail from "@/components/organisms/AnswerDetail.vue";
-import { AnswerHead, BizToiUser, Book, Question } from "@/axios/biztoi";
+import { BizToiUser, Book } from "@/axios/biztoi";
 import books from "@/assets/json/books.json";
 import answerHeads from "@/assets/json/answerHeads.json";
 import questions from "@/assets/json/questions.json";
@@ -37,7 +37,7 @@ export default class Article extends Vue {
     title: ""
   };
 
-  private answerHead: AnswerHead = {
+  private answerHead: any = {
     id: "",
     inserted: "",
     likeInfo: { active: true, sum: 0, id: "" },
@@ -45,7 +45,7 @@ export default class Article extends Vue {
     userId: ""
   };
 
-  private questionList: Question[] = questions;
+  private questionList: any[] = questions;
 
   private userInfo: BizToiUser = { email: "", id: "", nickname: "" };
 

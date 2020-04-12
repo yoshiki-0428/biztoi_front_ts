@@ -1,9 +1,9 @@
 <template>
   <div class="white pa-5">
     <v-list class="grey darken-2">
-      <v-list-title class="white--text pt-5 d-flex justify-center title">
+      <v-card-title class="white--text pt-5 d-flex justify-center title">
         こんなことで悩んでいませんか？
-      </v-list-title>
+      </v-card-title>
       <v-list-item class="ma-2 px-3">
         <v-list-item-content class="text-left">
           <p class="mt-3">

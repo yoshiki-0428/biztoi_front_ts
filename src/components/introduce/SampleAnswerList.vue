@@ -18,7 +18,6 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import AnswerOverView from "@/components/organisms/AnswerOverView.vue";
-import { AnswerHead, Book } from "@/axios/biztoi";
 import answerHeads from "@/assets/json/answerHeads.json";
 import books from "@/assets/json/books.json";
 
@@ -26,7 +25,7 @@ import books from "@/assets/json/books.json";
   components: { AnswerOverView }
 })
 export default class SampleAnswerList extends Vue {
-  private books: Book[] = books;
-  private answerHeads: AnswerHead[] = answerHeads;
+  private books: any[] = books;
+  private answerHeads: any[] = answerHeads;
 }
 </script>
