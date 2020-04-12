@@ -40,7 +40,7 @@ export default class Article extends Vue {
   private answerHead: AnswerHead = {
     id: "",
     inserted: "",
-    likeInfo: undefined,
+    likeInfo: { active: true, sum: 0, id: "" },
     publishFlg: false,
     userId: ""
   };

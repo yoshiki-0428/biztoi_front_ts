@@ -8,7 +8,7 @@
       <sample-answer-list class="ma-3" />
       <bullet-list />
     </div>
-    <!-- 使い方 -->
+
     <how-to></how-to>
     <site-footer></site-footer>
   </v-container>
@@ -20,7 +20,6 @@ import LoginButton from "@/components/organisms/LoginButton.vue";
 import SiteFooter from "@/components/organisms/SiteFooter.vue";
 import HowTo from "@/components/organisms/HowTo.vue";
 import AnswerOverView from "@/components/organisms/AnswerOverView.vue";
-import { AnswerHead, Book } from "@/axios/biztoi";
 import WorriedList from "@/components/introduce/WorriedList.vue";
 import CatchCopy from "@/components/introduce/CatchCopy.vue";
 import WhatsBizToi from "@/components/introduce/WhatsBizToi.vue";
@@ -40,11 +39,7 @@ import SampleAnswerList from "@/components/introduce/SampleAnswerList.vue";
     SiteFooter
   }
 })
-export default class IntroducePage extends Vue {
-  private books: Book[] = books;
-
-  private answerHeads: AnswerHead[] = answerHeads;
-}
+export default class IntroducePage extends Vue {}
 </script>
 
 <style lang="scss" scoped></style>
