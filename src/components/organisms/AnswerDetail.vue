@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-expansion-panels multiple accordion v-model="panel">
+    <v-expansion-panels multiple v-model="panel">
       <v-expansion-panel v-for="(s, index) in stepMap" :key="index">
         <v-expansion-panel-header class="title py-2">
           Step:{{ s.no }} {{ s.name }}
@@ -14,26 +14,31 @@
           >
             <div>
               <v-row justify="start" class="ma-0">
-                <v-list-item-title class="title font-weight-bold mb-3">
+                <v-list-item-title class="subtitle-1 mb-3">
                   Question
                   <v-divider class="primary"></v-divider>
                 </v-list-item-title>
               </v-row>
-              <v-row justify="start" class="subtitle-1 ma-0 mb-2">
+              <v-row justify="start" class="body-2 ma-0 mb-2">
                 {{ q.title }}
               </v-row>
               <v-row justify="start" class="ma-0">
-                <v-list-item-title class="title font-weight-bold mb-3 mt-3">
+                <v-list-item-title
+                  class="subtitle-1 font-weight-bold mb-3 mt-3"
+                >
                   Answer
                   <v-divider class="red accent-1"></v-divider>
                 </v-list-item-title>
               </v-row>
-              <div v-if="existAnswers(q.id)" class="mb-5">
+              <div
+                v-if="existAnswers(q.id)"
+                class="border mb-5 grey lighten-5 black--text pa-2"
+              >
                 <v-row
                   v-for="(a, index) in filterdAnswers(q.id)"
                   :key="index"
                   justify="start"
-                  class="subtitle-1 ma-0 mb-2"
+                  class="body-1 ma-0 mb-2"
                 >
                   {{ a.answer }}
                 </v-row>
@@ -61,6 +66,12 @@
     </v-expansion-panels>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.border {
+  border-radius: 2px;
+}
+</style>
 
 <script lang="ts">
 import { Component, Prop, Emit, Vue } from "vue-property-decorator";
