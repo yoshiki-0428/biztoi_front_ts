@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-card>
     <v-card-title class="py-2">
       <v-avatar color="accent" size="30" class="mr-1">
         <v-img :src="userPicture"></v-img>
@@ -37,7 +37,7 @@
         :text="`BizToiアプリで回答内容を見る`"
       />
     </v-card-actions>
-  </div>
+  </v-card>
 </template>
 
 <script lang="ts">

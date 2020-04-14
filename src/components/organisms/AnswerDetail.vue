@@ -1,5 +1,10 @@
 <template>
   <div>
+    <answer-over-view
+      :answer-head="answerHead"
+      @on-click-like="onClick"
+      class="mb-4"
+    />
     <v-expansion-panels multiple v-model="panel">
       <v-expansion-panel v-for="(s, index) in stepMap" :key="index">
         <v-expansion-panel-header class="title py-2">
@@ -32,7 +37,7 @@
               </v-row>
               <div
                 v-if="existAnswers(q.id)"
-                class="border mb-5 grey lighten-5 black--text pa-2"
+                class="answer-bg mb-5 black--text pa-2"
               >
                 <v-row
                   v-for="(a, index) in filterdAnswers(q.id)"
@@ -67,24 +72,21 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-.border {
-  border-radius: 2px;
-}
-</style>
-
 <script lang="ts">
 import { Component, Prop, Emit, Vue } from "vue-property-decorator";
 import { Answer, AnswerHead, Question, SendLikeInfo } from "@/axios/biztoi";
 import isUndefined from "lodash/isUndefined";
-import AnswerOverView from "@/components/organisms/AnswerOverView.vue";
 import { BizToiUser } from "@/axios/biztoi";
+import AnswerOverView from "@/components/organisms/AnswerOverView.vue";
 
-@Component({ components: { AnswerOverView } })
+@Component({
+  components: { AnswerOverView }
+})
 export default class AnswerDetail extends Vue {
   @Prop({ default: null }) private answerHead!: AnswerHead;
   @Prop({ default: () => [] }) private questionList!: Question[];
   @Prop({ default: {} }) private userInfo!: BizToiUser;
+
   @Emit("on-click-like")
   private onClick(sendLikeInfo: SendLikeInfo) {}
   private stepMap: { no: string; name: string }[] = [
@@ -112,8 +114,12 @@ export default class AnswerDetail extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-expansion-panel-content__wrap {
   padding: 8px;
+}
+.answer-bg {
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 </style>
