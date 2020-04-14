@@ -23,10 +23,7 @@
               <span class="font-weight-black">{{ account.profile }}</span>
             </v-card-title>
 
-            <v-card-text
-              v-if="account.profileDetail"
-              class="headline font-weight-bold"
-            >
+            <v-card-text v-if="account.profileDetail" class="font-weight-light">
               {{ account.profileDetail }}
             </v-card-text>
 
@@ -56,7 +53,6 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class Developers extends Vue {
-  private panel: number[] = [0];
   private accounts = [
     {
       name: "yoshiki__0428",
@@ -64,7 +60,8 @@ export default class Developers extends Vue {
       picture:
         "https://pbs.twimg.com/profile_images/1013825851069063169/ULkWPIoC_400x400.jpg",
       profile: "BizToiを0から開発した人",
-      profileDetail: ""
+      profileDetail:
+        "技術選定から構成までを考えてアプリを作成。API開発から最新のフロントエンド開発, インフラ構築までなんでも屋さん"
     },
     {
       name: "Match_Books",
