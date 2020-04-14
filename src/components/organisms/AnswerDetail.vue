@@ -3,6 +3,7 @@
     <answer-over-view
       :answer-head="answerHead"
       @on-click-like="onClick"
+      :is-detail="true"
       class="mb-4"
     />
     <v-expansion-panels multiple v-model="panel">
@@ -15,35 +16,27 @@
             three-line
             v-for="(q, index) in filterdQuestions(s.no)"
             :key="index"
-            class="text-left"
+            class="text-left px-2"
           >
             <div>
-              <v-row justify="start" class="ma-0">
-                <v-list-item-title class="subtitle-1 mb-3">
-                  Question
-                  <v-divider class="primary"></v-divider>
-                </v-list-item-title>
+              <v-row class="ml-1">
+                <v-col cols="1" class="pa-1">
+                  <v-icon size="20" class="border white black--text px-1 pb-1">
+                    Q
+                  </v-icon>
+                </v-col>
+                <v-col cols="10" class="pa-1 ml-2">
+                  <v-card-subtitle class="q-title body-2 pa-0 mb-5">
+                    {{ q.title }}
+                  </v-card-subtitle>
+                </v-col>
               </v-row>
-              <v-row justify="start" class="body-2 ma-0 mb-2">
-                {{ q.title }}
-              </v-row>
-              <v-row justify="start" class="ma-0">
-                <v-list-item-title
-                  class="subtitle-1 font-weight-bold mb-3 mt-3"
-                >
-                  Answer
-                  <v-divider class="red accent-1"></v-divider>
-                </v-list-item-title>
-              </v-row>
-              <div
-                v-if="existAnswers(q.id)"
-                class="answer-bg mb-5 black--text pa-2"
-              >
+              <div v-if="existAnswers(q.id)" class="answer-bg mb-5 pa-3">
                 <v-row
                   v-for="(a, index) in filterdAnswers(q.id)"
                   :key="index"
                   justify="start"
-                  class="body-1 ma-0 mb-2"
+                  class="body-2 ma-0 mb-2"
                 >
                   {{ a.answer }}
                 </v-row>
@@ -118,8 +111,11 @@ export default class AnswerDetail extends Vue {
 .v-expansion-panel-content__wrap {
   padding: 8px;
 }
+.border {
+  border-radius: 4px;
+}
 .answer-bg {
   border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 </style>
