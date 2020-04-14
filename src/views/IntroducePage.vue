@@ -10,6 +10,7 @@
     </div>
 
     <how-to></how-to>
+    <developers />
     <site-footer></site-footer>
   </v-container>
 </template>
@@ -25,9 +26,11 @@ import CatchCopy from "@/components/introduce/CatchCopy.vue";
 import WhatsBizToi from "@/components/introduce/WhatsBizToi.vue";
 import BulletList from "@/components/introduce/BulletList.vue";
 import SampleAnswerList from "@/components/introduce/SampleAnswerList.vue";
+import Developers from "@/components/introduce/Developers.vue";
 
 @Component({
   components: {
+    Developers,
     SampleAnswerList,
     BulletList,
     WhatsBizToi,
