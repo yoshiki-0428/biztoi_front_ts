@@ -3,7 +3,7 @@
     <v-card-title class="black--text display-1 justify-center">
       回答一覧
     </v-card-title>
-    <v-card dark class="ma-3" v-for="(book, index) in books" :key="index">
+    <v-card dark class="ma-2" v-for="(book, index) in books" :key="index">
       <answer-over-view
         :no="index"
         :is-sample="true"

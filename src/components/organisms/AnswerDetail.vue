@@ -21,17 +21,20 @@
             <div>
               <v-row class="ml-1">
                 <v-col cols="1" class="pa-1">
-                  <v-icon size="20" class="border white black--text px-1 pb-1">
+                  <v-icon
+                    size="20"
+                    class="border white black--text px-1 pb-1 mt-1"
+                  >
                     Q
                   </v-icon>
                 </v-col>
-                <v-col cols="10" class="pa-1 ml-2">
-                  <v-card-subtitle class="q-title body-2 pa-0 mb-5">
+                <v-col cols="10" class="pa-1 ml-3">
+                  <v-card-subtitle class="body-2 pa-0 mb-3">
                     {{ q.title }}
                   </v-card-subtitle>
                 </v-col>
               </v-row>
-              <div v-if="existAnswers(q.id)" class="answer-bg mb-5 pa-3">
+              <div v-if="existAnswers(q.id)" class="answer-bg mb-5 ma-1 pa-3">
                 <v-row
                   v-for="(a, index) in filterdAnswers(q.id)"
                   :key="index"
@@ -116,6 +119,6 @@ export default class AnswerDetail extends Vue {
 }
 .answer-bg {
   border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 </style>
