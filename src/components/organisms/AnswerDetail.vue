@@ -34,12 +34,12 @@
                   </v-card-subtitle>
                 </v-col>
               </v-row>
-              <div v-if="existAnswers(q.id)" class="answer-bg mb-5 ma-1 pa-3">
+              <div v-if="existAnswers(q.id)" class="mb-5 ma-2">
                 <v-row
                   v-for="(a, index) in filterdAnswers(q.id)"
                   :key="index"
                   justify="start"
-                  class="body-2 ma-0 mb-2"
+                  class="answer-bg answer-display body-2 ma-0 mb-3 pa-3"
                 >
                   {{ a.answer }}
                 </v-row>
@@ -109,7 +109,6 @@ export default class AnswerDetail extends Vue {
   }
 }
 </script>
-
 <style lang="scss" scoped>
 .v-expansion-panel-content__wrap {
   padding: 8px;
@@ -117,8 +116,13 @@ export default class AnswerDetail extends Vue {
 .border {
   border-radius: 4px;
 }
-.answer-bg {
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.08);
+.answer {
+  &-bg {
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  &-display {
+    white-space: pre-line;
+  }
 }
 </style>

@@ -8,7 +8,7 @@
         answerHead.userInfo ? answerHead.userInfo.nickname : ""
       }}</span>
     </v-card-title>
-    <v-card-title class="subtitle-1 text-left py-1">
+    <v-card-title class="answer-diplay subtitle-1 text-left py-1">
       {{ displayAnswerTitle(answerHead.answers[0].answer) }}
     </v-card-title>
     <v-card-actions class="py-1">
@@ -91,3 +91,8 @@ export default class AnswerOverView extends Vue {
   private onClick(sendLikeInfo: SendLikeInfo) {}
 }
 </script>
+<style lang="scss">
+.answer-diplay {
+  white-space: pre-line;
+}
+</style>
