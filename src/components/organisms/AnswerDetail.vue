@@ -44,8 +44,8 @@
                   {{ a.answer }}
                 </v-row>
               </div>
-              <div v-else class="mb-3">
-                <v-row justify="start" class="ma-0 mb-3 subtitle-1">
+              <div v-else class="mb-3 ma-2">
+                <v-row justify="start" class="answer-bg body-2 ma-0 mb-3 pa-3">
                   未回答
                 </v-row>
               </div>
