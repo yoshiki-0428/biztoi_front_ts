@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-card>
     <v-card-title class="py-2">
       <v-avatar color="accent" size="30" class="mr-1">
         <v-img :src="userPicture"></v-img>
@@ -8,7 +8,7 @@
         answerHead.userInfo ? answerHead.userInfo.nickname : ""
       }}</span>
     </v-card-title>
-    <v-card-title class="subtitle-1 text-left py-1">
+    <v-card-title class="answer-diplay subtitle-1 text-left py-1">
       {{ displayAnswerTitle(answerHead.answers[0].answer) }}
     </v-card-title>
     <v-card-actions class="py-1">
@@ -37,7 +37,7 @@
         :text="`BizToiアプリで回答内容を見る`"
       />
     </v-card-actions>
-  </div>
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -91,3 +91,8 @@ export default class AnswerOverView extends Vue {
   private onClick(sendLikeInfo: SendLikeInfo) {}
 }
 </script>
+<style lang="scss">
+.answer-diplay {
+  white-space: pre-line;
+}
+</style>

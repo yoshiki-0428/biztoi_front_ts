@@ -1,6 +1,12 @@
 <template>
   <div>
-    <v-expansion-panels multiple accordion v-model="panel">
+    <answer-over-view
+      :answer-head="answerHead"
+      @on-click-like="onClick"
+      :is-detail="true"
+      class="mb-4"
+    />
+    <v-expansion-panels multiple v-model="panel">
       <v-expansion-panel v-for="(s, index) in stepMap" :key="index">
         <v-expansion-panel-header class="title py-2">
           Step:{{ s.no }} {{ s.name }}
@@ -10,36 +16,36 @@
             three-line
             v-for="(q, index) in filterdQuestions(s.no)"
             :key="index"
-            class="text-left"
+            class="text-left px-2"
           >
             <div>
-              <v-row justify="start" class="ma-0">
-                <v-list-item-title class="title font-weight-bold mb-3">
-                  Question
-                  <v-divider class="primary"></v-divider>
-                </v-list-item-title>
+              <v-row class="ml-1">
+                <v-col cols="1" class="pa-1">
+                  <v-icon
+                    size="20"
+                    class="border white black--text px-1 pb-1 mt-1"
+                  >
+                    Q
+                  </v-icon>
+                </v-col>
+                <v-col cols="10" class="pa-1 ml-3">
+                  <v-card-subtitle class="body-2 pa-0 mb-3">
+                    {{ q.title }}
+                  </v-card-subtitle>
+                </v-col>
               </v-row>
-              <v-row justify="start" class="subtitle-1 ma-0 mb-2">
-                {{ q.title }}
-              </v-row>
-              <v-row justify="start" class="ma-0">
-                <v-list-item-title class="title font-weight-bold mb-3 mt-3">
-                  Answer
-                  <v-divider class="red accent-1"></v-divider>
-                </v-list-item-title>
-              </v-row>
-              <div v-if="existAnswers(q.id)" class="mb-5">
+              <div v-if="existAnswers(q.id)" class="mb-5 ma-2">
                 <v-row
                   v-for="(a, index) in filterdAnswers(q.id)"
                   :key="index"
                   justify="start"
-                  class="subtitle-1 ma-0 mb-2"
+                  class="answer-bg answer-display body-2 ma-0 mb-3 pa-3"
                 >
                   {{ a.answer }}
                 </v-row>
               </div>
-              <div v-else class="mb-3">
-                <v-row justify="start" class="ma-0 mb-3 subtitle-1">
+              <div v-else class="mb-3 ma-2">
+                <v-row justify="start" class="answer-bg body-2 ma-0 mb-3 pa-3">
                   未回答
                 </v-row>
               </div>
@@ -66,14 +72,17 @@
 import { Component, Prop, Emit, Vue } from "vue-property-decorator";
 import { Answer, AnswerHead, Question, SendLikeInfo } from "@/axios/biztoi";
 import isUndefined from "lodash/isUndefined";
-import AnswerOverView from "@/components/organisms/AnswerOverView.vue";
 import { BizToiUser } from "@/axios/biztoi";
+import AnswerOverView from "@/components/organisms/AnswerOverView.vue";
 
-@Component({ components: { AnswerOverView } })
+@Component({
+  components: { AnswerOverView }
+})
 export default class AnswerDetail extends Vue {
   @Prop({ default: null }) private answerHead!: AnswerHead;
   @Prop({ default: () => [] }) private questionList!: Question[];
   @Prop({ default: {} }) private userInfo!: BizToiUser;
+
   @Emit("on-click-like")
   private onClick(sendLikeInfo: SendLikeInfo) {}
   private stepMap: { no: string; name: string }[] = [
@@ -100,9 +109,20 @@ export default class AnswerDetail extends Vue {
   }
 }
 </script>
-
-<style lang="scss">
+<style lang="scss" scoped>
 .v-expansion-panel-content__wrap {
   padding: 8px;
+}
+.border {
+  border-radius: 4px;
+}
+.answer {
+  &-bg {
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  &-display {
+    white-space: pre-line;
+  }
 }
 </style>
