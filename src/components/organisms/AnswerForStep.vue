@@ -16,6 +16,7 @@
         <v-card-title class="pa-2">
           問{{ question.orderId }}: {{ question.title }}</v-card-title
         >
+        <v-card-subtitle class="pa-2">{{ question.detail }}</v-card-subtitle>
       </v-row>
 
       <v-row align="center" justify="center" class="pa-2">
