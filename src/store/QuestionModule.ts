@@ -18,19 +18,9 @@ import { AxiosResponse } from "axios";
 })
 class QuestionModule extends VuexModule {
   // state
-  public question: Question = {
-    id: "",
-    patternId: 0,
-    orderId: 1,
-    title: "",
-    detail: "",
-    example: "",
-    required: true,
-    step: "",
-    answerType: ""
-  };
   public questionList: Question[] = [];
   public stepNo: string = "1";
+
   @Action
   public async getQuestionList(params: { bookId: string }) {
     const res: AxiosResponse<Question[]> = await baseApi.getBookQuestions(
@@ -41,13 +31,15 @@ class QuestionModule extends VuexModule {
       this.SET_QUESTION_LIST(res.data);
     }
   }
+
   @Action
   public async getQuestionListForStep(params: {
     bookId: string;
     stepNo: string;
   }) {
     const res: AxiosResponse<Question[]> = await baseApi.getBookQuestions(
-      params.bookId
+      params.bookId,
+      process.env.VUE_APP_QUESTION_LATEST_NO
     );
 
     if (res.data) {
@@ -56,31 +48,6 @@ class QuestionModule extends VuexModule {
     }
   }
 
-  @Action({ rawError: true })
-  public async getQuestion(params: { bookId: string; questionId: string }) {
-    const resStore: Question | undefined = this.questionList.find(
-      q => q.id === params.questionId
-    );
-    if (resStore) {
-      this.SET_QUESTION(resStore);
-      return;
-    }
-
-    const res: AxiosResponse<Question> = await baseApi.getBookQuestion(
-      params.bookId,
-      params.questionId
-    );
-
-    if (res.data) {
-      this.SET_QUESTION(res.data);
-      return;
-    }
-  }
-
-  @Mutation
-  private SET_QUESTION(payload: Question) {
-    this.question = payload;
-  }
   @Mutation
   private SET_QUESTION_LIST(payload: Question[]) {
     this.questionList = payload;

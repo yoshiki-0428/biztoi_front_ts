@@ -92,7 +92,8 @@ export default class AnswerDetail extends Vue {
   ];
   private panel: number[] = [0, 1, 2];
   private filterdQuestions(step: string): Question[] {
-    return this.questionList.filter(q => q.step === step);
+    const ids = this.answerHead.answers!.map(a => a.questionId);
+    return this.questionList.filter(q => q.step === step && ids.includes(q.id));
   }
   private filterdAnswers(questionId: string): Answer[] {
     if (this.answerHead.answers) {
