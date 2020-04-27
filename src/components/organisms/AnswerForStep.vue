@@ -28,9 +28,10 @@
             <v-textarea
               v-model="answer.answer"
               :rules="rules"
-              :label="`例) ${question.example}`"
+              label="回答を入力してください"
               @change="debouncePostAnswer(answer)"
               outlined
+              :hint="`例) ${question.example}`"
             >
               <template
                 v-if="filterAnswerQuestion(question.id).length > 1"
