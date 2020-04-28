@@ -53,6 +53,7 @@
           </v-btn>
           <share-icon-button
             :text="`BizToiアプリで${book.title}の本詳細を見る`"
+            :url="shereLink()"
           />
         </v-card-actions>
       </v-col>
@@ -64,6 +65,7 @@
 import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 import { Book, SendLikeInfo } from "@/axios/biztoi";
 import ShareIconButton from "@/components/atoms/ShareIconButton.vue";
+import router from "@/router";
 
 @Component({
   components: { ShareIconButton }
@@ -96,6 +98,10 @@ export default class BookDetail extends Vue {
   }
   @Emit("on-click-favorite")
   private onClick(sendLikeInfo: SendLikeInfo) {}
+
+  private shereLink() {
+    return location.origin + router.currentRoute.fullPath;
+  }
 }
 </script>
 <style lang="scss" scoped>
