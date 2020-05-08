@@ -2,7 +2,6 @@
   <v-btn icon>
     <v-icon v-if="isNative" @click="share">mdi-share-variant</v-icon>
     <v-icon v-else @click="copyShareLink">fa-copy</v-icon>
-    <!-- TODO BaseLayoutに共通化したい -->
     <v-snackbar v-model="snackbar" top color="primary" :timeout="1000">
       {{ completeText }}
     </v-snackbar>

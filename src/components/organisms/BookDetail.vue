@@ -53,7 +53,7 @@
           </v-btn>
           <share-icon-button
             :text="`BizToiアプリで${book.title}の本詳細を見る`"
-            :url="shereLink()"
+            :url="shareUrl(book.isbn)"
           />
         </v-card-actions>
       </v-col>
@@ -99,8 +99,8 @@ export default class BookDetail extends Vue {
   @Emit("on-click-favorite")
   private onClick(sendLikeInfo: SendLikeInfo) {}
 
-  private shereLink() {
-    return location.origin + router.currentRoute.fullPath;
+  private shareUrl(isbn: string) {
+    return `${location.origin}/top/book/${isbn}`;
   }
 }
 </script>

@@ -32,7 +32,6 @@
       </v-btn>
       <span class="subheading mr-2">{{ answerHead.likeInfo.sum }}</span>
       <share-icon-button
-        v-if="!isDetail"
         :url="shareUrl"
         :text="`BizToiアプリで回答内容を見る`"
       />
@@ -71,7 +70,7 @@ export default class AnswerOverView extends Vue {
   }
 
   get shareUrl(): string {
-    return `${window.location.href}/answer/${this.answerHead.id}`;
+    return `${window.location.origin}/top/book/${this.answerHead.bookId}/answer/${this.answerHead.id}`;
   }
 
   get userPicture(): string {

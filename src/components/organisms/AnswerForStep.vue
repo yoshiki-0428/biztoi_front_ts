@@ -63,7 +63,6 @@
     </v-card>
     <v-card>
       <v-card-actions>
-        <!-- TODO ダイアログ表示してトップへ -->
         <v-btn
           v-if="stepNo === '3'"
           outlined
